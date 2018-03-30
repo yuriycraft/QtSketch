@@ -68,7 +68,7 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
     auto classString = classValue.toString();
 
     if(classString == QStringLiteral("assetCollection"))
-        return new AssetCollection(jsonObj);
+        return new AssetCollection(jsonObj, parent);
     else if(classString == QStringLiteral("blur"))
         return new Blur(jsonObj, parent);
     else if(classString == QStringLiteral("border"))

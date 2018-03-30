@@ -1,15 +1,61 @@
 #include "border.h"
 
 #include <QDebug>
+#include <QJsonValue>
+#include <QJsonObject>
+
+#include "utils.h"
+
+#include "color.h"
 
 Border::Border(QObject *parent) :
-    BaseContainer(parent)
+    BaseContainer(parent),
+    m_color(Q_NULLPTR),
+    m_fillType(0.),
+    m_isEnabled(false),
+    m_position(0.),
+    m_thickness(0.)
 {
 }
 
 Border::Border(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent)
+    BaseContainer(parent),
+    m_color(Q_NULLPTR),
+    m_fillType(0.),
+    m_isEnabled(false),
+    m_position(0.),
+    m_thickness(0.)
 {
-    //TODO
-    qWarning() << "not implemented";
+    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
+    {
+        if(iter.key() == QStringLiteral("_class"))
+            continue;
+        else if(iter.key() == QStringLiteral("color"))
+        {
+            Q_ASSERT(iter.value().isObject());
+            m_color = createContainer<Color>(iter.value().toObject(), this);
+        }
+        else if(iter.key() == QStringLiteral("fillType"))
+        {
+            Q_ASSERT(iter.value().isDouble());
+            m_fillType = iter.value().toDouble();
+        }
+        else if(iter.key() == QStringLiteral("isEnabled"))
+        {
+            Q_ASSERT(iter.value().isBool());
+            m_isEnabled = iter.value().toBool();
+        }
+        else if(iter.key() == QStringLiteral("position"))
+        {
+            Q_ASSERT(iter.value().isDouble());
+            m_position = iter.value().toDouble();
+        }
+        else if(iter.key() == QStringLiteral("thickness"))
+        {
+            Q_ASSERT(iter.value().isDouble());
+            m_thickness = iter.value().toDouble();
+        }
+        else
+            qWarning() << "unexpected" << iter.key();
+    }
 }

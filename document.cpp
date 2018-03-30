@@ -1,0 +1,111 @@
+#include "document.h"
+
+#include <QDebug>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QJsonArray>
+
+#include "utils.h"
+
+#include "assetcollection.h"
+#include "msimmutableforeignsymbol.h"
+#include "sharedstylecontainer.h"
+#include "symbolcontainer.h"
+#include "sharedtextstylecontainer.h"
+#include "msjsonfilereference.h"
+
+Document::Document(QObject *parent) :
+    BaseContainer(parent),
+    m_assets(Q_NULLPTR),
+    m_colorSpace(0.),
+    m_currentPageIndex(0.),
+    m_enableLayerInteraction(false),
+    m_enableSliceInteraction(false),
+    m_layerStyles(Q_NULLPTR),
+    m_layerSymbols(Q_NULLPTR),
+    m_layerTextStyles(Q_NULLPTR)
+{
+}
+
+Document::Document(const QJsonObject &jsonObj, QObject *parent) :
+    BaseContainer(parent),
+    m_assets(Q_NULLPTR),
+    m_colorSpace(0.),
+    m_currentPageIndex(0.),
+    m_enableLayerInteraction(false),
+    m_enableSliceInteraction(false),
+    m_layerStyles(Q_NULLPTR),
+    m_layerSymbols(Q_NULLPTR),
+    m_layerTextStyles(Q_NULLPTR)
+{
+    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
+    {
+        if(iter.key() == QStringLiteral("_class"))
+            continue;
+        else if(iter.key() == QStringLiteral("assets"))
+        {
+            Q_ASSERT(iter.value().isObject());
+            m_assets = getContainer<AssetCollection>(iter.value().toObject());
+        }
+        else if(iter.key() == QStringLiteral("colorSpace"))
+        {
+            Q_ASSERT(iter.value().isDouble());
+            m_colorSpace = iter.value().toDouble();
+        }
+        else if(iter.key() == QStringLiteral("currentPageIndex"))
+        {
+            Q_ASSERT(iter.value().isDouble());
+            m_currentPageIndex = iter.value().toDouble();
+        }
+        else if(iter.key() == QStringLiteral("do_objectID"))
+        {
+            Q_ASSERT(iter.value().isString());
+            m_do_objectID = iter.value().toString();
+        }
+        else if(iter.key() == QStringLiteral("enableLayerInteraction"))
+        {
+            Q_ASSERT(iter.value().isBool());
+            m_enableLayerInteraction = iter.value().toBool();
+        }
+        else if(iter.key() == QStringLiteral("enableSliceInteraction"))
+        {
+            Q_ASSERT(iter.value().isBool());
+            m_enableSliceInteraction = iter.value().toBool();
+        }
+        else if(iter.key() == QStringLiteral("foreignSymbols"))
+        {
+            Q_ASSERT(iter.value().isArray());
+            for(auto pageValue : iter.value().toArray())
+            {
+                Q_ASSERT(pageValue.isObject());
+                m_foreignSymbols.append(getContainer<MSImmutableForeignSymbol>(pageValue.toObject()));
+            }
+        }
+        else if(iter.key() == QStringLiteral("layerStyles"))
+        {
+            Q_ASSERT(iter.value().isObject());
+            m_layerStyles = getContainer<SharedStyleContainer>(iter.value().toObject());
+        }
+        else if(iter.key() == QStringLiteral("layerSymbols"))
+        {
+            Q_ASSERT(iter.value().isObject());
+            m_layerSymbols = getContainer<SymbolContainer>(iter.value().toObject());
+        }
+        else if(iter.key() == QStringLiteral("layerTextStyles"))
+        {
+            Q_ASSERT(iter.value().isObject());
+            m_layerTextStyles = getContainer<SharedTextStyleContainer>(iter.value().toObject());
+        }
+        else if(iter.key() == QStringLiteral("pages"))
+        {
+            Q_ASSERT(iter.value().isArray());
+            for(auto pageValue : iter.value().toArray())
+            {
+                Q_ASSERT(pageValue.isObject());
+                m_pages.append(getContainer<MSJSONFileReference>(pageValue.toObject()));
+            }
+        }
+        else
+            qWarning() << "unexpected" << iter.key();
+    }
+}

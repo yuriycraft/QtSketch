@@ -7,6 +7,7 @@
 
 #include "utils.h"
 
+#include "blur.h"
 #include "borderoptions.h"
 #include "border.h"
 #include "fill.h"
@@ -15,6 +16,7 @@
 
 Style::Style(QObject *parent) :
     BaseContainer(parent),
+    m_blur(Q_NULLPTR),
     m_borderOptions(Q_NULLPTR),
     m_miterLimit(0.),
     m_startDecorationType(0.),
@@ -24,6 +26,7 @@ Style::Style(QObject *parent) :
 
 Style::Style(const QJsonObject &jsonObj, QObject *parent) :
     BaseContainer(parent),
+    m_blur(Q_NULLPTR),
     m_borderOptions(Q_NULLPTR),
     m_miterLimit(0.),
     m_startDecorationType(0.),
@@ -42,6 +45,11 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
         {
             Q_ASSERT(iter.value().isString());
             m_name = iter.value().toString();
+        }
+        else if(iter.key() == QStringLiteral("blur"))
+        {
+            Q_ASSERT(iter.value().isObject());
+            m_blur = createContainer<Blur>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("borderOptions"))
         {

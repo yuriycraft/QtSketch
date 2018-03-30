@@ -7,6 +7,7 @@
 #include <QJsonObject>
 
 #include "assetcollection.h"
+#include "blur.h"
 #include "border.h"
 #include "borderoptions.h"
 #include "color.h"
@@ -67,6 +68,8 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
 
     if(classString == QStringLiteral("assetCollection"))
         return new AssetCollection(jsonObj);
+    else if(classString == QStringLiteral("blur"))
+        return new Blur(jsonObj, parent);
     else if(classString == QStringLiteral("border"))
         return new Border(jsonObj, parent);
     else if(classString == QStringLiteral("borderOptions"))

@@ -5,6 +5,7 @@
 
 class QJsonObject;
 
+class Blur;
 class BorderOptions;
 class Border;
 class Fill;
@@ -22,6 +23,7 @@ public:
 private:
     QString m_do_objectID;
     QString m_name;
+    Blur *m_blur;
     BorderOptions *m_borderOptions;
     QList<Border*> m_borders;
     QList<Fill*> m_fills;

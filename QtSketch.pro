@@ -34,7 +34,8 @@ SOURCES += \
     border.cpp \
     borderoptions.cpp \
     textstyle.cpp \
-    graphicscontextsettings.cpp
+    graphicscontextsettings.cpp \
+    blur.cpp
 
 HEADERS += \
     assetcollection.h \
@@ -55,4 +56,5 @@ HEADERS += \
     border.h \
     borderoptions.h \
     textstyle.h \
-    graphicscontextsettings.h
+    graphicscontextsettings.h \
+    blur.h

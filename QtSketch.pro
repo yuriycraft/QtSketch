@@ -40,7 +40,8 @@ SOURCES += \
     gradientstop.cpp \
     exportoptions.cpp \
     rect.cpp \
-    rulerdata.cpp
+    rulerdata.cpp \
+    exportformat.cpp
 
 HEADERS += \
     assetcollection.h \
@@ -67,4 +68,5 @@ HEADERS += \
     gradientstop.h \
     exportoptions.h \
     rect.h \
-    rulerdata.h
+    rulerdata.h \
+    exportformat.h

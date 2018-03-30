@@ -1,14 +1,61 @@
 #include "exportoptions.h"
 
 #include <QDebug>
+#include <QJsonValue>
+#include <QJsonObject>
+#include <QJsonArray>
+
+#include <QJsonDocument>
+
+#include "utils.h"
+
+#include "exportformat.h"
 
 ExportOptions::ExportOptions(QObject *parent) :
-    BaseContainer(parent)
+    BaseContainer(parent),
+    m_layerOptions(0.),
+    m_shouldTrim(false)
 {
 }
 
-ExportOptions::ExportOptions(const QJsonObject &jsonObj, QObject *parent)
+ExportOptions::ExportOptions(const QJsonObject &jsonObj, QObject *parent) :
+    BaseContainer(parent),
+    m_layerOptions(0.),
+    m_shouldTrim(false)
 {
-    //TODO
-    qWarning() << "not implemented";
+    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
+    {
+        if(iter.key() == QStringLiteral("_class"))
+            continue;
+        else if(iter.key() == QStringLiteral("exportFormats"))
+        {
+            Q_ASSERT(iter.value().isArray());
+            for(auto colorValue : iter.value().toArray())
+            {
+                Q_ASSERT(colorValue.isObject());
+                m_exportFormats.append(createContainer<ExportFormat>(colorValue.toObject(), this));
+            }
+        }
+        else if(iter.key() == QStringLiteral("includedLayerIds"))
+        {
+            Q_ASSERT(iter.value().isArray());
+            for(auto includedLayerIdValue : iter.value().toArray())
+            {
+                //TODO
+                qWarning() << "includedLayerIds not implemented";
+            }
+        }
+        else if(iter.key() == QStringLiteral("layerOptions"))
+        {
+            Q_ASSERT(iter.value().isDouble());
+            m_layerOptions = iter.value().toDouble();
+        }
+        else if(iter.key() == QStringLiteral("shouldTrim"))
+        {
+            Q_ASSERT(iter.value().isBool());
+            m_shouldTrim = iter.value().toBool();
+        }
+        else
+            qWarning() << "unexpected" << iter.key();
+    }
 }

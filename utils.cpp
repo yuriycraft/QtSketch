@@ -13,6 +13,7 @@
 #include "color.h"
 #include "document.h"
 #include "fill.h"
+#include "gradient.h"
 #include "graphicscontextsettings.h"
 #include "imagecollection.h"
 #include "msimmutableforeignsymbol.h"
@@ -80,6 +81,8 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
         return new Document(jsonObj, parent);
     else if(classString == QStringLiteral("fill"))
         return new Fill(jsonObj, parent);
+    else if(classString == QStringLiteral("gradient"))
+        return new Gradient(jsonObj, parent);
     else if(classString == QStringLiteral("graphicsContextSettings"))
         return new GraphicsContextSettings(jsonObj, parent);
     else if(classString == QStringLiteral("imageCollection"))

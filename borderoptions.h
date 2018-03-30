@@ -12,6 +12,12 @@ class BorderOptions : public BaseContainer
 public:
     explicit BorderOptions(QObject *parent = Q_NULLPTR);
     explicit BorderOptions(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+
+private:
+    //TODO dashPattern
+    bool m_isEnabled;
+    double m_lineCapStyle;
+    double m_lineJoinStyle;
 };
 
 #endif // BORDEROPTIONS_H

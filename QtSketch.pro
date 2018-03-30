@@ -37,7 +37,10 @@ SOURCES += \
     graphicscontextsettings.cpp \
     blur.cpp \
     gradient.cpp \
-    gradientstop.cpp
+    gradientstop.cpp \
+    exportoptions.cpp \
+    rect.cpp \
+    rulerdata.cpp
 
 HEADERS += \
     assetcollection.h \
@@ -61,4 +64,7 @@ HEADERS += \
     graphicscontextsettings.h \
     blur.h \
     gradient.h \
-    gradientstop.h
+    gradientstop.h \
+    exportoptions.h \
+    rect.h \
+    rulerdata.h

@@ -14,7 +14,7 @@ public:
     explicit BorderOptions(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
 private:
-    //TODO dashPattern
+    QList<double> m_dashPattern;
     bool m_isEnabled;
     double m_lineCapStyle;
     double m_lineJoinStyle;

@@ -12,6 +12,7 @@
 #include "borderoptions.h"
 #include "color.h"
 #include "document.h"
+#include "exportoptions.h"
 #include "fill.h"
 #include "gradient.h"
 #include "gradientstop.h"
@@ -19,6 +20,8 @@
 #include "imagecollection.h"
 #include "msimmutableforeignsymbol.h"
 #include "msjsonfilereference.h"
+#include "rect.h"
+#include "rulerdata.h"
 #include "sharedstyle.h"
 #include "sharedstylecontainer.h"
 #include "sharedtextstylecontainer.h"
@@ -80,6 +83,8 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
         return new Color(jsonObj, parent);
     else if(classString == QStringLiteral("document"))
         return new Document(jsonObj, parent);
+    else if(classString == QStringLiteral("exportOptions"))
+        return new ExportOptions(jsonObj, parent);
     else if(classString == QStringLiteral("fill"))
         return new Fill(jsonObj, parent);
     else if(classString == QStringLiteral("gradient"))
@@ -94,6 +99,10 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
         return new MSImmutableForeignSymbol(jsonObj, parent);
     else if(classString == QStringLiteral("MSJSONFileReference"))
         return new MSJSONFileReference(jsonObj, parent);
+    else if(classString == QStringLiteral("rect"))
+        return new Rect(jsonObj, parent);
+    else if(classString == QStringLiteral("rulerData"))
+        return new RulerData(jsonObj, parent);
     else if(classString == QStringLiteral("sharedStyle"))
         return new SharedStyle(jsonObj, parent);
     else if(classString == QStringLiteral("sharedStyleContainer"))

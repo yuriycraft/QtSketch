@@ -22,8 +22,8 @@ BorderOptions::BorderOptions(const QJsonObject &jsonObj, QObject *parent) :
             Q_ASSERT(iter.value().isArray());
             for(auto dashPatternValue : iter.value().toArray())
             {
-                //TODO
-                qWarning() << "dashPattern not implemented";
+                Q_ASSERT(dashPatternValue.isDouble());
+                m_dashPattern.append(dashPatternValue.toDouble());
             }
         }
         else if(iter.key() == QStringLiteral("isEnabled"))

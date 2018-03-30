@@ -7,8 +7,11 @@
 #include <QJsonObject>
 
 #include "assetcollection.h"
+#include "border.h"
+#include "borderoptions.h"
 #include "color.h"
 #include "document.h"
+#include "fill.h"
 #include "imagecollection.h"
 #include "msimmutableforeignsymbol.h"
 #include "msjsonfilereference.h"
@@ -62,10 +65,16 @@ BaseContainer *getContainer(const QJsonObject &jsonObj)
 
     if(classString == QStringLiteral("assetCollection"))
         return new AssetCollection(jsonObj);
+    else if(classString == QStringLiteral("border"))
+        return new Border(jsonObj);
+    else if(classString == QStringLiteral("borderOptions"))
+        return new BorderOptions(jsonObj);
     else if(classString == QStringLiteral("color"))
         return new Color(jsonObj);
     else if(classString == QStringLiteral("document"))
         return new Document(jsonObj);
+    else if(classString == QStringLiteral("fill"))
+        return new Fill(jsonObj);
     else if(classString == QStringLiteral("imageCollection"))
         return new ImageCollection(jsonObj);
     else if(classString == QStringLiteral("MSImmutableForeignSymbol"))

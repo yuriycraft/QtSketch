@@ -29,7 +29,10 @@ SOURCES += \
     utils.cpp \
     color.cpp \
     style.cpp \
-    symbolmaster.cpp
+    symbolmaster.cpp \
+    fill.cpp \
+    border.cpp \
+    borderoptions.cpp
 
 HEADERS += \
     assetcollection.h \
@@ -45,4 +48,7 @@ HEADERS += \
     utils.h \
     color.h \
     style.h \
-    symbolmaster.h
+    symbolmaster.h \
+    fill.h \
+    border.h \
+    borderoptions.h

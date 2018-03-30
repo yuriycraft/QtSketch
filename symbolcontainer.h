@@ -13,6 +13,8 @@ public:
     explicit SymbolContainer(QObject *parent = Q_NULLPTR);
     explicit SymbolContainer(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    //TODO objects
+
 private:
     //TODO objects
 };

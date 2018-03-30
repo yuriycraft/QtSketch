@@ -15,6 +15,12 @@ public:
     explicit Border(QObject *parent = Q_NULLPTR);
     explicit Border(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    const Color *color() const;
+    double fillType() const;
+    bool isEnabled() const;
+    double position() const;
+    double thickness() const;
+
 private:
     Color *m_color;
     double m_fillType;

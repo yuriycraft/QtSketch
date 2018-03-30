@@ -12,6 +12,8 @@ class TextStyle : public BaseContainer
 public:
     explicit TextStyle(QObject *parent = Q_NULLPTR);
     explicit TextStyle(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+
+private:
 };
 
 #endif // TEXTSTYLE_H

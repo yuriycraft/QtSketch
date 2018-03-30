@@ -18,6 +18,17 @@ public:
     explicit Fill(QObject *parent = Q_NULLPTR);
     explicit Fill(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    const Color *color() const;
+    const GraphicsContextSettings *contextSettings() const;
+    double fillType() const;
+    const MSJSONFileReference *image() const;
+    const Gradient *gradient() const;
+    bool isEnabled() const;
+    double noiseIndex() const;
+    double noiseIntensity() const;
+    double patternFillType() const;
+    double patternTileScale() const;
+
 private:
     Color *m_color;
     GraphicsContextSettings *m_contextSettings;

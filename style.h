@@ -20,6 +20,19 @@ public:
     explicit Style(QObject *parent = Q_NULLPTR);
     explicit Style(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    const QString &do_objectID() const;
+    const QString &name() const;
+    const Blur *blur() const;
+    const BorderOptions *borderOptions() const;
+    const QList<Border*> &borders() const;
+    const QList<Fill*> &fills() const;
+    const GraphicsContextSettings *contextSettings() const;
+    double endDecorationType() const;
+    double miterLimit() const;
+    const QString &sharedObjectID() const;
+    double startDecorationType() const;
+    const TextStyle *textStyle() const;
+
 private:
     QString m_do_objectID;
     QString m_name;

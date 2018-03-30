@@ -59,3 +59,18 @@ ExportOptions::ExportOptions(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const QList<ExportFormat *> &ExportOptions::exportFormats() const
+{
+    return m_exportFormats;
+}
+
+double ExportOptions::layerOptions() const
+{
+    return m_layerOptions;
+}
+
+bool ExportOptions::shouldTrim() const
+{
+    return m_shouldTrim;
+}

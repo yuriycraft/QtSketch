@@ -13,6 +13,11 @@ public:
     explicit BorderOptions(QObject *parent = Q_NULLPTR);
     explicit BorderOptions(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    const QList<double> &dashPattern() const;
+    bool isEnabled() const;
+    double lineCapStyle() const;
+    double lineJoinStyle() const;
+
 private:
     QList<double> m_dashPattern;
     bool m_isEnabled;

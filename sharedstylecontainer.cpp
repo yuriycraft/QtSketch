@@ -39,3 +39,13 @@ SharedStyleContainer::SharedStyleContainer(const QJsonObject &jsonObj, QObject *
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const QString &SharedStyleContainer::do_objectID() const
+{
+    return m_do_objectID;
+}
+
+const QList<SharedStyle *> &SharedStyleContainer::objects() const
+{
+    return m_objects;
+}

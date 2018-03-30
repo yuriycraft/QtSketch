@@ -45,3 +45,28 @@ Blur::Blur(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+bool Blur::isEnabled() const
+{
+    return m_isEnabled;
+}
+
+const QString &Blur::center() const
+{
+    return m_center;
+}
+
+double Blur::motionAngle() const
+{
+    return m_motionAngle;
+}
+
+double Blur::radius() const
+{
+    return m_radius;
+}
+
+double Blur::type() const
+{
+    return m_type;
+}

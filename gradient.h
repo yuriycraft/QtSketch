@@ -15,6 +15,13 @@ public:
     explicit Gradient(QObject *parent = Q_NULLPTR);
     explicit Gradient(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    double elipseLength() const;
+    const QString &from() const;
+    double gradientType() const;
+    bool shouldSmoothenOpacity() const;
+    const QList<GradientStop*> &stops() const;
+    const QString &to() const;
+
 private:
     double m_elipseLength;
     QString m_from;

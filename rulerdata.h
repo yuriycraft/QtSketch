@@ -13,6 +13,8 @@ public:
     explicit RulerData(QObject *parent = Q_NULLPTR);
     explicit RulerData(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    double base() const;
+
 private:
     double m_base;
 };

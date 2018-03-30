@@ -5,6 +5,9 @@
 
 #include "utils.h"
 
+#include "document.h"
+#include "msjsonfilereference.h"
+
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -33,7 +36,10 @@ int main(int argc, char *argv[])
 
         try
         {
-            createContainer(path);
+            auto document = createContainer<Document>(path);
+            for(auto page : document->pages())
+            {
+            }
         }
         catch(QString msg)
         {

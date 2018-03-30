@@ -16,6 +16,9 @@ public:
     explicit AssetCollection(QObject *parent = Q_NULLPTR);
     explicit AssetCollection(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    const QList<Color*> &colors() const;
+    const ImageCollection *imageCollection() const;
+
 private:
     QList<Color*> m_colors;
     //TODO gradients

@@ -60,3 +60,13 @@ AssetCollection::AssetCollection(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const QList<Color *> &AssetCollection::colors() const
+{
+    return m_colors;
+}
+
+const ImageCollection *AssetCollection::imageCollection() const
+{
+    return m_imageCollection;
+}

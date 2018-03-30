@@ -13,6 +13,9 @@ public:
     explicit GraphicsContextSettings(QObject *parent = Q_NULLPTR);
     explicit GraphicsContextSettings(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    double blendMode() const;
+    double opacity() const;
+
 private:
     double m_blendMode;
     double m_opacity;

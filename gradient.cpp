@@ -65,3 +65,33 @@ Gradient::Gradient(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+double Gradient::elipseLength() const
+{
+    return m_elipseLength;
+}
+
+const QString &Gradient::from() const
+{
+    return m_from;
+}
+
+double Gradient::gradientType() const
+{
+    return m_gradientType;
+}
+
+bool Gradient::shouldSmoothenOpacity() const
+{
+    return m_shouldSmoothenOpacity;
+}
+
+const QList<GradientStop *> &Gradient::stops() const
+{
+    return m_stops;
+}
+
+const QString &Gradient::to() const
+{
+    return m_to;
+}

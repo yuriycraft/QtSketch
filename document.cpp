@@ -109,3 +109,58 @@ Document::Document(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const AssetCollection *Document::assets() const
+{
+    return m_assets;
+}
+
+double Document::colorSpace() const
+{
+    return m_colorSpace;
+}
+
+double Document::currentPageIndex() const
+{
+    return m_currentPageIndex;
+}
+
+const QString Document::do_objectID() const
+{
+    return m_do_objectID;
+}
+
+bool Document::enableLayerInteraction() const
+{
+    return m_enableLayerInteraction;
+}
+
+bool Document::enableSliceInteraction() const
+{
+    return m_enableSliceInteraction;
+}
+
+const QList<MSImmutableForeignSymbol *> &Document::foreignSymbols() const
+{
+    return m_foreignSymbols;
+}
+
+const SharedStyleContainer *Document::layerStyles() const
+{
+    return m_layerStyles;
+}
+
+const SymbolContainer *Document::layerSymbols() const
+{
+    return m_layerSymbols;
+}
+
+const SharedTextStyleContainer *Document::layerTextStyles() const
+{
+    return m_layerTextStyles;
+}
+
+const QList<MSJSONFileReference *> &Document::pages() const
+{
+    return m_pages;
+}

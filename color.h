@@ -13,6 +13,11 @@ public:
     explicit Color(QObject *parent = Q_NULLPTR);
     explicit Color(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    double alpha() const;
+    double blue() const;
+    double green() const;
+    double red() const;
+
 private:
     double m_alpha;
     double m_blue;

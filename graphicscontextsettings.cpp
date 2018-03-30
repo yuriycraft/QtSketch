@@ -34,3 +34,13 @@ GraphicsContextSettings::GraphicsContextSettings(const QJsonObject &jsonObj, QOb
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+double GraphicsContextSettings::blendMode() const
+{
+    return m_blendMode;
+}
+
+double GraphicsContextSettings::opacity() const
+{
+    return m_opacity;
+}

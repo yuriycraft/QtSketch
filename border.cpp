@@ -59,3 +59,28 @@ Border::Border(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const Color *Border::color() const
+{
+    return m_color;
+}
+
+double Border::fillType() const
+{
+    return m_fillType;
+}
+
+bool Border::isEnabled() const
+{
+    return m_isEnabled;
+}
+
+double Border::position() const
+{
+    return m_position;
+}
+
+double Border::thickness() const
+{
+    return m_thickness;
+}

@@ -12,6 +12,7 @@
 #include "borderoptions.h"
 #include "color.h"
 #include "document.h"
+#include "exportformat.h"
 #include "exportoptions.h"
 #include "fill.h"
 #include "gradient.h"
@@ -83,6 +84,8 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
         return new Color(jsonObj, parent);
     else if(classString == QStringLiteral("document"))
         return new Document(jsonObj, parent);
+    else if(classString == QStringLiteral("exportFormat"))
+        return new ExportFormat(jsonObj, parent);
     else if(classString == QStringLiteral("exportOptions"))
         return new ExportOptions(jsonObj, parent);
     else if(classString == QStringLiteral("fill"))

@@ -15,6 +15,8 @@ public:
     explicit SharedTextStyleContainer(QObject *parent = Q_NULLPTR);
     explicit SharedTextStyleContainer(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    const QList<SharedStyle*> &objects() const;
+
 private:
     QList<SharedStyle*> m_objects;
 };

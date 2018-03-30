@@ -13,6 +13,12 @@ public:
     explicit Blur(QObject *parent = Q_NULLPTR);
     explicit Blur(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    bool isEnabled() const;
+    const QString &center() const;
+    double motionAngle() const;
+    double radius() const;
+    double type() const;
+
 private:
     bool m_isEnabled;
     QString m_center;

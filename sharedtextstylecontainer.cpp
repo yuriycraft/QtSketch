@@ -34,3 +34,8 @@ SharedTextStyleContainer::SharedTextStyleContainer(const QJsonObject &jsonObj, Q
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const QList<SharedStyle *> &SharedTextStyleContainer::objects() const
+{
+    return m_objects;
+}

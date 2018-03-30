@@ -39,3 +39,18 @@ SharedStyle::SharedStyle(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const QString &SharedStyle::do_objectID() const
+{
+    return m_do_objectID;
+}
+
+const QString &SharedStyle::name() const
+{
+    return m_name;
+}
+
+const Style *SharedStyle::value() const
+{
+    return m_value;
+}

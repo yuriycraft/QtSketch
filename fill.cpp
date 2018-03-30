@@ -84,3 +84,53 @@ Fill::Fill(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const Color *Fill::color() const
+{
+    return m_color;
+}
+
+const GraphicsContextSettings *Fill::contextSettings() const
+{
+    return m_contextSettings;
+}
+
+double Fill::fillType() const
+{
+    return m_fillType;
+}
+
+const MSJSONFileReference *Fill::image() const
+{
+    return m_image;
+}
+
+const Gradient *Fill::gradient() const
+{
+    return m_gradient;
+}
+
+bool Fill::isEnabled() const
+{
+    return m_isEnabled;
+}
+
+double Fill::noiseIndex() const
+{
+    return m_noiseIndex;
+}
+
+double Fill::noiseIntensity() const
+{
+    return m_noiseIntensity;
+}
+
+double Fill::patternFillType() const
+{
+    return m_patternFillType;
+}
+
+double Fill::patternTileScale() const
+{
+    return m_patternTileScale;
+}

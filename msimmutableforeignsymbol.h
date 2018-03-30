@@ -15,6 +15,12 @@ public:
     explicit MSImmutableForeignSymbol(QObject *parent = Q_NULLPTR);
     explicit MSImmutableForeignSymbol(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    const QString &do_objectID() const;
+    const QString &libraryID() const;
+    const SymbolMaster *originalMaster() const;
+    const QString &sourceLibraryName() const;
+    const SymbolMaster *symbolMaster() const;
+
 private:
     QString m_do_objectID;
     QString m_libraryID;

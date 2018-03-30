@@ -55,3 +55,28 @@ Rect::Rect(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+bool Rect::constrainProportions() const
+{
+    return m_constrainProportions;
+}
+
+double Rect::height() const
+{
+    return m_height;
+}
+
+double Rect::width() const
+{
+    return m_width;
+}
+
+double Rect::x() const
+{
+    return m_x;
+}
+
+double Rect::y() const
+{
+    return m_y;
+}

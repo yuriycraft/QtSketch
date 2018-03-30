@@ -108,3 +108,63 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const QString &Style::do_objectID() const
+{
+    return m_do_objectID;
+}
+
+const QString &Style::name() const
+{
+    return m_name;
+}
+
+const Blur *Style::blur() const
+{
+    return m_blur;
+}
+
+const BorderOptions *Style::borderOptions() const
+{
+    return m_borderOptions;
+}
+
+const QList<Border *> &Style::borders() const
+{
+    return m_borders;
+}
+
+const QList<Fill *> &Style::fills() const
+{
+    return m_fills;
+}
+
+const GraphicsContextSettings *Style::contextSettings() const
+{
+    return m_contextSettings;
+}
+
+double Style::endDecorationType() const
+{
+    return m_endDecorationType;
+}
+
+double Style::miterLimit() const
+{
+    return m_miterLimit;
+}
+
+const QString &Style::sharedObjectID() const
+{
+    return m_sharedObjectID;
+}
+
+double Style::startDecorationType() const
+{
+    return m_startDecorationType;
+}
+
+const TextStyle *Style::textStyle() const
+{
+    return m_textStyle;
+}

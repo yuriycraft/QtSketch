@@ -13,6 +13,12 @@ public:
     explicit Rect(QObject *parent = Q_NULLPTR);
     explicit Rect(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    bool constrainProportions() const;
+    double height() const;
+    double width() const;
+    double x() const;
+    double y() const;
+
 private:
     bool m_constrainProportions;
     double m_height;

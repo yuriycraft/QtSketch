@@ -13,6 +13,8 @@ public:
     explicit ImageCollection(QObject *parent = Q_NULLPTR);
     explicit ImageCollection(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    //TODO images
+
 private:
     //TODO images
 };

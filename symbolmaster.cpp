@@ -222,3 +222,138 @@ SymbolMaster::SymbolMaster(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const Color *SymbolMaster::backgroundColor() const
+{
+    return m_backgroundColor;
+}
+
+double SymbolMaster::changeIdentifier() const
+{
+    return m_changeIdentifier;
+}
+
+const QString &SymbolMaster::do_objectID() const
+{
+    return m_do_objectID;
+}
+
+const ExportOptions *SymbolMaster::exportOptions() const
+{
+    return m_exportOptions;
+}
+
+const Rect *SymbolMaster::frame() const
+{
+    return m_frame;
+}
+
+bool SymbolMaster::hasBackgroundColor() const
+{
+    return m_hasBackgroundColor;
+}
+
+bool SymbolMaster::hasClickThrough() const
+{
+    return m_hasClickThrough;
+}
+
+const RulerData *SymbolMaster::horizontalRulerData() const
+{
+    return m_horizontalRulerData;
+}
+
+bool SymbolMaster::includeBackgroundColorInExport() const
+{
+    return m_includeBackgroundColorInExport;
+}
+
+bool SymbolMaster::includeBackgroundColorInInstance() const
+{
+    return m_includeBackgroundColorInInstance;
+}
+
+bool SymbolMaster::includeInCloudUpload() const
+{
+    return m_includeInCloudUpload;
+}
+
+bool SymbolMaster::isFlippedHorizontal() const
+{
+    return m_isFlippedHorizontal;
+}
+
+bool SymbolMaster::isFlippedVertical() const
+{
+    return m_isFlippedVertical;
+}
+
+bool SymbolMaster::isFlowHome() const
+{
+    return m_isFlowHome;
+}
+
+bool SymbolMaster::isLocked() const
+{
+    return m_isLocked;
+}
+
+bool SymbolMaster::isVisible() const
+{
+    return m_isVisible;
+}
+
+double SymbolMaster::layerListExpandedType() const
+{
+    return m_layerListExpandedType;
+}
+
+const QString &SymbolMaster::name() const
+{
+    return m_name;
+}
+
+bool SymbolMaster::nameIsFixed() const
+{
+    return m_nameIsFixed;
+}
+
+bool SymbolMaster::resizesContent() const
+{
+    return m_resizesContent;
+}
+
+double SymbolMaster::resizingConstraint() const
+{
+    return m_resizingConstraint;
+}
+
+double SymbolMaster::resizingType() const
+{
+    return m_resizingType;
+}
+
+double SymbolMaster::rotation() const
+{
+    return m_rotation;
+}
+
+bool SymbolMaster::shouldBreakMaskChain() const
+{
+    return m_shouldBreakMaskChain;
+}
+
+const Style *SymbolMaster::style() const
+{
+    return m_style;
+}
+
+const QString &SymbolMaster::symbolID() const
+{
+    return m_symbolID;
+}
+
+const RulerData *SymbolMaster::verticalRulerData() const
+{
+    return m_verticalRulerData;
+}

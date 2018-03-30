@@ -53,3 +53,28 @@ MSImmutableForeignSymbol::MSImmutableForeignSymbol(const QJsonObject &jsonObj, Q
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const QString &MSImmutableForeignSymbol::do_objectID() const
+{
+    return m_do_objectID;
+}
+
+const QString &MSImmutableForeignSymbol::libraryID() const
+{
+    return m_libraryID;
+}
+
+const SymbolMaster *MSImmutableForeignSymbol::originalMaster() const
+{
+    return m_originalMaster;
+}
+
+const QString &MSImmutableForeignSymbol::sourceLibraryName() const
+{
+    return m_sourceLibraryName;
+}
+
+const SymbolMaster *MSImmutableForeignSymbol::symbolMaster() const
+{
+    return m_symbolMaster;
+}

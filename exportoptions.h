@@ -15,6 +15,11 @@ public:
     explicit ExportOptions(QObject *parent = Q_NULLPTR);
     explicit ExportOptions(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
+    const QList<ExportFormat*> &exportFormats() const;
+    //TODO includedLayerIds
+    double layerOptions() const;
+    bool shouldTrim() const;
+
 private:
     QList<ExportFormat*> m_exportFormats;
     //TODO includedLayerIds

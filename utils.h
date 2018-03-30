@@ -18,10 +18,10 @@ BaseContainer* createContainer(const QJsonDocument &jsonDocument, QObject *paren
 
 BaseContainer* createContainer(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
-template<typename T> T* createContainer(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR)
+template<typename T1, typename T2> T1* createContainer(const T2 &jsonObj, QObject *parent = Q_NULLPTR)
 {
     auto container = createContainer(jsonObj, parent);
-    auto castedContainer = qobject_cast<T*>(container);
+    auto castedContainer = qobject_cast<T1*>(container);
 
     if(castedContainer)
         return castedContainer;

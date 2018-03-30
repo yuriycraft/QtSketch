@@ -45,3 +45,23 @@ BorderOptions::BorderOptions(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const QList<double> &BorderOptions::dashPattern() const
+{
+    return m_dashPattern;
+}
+
+bool BorderOptions::isEnabled() const
+{
+    return m_isEnabled;
+}
+
+double BorderOptions::lineCapStyle() const
+{
+    return m_lineCapStyle;
+}
+
+double BorderOptions::lineJoinStyle() const
+{
+    return m_lineJoinStyle;
+}

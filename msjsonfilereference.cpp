@@ -30,3 +30,13 @@ MSJSONFileReference::MSJSONFileReference(const QJsonObject &jsonObj, QObject *pa
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+const QString &MSJSONFileReference::_ref() const
+{
+    return m__ref;
+}
+
+const QString &MSJSONFileReference::_ref_class() const
+{
+    return m__ref_class;
+}

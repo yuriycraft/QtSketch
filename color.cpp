@@ -48,3 +48,23 @@ Color::Color(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+double Color::alpha() const
+{
+    return m_alpha;
+}
+
+double Color::blue() const
+{
+    return m_blue;
+}
+
+double Color::green() const
+{
+    return m_green;
+}
+
+double Color::red() const
+{
+    return m_red;
+}

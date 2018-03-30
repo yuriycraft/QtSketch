@@ -37,3 +37,8 @@ RulerData::RulerData(const QJsonObject &jsonObj, QObject *parent) :
             qWarning() << "unexpected" << iter.key();
     }
 }
+
+double RulerData::base() const
+{
+    return m_base;
+}

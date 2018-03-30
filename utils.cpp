@@ -6,15 +6,16 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-#include "basecontainer.h"
-#include "document.h"
 #include "assetcollection.h"
-#include "sharedstylecontainer.h"
-#include "symbolcontainer.h"
-#include "sharedtextstylecontainer.h"
-#include "msjsonfilereference.h"
+#include "color.h"
+#include "document.h"
 #include "imagecollection.h"
+#include "msimmutableforeignsymbol.h"
+#include "msjsonfilereference.h"
 #include "sharedstyle.h"
+#include "sharedstylecontainer.h"
+#include "sharedtextstylecontainer.h"
+#include "symbolcontainer.h"
 
 // QString QJsonValue::toString() const { return toString(QStringLiteral()); }
 
@@ -57,22 +58,26 @@ BaseContainer *getContainer(const QJsonObject &jsonObj)
 
     auto classString = classValue.toString();
 
-    if(classString == QStringLiteral("document"))
-        return new Document(jsonObj);
-    else if(classString == QStringLiteral("assetCollection"))
+    if(classString == QStringLiteral("assetCollection"))
         return new AssetCollection(jsonObj);
-    else if(classString == QStringLiteral("sharedStyleContainer"))
-        return new SharedStyleContainer(jsonObj);
-    else if(classString == QStringLiteral("symbolContainer"))
-        return new SymbolContainer(jsonObj);
-    else if(classString == QStringLiteral("sharedTextStyleContainer"))
-        return new SharedTextStyleContainer(jsonObj);
-    else if(classString == QStringLiteral("MSJSONFileReference"))
-        return new MSJSONFileReference(jsonObj);
+    else if(classString == QStringLiteral("color"))
+        return new Color(jsonObj);
+    else if(classString == QStringLiteral("document"))
+        return new Document(jsonObj);
     else if(classString == QStringLiteral("imageCollection"))
         return new ImageCollection(jsonObj);
+    else if(classString == QStringLiteral("MSImmutableForeignSymbol"))
+        return new MSImmutableForeignSymbol(jsonObj);
+    else if(classString == QStringLiteral("MSJSONFileReference"))
+        return new MSJSONFileReference(jsonObj);
     else if(classString == QStringLiteral("sharedStyle"))
         return new SharedStyle(jsonObj);
+    else if(classString == QStringLiteral("sharedStyleContainer"))
+        return new SharedStyleContainer(jsonObj);
+    else if(classString == QStringLiteral("sharedTextStyleContainer"))
+        return new SharedTextStyleContainer(jsonObj);
+    else if(classString == QStringLiteral("symbolContainer"))
+        return new SymbolContainer(jsonObj);
     else
         throw QStringLiteral("Unknown container type %0").arg(classString);
 }

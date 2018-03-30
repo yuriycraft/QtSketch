@@ -5,6 +5,7 @@
 
 class QJsonObject;
 
+class Color;
 class ImageCollection;
 
 class AssetCollection : public BaseContainer
@@ -16,7 +17,7 @@ public:
     explicit AssetCollection(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
 private:
-    //TODO colors
+    QList<Color*> m_colors;
     //TODO gradients
     ImageCollection *m_imageCollection;
     //TODO images

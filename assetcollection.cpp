@@ -7,6 +7,7 @@
 
 #include "utils.h"
 
+#include "color.h"
 #include "imagecollection.h"
 
 AssetCollection::AssetCollection(QObject *parent) :
@@ -26,14 +27,20 @@ AssetCollection::AssetCollection(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("colors"))
         {
             Q_ASSERT(iter.value().isArray());
-            //TODO
-            qWarning() << "colors not implemented";
+            for(auto colorValue : iter.value().toArray())
+            {
+                Q_ASSERT(colorValue.isObject());
+                m_colors.append(getContainer<Color>(colorValue.toObject()));
+            }
         }
         else if(iter.key() == QStringLiteral("gradients"))
         {
             Q_ASSERT(iter.value().isArray());
-            //TODO
-            qWarning() << "gradients not implemented";
+            for(auto gradientValue : iter.value().toArray())
+            {
+                //TODO
+                qWarning() << "gradients not implemented";
+            }
         }
         else if(iter.key() == QStringLiteral("imageCollection"))
         {
@@ -43,8 +50,11 @@ AssetCollection::AssetCollection(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("images"))
         {
             Q_ASSERT(iter.value().isArray());
-            //TODO
-            qWarning() << "images not implemented";
+            for(auto imageValue : iter.value().toArray())
+            {
+                //TODO
+                qWarning() << "images not implemented";
+            }
         }
         else
             qWarning() << "unexpected" << iter.key();

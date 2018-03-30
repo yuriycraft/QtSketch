@@ -139,7 +139,7 @@ Page::Page(const QJsonObject &jsonObj, QObject *parent) :
             for(auto layerValue : iter.value().toArray())
             {
                 //TODO
-                qDebug() << "layers not implemented";
+                qWarning() << "layers not implemented";
             }
         }
         else if(iter.key() == QStringLiteral("hasClickThrough"))

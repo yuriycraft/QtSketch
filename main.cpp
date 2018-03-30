@@ -7,6 +7,7 @@
 
 #include "document.h"
 #include "msjsonfilereference.h"
+#include "page.h"
 
 int main(int argc, char *argv[])
 {
@@ -34,7 +35,7 @@ int main(int argc, char *argv[])
             auto document = createContainer<Document>(dir.absoluteFilePath(QStringLiteral("document.json")));
             for(auto pageRef : document->pages())
             {
-                auto page = createContainer(dir.absoluteFilePath(pageRef->_ref() + ".json"));
+                auto page = createContainer<Page>(dir.absoluteFilePath(pageRef->_ref() + ".json"));
             }
         }
         catch(QString msg)

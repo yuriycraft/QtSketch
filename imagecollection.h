@@ -3,6 +3,8 @@
 
 #include "basecontainer.h"
 
+class QJsonObject;
+
 class ImageCollection : public BaseContainer
 {
     Q_OBJECT

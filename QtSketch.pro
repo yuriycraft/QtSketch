@@ -27,7 +27,8 @@ SOURCES += \
     sharedtextstylecontainer.cpp \
     symbolcontainer.cpp \
     utils.cpp \
-    color.cpp
+    color.cpp \
+    style.cpp
 
 HEADERS += \
     assetcollection.h \
@@ -41,4 +42,5 @@ HEADERS += \
     sharedtextstylecontainer.h \
     symbolcontainer.h \
     utils.h \
-    color.h
+    color.h \
+    style.h

@@ -3,6 +3,8 @@
 
 #include "basecontainer.h"
 
+class QJsonObject;
+
 class SharedStyle;
 
 class SharedStyleContainer : public BaseContainer

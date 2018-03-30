@@ -15,6 +15,7 @@
 #include "sharedstyle.h"
 #include "sharedstylecontainer.h"
 #include "sharedtextstylecontainer.h"
+#include "style.h"
 #include "symbolcontainer.h"
 
 // QString QJsonValue::toString() const { return toString(QStringLiteral()); }
@@ -76,6 +77,8 @@ BaseContainer *getContainer(const QJsonObject &jsonObj)
         return new SharedStyleContainer(jsonObj);
     else if(classString == QStringLiteral("sharedTextStyleContainer"))
         return new SharedTextStyleContainer(jsonObj);
+    else if(classString == QStringLiteral("style"))
+        return new Style(jsonObj);
     else if(classString == QStringLiteral("symbolContainer"))
         return new SymbolContainer(jsonObj);
     else

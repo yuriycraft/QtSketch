@@ -20,6 +20,7 @@ SymbolContainer::SymbolContainer(const QJsonObject &jsonObj, QObject *parent) :
         {
             Q_ASSERT(iter.value().isArray());
             //TODO
+            qWarning() << "objects not implemented";
         }
         else
             qWarning() << "unexpected" << iter.key();

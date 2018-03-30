@@ -27,11 +27,13 @@ AssetCollection::AssetCollection(const QJsonObject &jsonObj, QObject *parent) :
         {
             Q_ASSERT(iter.value().isArray());
             //TODO
+            qWarning() << "colors not implemented";
         }
         else if(iter.key() == QStringLiteral("gradients"))
         {
             Q_ASSERT(iter.value().isArray());
             //TODO
+            qWarning() << "gradients not implemented";
         }
         else if(iter.key() == QStringLiteral("imageCollection"))
         {
@@ -42,6 +44,7 @@ AssetCollection::AssetCollection(const QJsonObject &jsonObj, QObject *parent) :
         {
             Q_ASSERT(iter.value().isArray());
             //TODO
+            qWarning() << "images not implemented";
         }
         else
             qWarning() << "unexpected" << iter.key();

@@ -20,6 +20,7 @@ ImageCollection::ImageCollection(const QJsonObject &jsonObj, QObject *parent) :
         {
             Q_ASSERT(iter.value().isObject());
             //TODO
+            qWarning() << "images not implemented";
         }
         else
             qWarning() << "unexpected" << iter.key();

@@ -14,6 +14,11 @@ public:
     explicit Rect(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
 private:
+    bool m_constrainProportions;
+    double m_height;
+    double m_width;
+    double m_x;
+    double m_y;
 };
 
 #endif // RECT_H

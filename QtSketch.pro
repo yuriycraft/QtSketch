@@ -41,7 +41,8 @@ SOURCES += \
     exportoptions.cpp \
     rect.cpp \
     rulerdata.cpp \
-    exportformat.cpp
+    exportformat.cpp \
+    page.cpp
 
 HEADERS += \
     assetcollection.h \
@@ -69,4 +70,5 @@ HEADERS += \
     exportoptions.h \
     rect.h \
     rulerdata.h \
-    exportformat.h
+    exportformat.h \
+    page.h

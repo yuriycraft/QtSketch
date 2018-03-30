@@ -21,6 +21,7 @@
 #include "imagecollection.h"
 #include "msimmutableforeignsymbol.h"
 #include "msjsonfilereference.h"
+#include "page.h"
 #include "rect.h"
 #include "rulerdata.h"
 #include "sharedstyle.h"
@@ -102,6 +103,8 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
         return new MSImmutableForeignSymbol(jsonObj, parent);
     else if(classString == QStringLiteral("MSJSONFileReference"))
         return new MSJSONFileReference(jsonObj, parent);
+    else if(classString == QStringLiteral("page"))
+        return new Page(jsonObj, parent);
     else if(classString == QStringLiteral("rect"))
         return new Rect(jsonObj, parent);
     else if(classString == QStringLiteral("rulerData"))

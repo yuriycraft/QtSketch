@@ -14,6 +14,7 @@
 #include "document.h"
 #include "fill.h"
 #include "gradient.h"
+#include "gradientstop.h"
 #include "graphicscontextsettings.h"
 #include "imagecollection.h"
 #include "msimmutableforeignsymbol.h"
@@ -83,6 +84,8 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
         return new Fill(jsonObj, parent);
     else if(classString == QStringLiteral("gradient"))
         return new Gradient(jsonObj, parent);
+    else if(classString == QStringLiteral("gradientStop"))
+        return new GradientStop(jsonObj, parent);
     else if(classString == QStringLiteral("graphicsContextSettings"))
         return new GraphicsContextSettings(jsonObj, parent);
     else if(classString == QStringLiteral("imageCollection"))

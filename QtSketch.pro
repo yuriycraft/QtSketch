@@ -36,7 +36,8 @@ SOURCES += \
     textstyle.cpp \
     graphicscontextsettings.cpp \
     blur.cpp \
-    gradient.cpp
+    gradient.cpp \
+    gradientstop.cpp
 
 HEADERS += \
     assetcollection.h \
@@ -59,4 +60,5 @@ HEADERS += \
     textstyle.h \
     graphicscontextsettings.h \
     blur.h \
-    gradient.h
+    gradient.h \
+    gradientstop.h

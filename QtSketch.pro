@@ -28,7 +28,8 @@ SOURCES += \
     symbolcontainer.cpp \
     utils.cpp \
     color.cpp \
-    style.cpp
+    style.cpp \
+    symbolmaster.cpp
 
 HEADERS += \
     assetcollection.h \
@@ -43,4 +44,5 @@ HEADERS += \
     symbolcontainer.h \
     utils.h \
     color.h \
-    style.h
+    style.h \
+    symbolmaster.h

@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QJsonValue>
 #include <QJsonObject>
+#include <QJsonArray>
 
 SymbolContainer::SymbolContainer(QObject *parent) :
     BaseContainer(parent)
@@ -19,8 +20,11 @@ SymbolContainer::SymbolContainer(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("objects"))
         {
             Q_ASSERT(iter.value().isArray());
-            //TODO
-            qWarning() << "objects not implemented";
+            for(auto objectValue : iter.value().toArray())
+            {
+                //TODO
+                qWarning() << "objects not implemented";
+            }
         }
         else
             qWarning() << "unexpected" << iter.key();

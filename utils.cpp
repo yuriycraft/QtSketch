@@ -17,6 +17,7 @@
 #include "sharedtextstylecontainer.h"
 #include "style.h"
 #include "symbolcontainer.h"
+#include "symbolmaster.h"
 
 // QString QJsonValue::toString() const { return toString(QStringLiteral()); }
 
@@ -81,6 +82,8 @@ BaseContainer *getContainer(const QJsonObject &jsonObj)
         return new Style(jsonObj);
     else if(classString == QStringLiteral("symbolContainer"))
         return new SymbolContainer(jsonObj);
+    else if(classString == QStringLiteral("symbolMaster"))
+        return new SymbolMaster(jsonObj);
     else
         throw QStringLiteral("Unknown container type %0").arg(classString);
 }

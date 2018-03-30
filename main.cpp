@@ -23,22 +23,18 @@ int main(int argc, char *argv[])
                        "%{function}(): "
                        "%{message}");
 
-    QDirIterator iter(
-        QStringLiteral("sketches"),
-        QStringList { QStringLiteral("document.json") },
-        QDir::Files,
-        QDirIterator::Subdirectories);
-
+    QDirIterator iter(QStringLiteral("sketches"), QDir::Dirs);
     while(iter.hasNext())
     {
-        auto path = iter.next();
-        qDebug() << path;
+        QDir dir(iter.next());
+        qDebug() << dir;
 
         try
         {
-            auto document = createContainer<Document>(path);
-            for(auto page : document->pages())
+            auto document = createContainer<Document>(dir.absoluteFilePath(QStringLiteral("document.json")));
+            for(auto pageRef : document->pages())
             {
+                auto page = createContainer(dir.absoluteFilePath(pageRef->_ref() + ".json"));
             }
         }
         catch(QString msg)

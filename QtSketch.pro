@@ -32,7 +32,9 @@ SOURCES += \
     symbolmaster.cpp \
     fill.cpp \
     border.cpp \
-    borderoptions.cpp
+    borderoptions.cpp \
+    textstyle.cpp \
+    graphicscontextsettings.cpp
 
 HEADERS += \
     assetcollection.h \
@@ -51,4 +53,6 @@ HEADERS += \
     symbolmaster.h \
     fill.h \
     border.h \
-    borderoptions.h
+    borderoptions.h \
+    textstyle.h \
+    graphicscontextsettings.h

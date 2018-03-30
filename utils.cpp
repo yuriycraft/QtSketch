@@ -12,6 +12,7 @@
 #include "color.h"
 #include "document.h"
 #include "fill.h"
+#include "graphicscontextsettings.h"
 #include "imagecollection.h"
 #include "msimmutableforeignsymbol.h"
 #include "msjsonfilereference.h"
@@ -21,37 +22,38 @@
 #include "style.h"
 #include "symbolcontainer.h"
 #include "symbolmaster.h"
+#include "textstyle.h"
 
 // QString QJsonValue::toString() const { return toString(QStringLiteral()); }
 
-BaseContainer *getContainer(const QString &path)
+BaseContainer *createContainer(const QString &path, QObject *parent)
 {
     QFile file(path);
     if(!file.open(QIODevice::ReadOnly))
         throw QStringLiteral("Could not open file %0 because %1").arg(path).arg(file.errorString());
 
-    return getContainer(file.readAll());
+    return createContainer(file.readAll(), parent);
 }
 
-BaseContainer *getContainer(const QByteArray &content)
+BaseContainer *createContainer(const QByteArray &content, QObject *parent)
 {
     QJsonParseError jsonParseError;
     QJsonDocument jsonDocument = QJsonDocument::fromJson(content, &jsonParseError);
     if(jsonParseError.error != QJsonParseError::NoError)
         throw QStringLiteral("Could not parse json: %0").arg(jsonParseError.errorString());
 
-    return getContainer(jsonDocument);
+    return createContainer(jsonDocument, parent);
 }
 
-BaseContainer *getContainer(const QJsonDocument &jsonDocument)
+BaseContainer *createContainer(const QJsonDocument &jsonDocument, QObject *parent)
 {
     if(!jsonDocument.isObject())
         throw QStringLiteral("json document is not an object");
 
-    return getContainer(jsonDocument.object());
+    return createContainer(jsonDocument.object(), parent);
 }
 
-BaseContainer *getContainer(const QJsonObject &jsonObj)
+BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
 {
     if(!jsonObj.contains(QStringLiteral("_class")))
         throw QStringLiteral("json does not contain _class");
@@ -66,33 +68,37 @@ BaseContainer *getContainer(const QJsonObject &jsonObj)
     if(classString == QStringLiteral("assetCollection"))
         return new AssetCollection(jsonObj);
     else if(classString == QStringLiteral("border"))
-        return new Border(jsonObj);
+        return new Border(jsonObj, parent);
     else if(classString == QStringLiteral("borderOptions"))
-        return new BorderOptions(jsonObj);
+        return new BorderOptions(jsonObj, parent);
     else if(classString == QStringLiteral("color"))
-        return new Color(jsonObj);
+        return new Color(jsonObj, parent);
     else if(classString == QStringLiteral("document"))
-        return new Document(jsonObj);
+        return new Document(jsonObj, parent);
     else if(classString == QStringLiteral("fill"))
-        return new Fill(jsonObj);
+        return new Fill(jsonObj, parent);
+    else if(classString == QStringLiteral("graphicsContextSettings"))
+        return new GraphicsContextSettings(jsonObj, parent);
     else if(classString == QStringLiteral("imageCollection"))
-        return new ImageCollection(jsonObj);
+        return new ImageCollection(jsonObj, parent);
     else if(classString == QStringLiteral("MSImmutableForeignSymbol"))
-        return new MSImmutableForeignSymbol(jsonObj);
+        return new MSImmutableForeignSymbol(jsonObj, parent);
     else if(classString == QStringLiteral("MSJSONFileReference"))
-        return new MSJSONFileReference(jsonObj);
+        return new MSJSONFileReference(jsonObj, parent);
     else if(classString == QStringLiteral("sharedStyle"))
-        return new SharedStyle(jsonObj);
+        return new SharedStyle(jsonObj, parent);
     else if(classString == QStringLiteral("sharedStyleContainer"))
-        return new SharedStyleContainer(jsonObj);
+        return new SharedStyleContainer(jsonObj, parent);
     else if(classString == QStringLiteral("sharedTextStyleContainer"))
-        return new SharedTextStyleContainer(jsonObj);
+        return new SharedTextStyleContainer(jsonObj, parent);
     else if(classString == QStringLiteral("style"))
-        return new Style(jsonObj);
+        return new Style(jsonObj, parent);
     else if(classString == QStringLiteral("symbolContainer"))
-        return new SymbolContainer(jsonObj);
+        return new SymbolContainer(jsonObj, parent);
     else if(classString == QStringLiteral("symbolMaster"))
-        return new SymbolMaster(jsonObj);
+        return new SymbolMaster(jsonObj, parent);
+    else if(classString == QStringLiteral("textStyle"))
+        return new TextStyle(jsonObj, parent);
     else
         throw QStringLiteral("Unknown container type %0").arg(classString);
 }

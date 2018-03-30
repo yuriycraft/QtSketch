@@ -27,7 +27,7 @@ SharedTextStyleContainer::SharedTextStyleContainer(const QJsonObject &jsonObj, Q
             for(auto objectValue : iter.value().toArray())
             {
                 Q_ASSERT(objectValue.isObject());
-                m_objects.append(getContainer<SharedStyle>(objectValue.toObject()));
+                m_objects.append(createContainer<SharedStyle>(objectValue.toObject(), this));
             }
         }
         else

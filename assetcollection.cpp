@@ -30,7 +30,7 @@ AssetCollection::AssetCollection(const QJsonObject &jsonObj, QObject *parent) :
             for(auto colorValue : iter.value().toArray())
             {
                 Q_ASSERT(colorValue.isObject());
-                m_colors.append(getContainer<Color>(colorValue.toObject()));
+                m_colors.append(createContainer<Color>(colorValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("gradients"))
@@ -45,7 +45,7 @@ AssetCollection::AssetCollection(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("imageCollection"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_imageCollection = getContainer<ImageCollection>(iter.value().toObject());
+            m_imageCollection = createContainer<ImageCollection>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("images"))
         {

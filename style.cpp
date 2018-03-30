@@ -10,12 +10,15 @@
 #include "borderoptions.h"
 #include "border.h"
 #include "fill.h"
+#include "graphicscontextsettings.h"
+#include "textstyle.h"
 
 Style::Style(QObject *parent) :
     BaseContainer(parent),
     m_borderOptions(Q_NULLPTR),
     m_miterLimit(0.),
-    m_startDecorationType(0.)
+    m_startDecorationType(0.),
+    m_textStyle(Q_NULLPTR)
 {
 }
 
@@ -23,7 +26,8 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
     BaseContainer(parent),
     m_borderOptions(Q_NULLPTR),
     m_miterLimit(0.),
-    m_startDecorationType(0.)
+    m_startDecorationType(0.),
+    m_textStyle(Q_NULLPTR)
 {
     for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
     {
@@ -42,7 +46,7 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("borderOptions"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_borderOptions = getContainer<BorderOptions>(iter.value().toObject());
+            m_borderOptions = createContainer<BorderOptions>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("borders"))
         {
@@ -50,7 +54,7 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
             for(auto fillValue : iter.value().toArray())
             {
                 Q_ASSERT(fillValue.isObject());
-                m_borders.append(getContainer<Border>(fillValue.toObject()));
+                m_borders.append(createContainer<Border>(fillValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("fills"))
@@ -59,8 +63,13 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
             for(auto fillValue : iter.value().toArray())
             {
                 Q_ASSERT(fillValue.isObject());
-                m_fills.append(getContainer<Fill>(fillValue.toObject()));
+                m_fills.append(createContainer<Fill>(fillValue.toObject(), this));
             }
+        }
+        else if(iter.key() == QStringLiteral("contextSettings"))
+        {
+            Q_ASSERT(iter.value().isObject());
+            m_contextSettings = createContainer<GraphicsContextSettings>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("endDecorationType"))
         {
@@ -81,6 +90,11 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
         {
             Q_ASSERT(iter.value().isDouble());
             m_startDecorationType = iter.value().toDouble();
+        }
+        else if(iter.key() == QStringLiteral("textStyle"))
+        {
+            Q_ASSERT(iter.value().isObject());
+            m_textStyle = createContainer<TextStyle>(iter.value().toObject(), this);
         }
         else
             qWarning() << "unexpected" << iter.key();

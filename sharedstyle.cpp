@@ -33,7 +33,7 @@ SharedStyle::SharedStyle(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("value"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_value = getContainer<Style>(iter.value().toObject());
+            m_value = createContainer<Style>(iter.value().toObject(), this);
         }
         else
             qWarning() << "unexpected" << iter.key();

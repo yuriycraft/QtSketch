@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 
         try
         {
-            getContainer(path);
+            createContainer(path);
         }
         catch(QString msg)
         {

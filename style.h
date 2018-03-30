@@ -8,6 +8,8 @@ class QJsonObject;
 class BorderOptions;
 class Border;
 class Fill;
+class GraphicsContextSettings;
+class TextStyle;
 
 class Style : public BaseContainer
 {
@@ -23,10 +25,12 @@ private:
     BorderOptions *m_borderOptions;
     QList<Border*> m_borders;
     QList<Fill*> m_fills;
+    GraphicsContextSettings *m_contextSettings;
     double m_endDecorationType;
     double m_miterLimit;
     QString m_sharedObjectID;
     double m_startDecorationType;
+    TextStyle *m_textStyle;
 };
 
 #endif // STYLE_H

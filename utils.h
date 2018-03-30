@@ -10,17 +10,17 @@ class QJsonObject;
 
 class BaseContainer;
 
-BaseContainer* getContainer(const QString &path);
+BaseContainer* createContainer(const QString &path, QObject *parent = Q_NULLPTR);
 
-BaseContainer* getContainer(const QByteArray &content);
+BaseContainer* createContainer(const QByteArray &content, QObject *parent = Q_NULLPTR);
 
-BaseContainer* getContainer(const QJsonDocument &jsonDocument);
+BaseContainer* createContainer(const QJsonDocument &jsonDocument, QObject *parent = Q_NULLPTR);
 
-BaseContainer* getContainer(const QJsonObject &jsonObj);
+BaseContainer* createContainer(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
-template<typename T> T* getContainer(const QJsonObject &jsonObj)
+template<typename T> T* createContainer(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR)
 {
-    auto container = getContainer(jsonObj);
+    auto container = createContainer(jsonObj, parent);
     auto castedContainer = qobject_cast<T*>(container);
 
     if(castedContainer)

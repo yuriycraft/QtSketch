@@ -13,16 +13,26 @@ class Gradient;
 class Fill : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(Color* color READ color CONSTANT)
+    Q_PROPERTY(GraphicsContextSettings* contextSettings READ contextSettings CONSTANT)
+    Q_PROPERTY(double fillType READ fillType CONSTANT)
+    Q_PROPERTY(MSJSONFileReference* image READ image CONSTANT)
+    Q_PROPERTY(Gradient* gradient READ gradient CONSTANT)
+    Q_PROPERTY(bool isEnabled READ isEnabled CONSTANT)
+    Q_PROPERTY(double noiseIndex READ noiseIndex CONSTANT)
+    Q_PROPERTY(double noiseIntensity READ noiseIntensity CONSTANT)
+    Q_PROPERTY(double patternFillType READ patternFillType CONSTANT)
+    Q_PROPERTY(double patternTileScale READ patternTileScale CONSTANT)
 
 public:
     explicit Fill(QObject *parent = Q_NULLPTR);
     explicit Fill(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
-    const Color *color() const;
-    const GraphicsContextSettings *contextSettings() const;
+    Color *color() const;
+    GraphicsContextSettings *contextSettings() const;
     double fillType() const;
-    const MSJSONFileReference *image() const;
-    const Gradient *gradient() const;
+    MSJSONFileReference *image() const;
+    Gradient *gradient() const;
     bool isEnabled() const;
     double noiseIndex() const;
     double noiseIntensity() const;

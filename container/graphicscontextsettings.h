@@ -8,6 +8,8 @@ class QJsonObject;
 class GraphicsContextSettings : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(double blendMode READ blendMode CONSTANT)
+    Q_PROPERTY(double opacity READ opacity CONSTANT)
 
 public:
     explicit GraphicsContextSettings(QObject *parent = Q_NULLPTR);

@@ -1,5 +1,6 @@
 #include "utils.h"
 
+#include <QDebug>
 #include <QString>
 #include <QFile>
 #include <QJsonParseError>
@@ -18,6 +19,7 @@
 #include "container/gradient.h"
 #include "container/gradientstop.h"
 #include "container/graphicscontextsettings.h"
+#include "container/group.h"
 #include "container/imagecollection.h"
 #include "container/msimmutableforeignsymbol.h"
 #include "container/msjsonfilereference.h"
@@ -100,6 +102,8 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
         return new GradientStop(jsonObj, parent);
     else if(classString == QStringLiteral("graphicsContextSettings"))
         return new GraphicsContextSettings(jsonObj, parent);
+    else if(classString == QStringLiteral("group"))
+        return new Group(jsonObj, parent);
     else if(classString == QStringLiteral("imageCollection"))
         return new ImageCollection(jsonObj, parent);
     else if(classString == QStringLiteral("MSImmutableForeignSymbol"))
@@ -127,5 +131,9 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
     else if(classString == QStringLiteral("textStyle"))
         return new TextStyle(jsonObj, parent);
     else
-        throw QStringLiteral("Unknown container type %0").arg(classString);
+    {
+        //throw QStringLiteral("Unknown container type %0").arg(classString);
+        qWarning() << "Unknown container type" << classString;
+        return Q_NULLPTR;
+    }
 }

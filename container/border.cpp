@@ -60,7 +60,7 @@ Border::Border(const QJsonObject &jsonObj, QObject *parent) :
     }
 }
 
-const Color *Border::color() const
+Color *Border::color() const
 {
     return m_color;
 }

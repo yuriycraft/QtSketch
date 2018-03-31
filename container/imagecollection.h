@@ -8,6 +8,7 @@ class QJsonObject;
 class ImageCollection : public BaseContainer
 {
     Q_OBJECT
+    //TODO images
 
 public:
     explicit ImageCollection(QObject *parent = Q_NULLPTR);

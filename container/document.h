@@ -15,21 +15,32 @@ class MSJSONFileReference;
 class Document : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(AssetCollection* assets READ assets CONSTANT)
+    Q_PROPERTY(double colorSpace READ colorSpace CONSTANT)
+    Q_PROPERTY(double currentPageIndex READ currentPageIndex CONSTANT)
+    Q_PROPERTY(QString do_objectID READ do_objectID CONSTANT)
+    Q_PROPERTY(bool enableLayerInteraction READ enableLayerInteraction CONSTANT)
+    Q_PROPERTY(bool enableSliceInteraction READ enableSliceInteraction CONSTANT)
+    Q_PROPERTY(QList<MSImmutableForeignSymbol*> foreignSymbols READ foreignSymbols CONSTANT)
+    Q_PROPERTY(SharedStyleContainer* layerStyles READ layerStyles CONSTANT)
+    Q_PROPERTY(SymbolContainer* layerSymbols READ layerSymbols CONSTANT)
+    Q_PROPERTY(SharedTextStyleContainer* layerTextStyles READ layerTextStyles CONSTANT)
+    Q_PROPERTY(QList<MSJSONFileReference*> pages READ pages CONSTANT)
 
 public:
     explicit Document(QObject *parent = Q_NULLPTR);
     explicit Document(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
-    const AssetCollection *assets() const;
+    AssetCollection *assets() const;
     double colorSpace() const;
     double currentPageIndex() const;
     const QString do_objectID() const;
     bool enableLayerInteraction() const;
     bool enableSliceInteraction() const;
     const QList<MSImmutableForeignSymbol*> &foreignSymbols() const;
-    const SharedStyleContainer *layerStyles() const;
-    const SymbolContainer *layerSymbols() const;
-    const SharedTextStyleContainer *layerTextStyles() const;
+    SharedStyleContainer *layerStyles() const;
+    SymbolContainer *layerSymbols() const;
+    SharedTextStyleContainer *layerTextStyles() const;
     const QList<MSJSONFileReference*> &pages() const;
 
 private:

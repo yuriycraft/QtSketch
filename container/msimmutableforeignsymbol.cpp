@@ -64,7 +64,7 @@ const QString &MSImmutableForeignSymbol::libraryID() const
     return m_libraryID;
 }
 
-const SymbolMaster *MSImmutableForeignSymbol::originalMaster() const
+SymbolMaster *MSImmutableForeignSymbol::originalMaster() const
 {
     return m_originalMaster;
 }
@@ -74,7 +74,7 @@ const QString &MSImmutableForeignSymbol::sourceLibraryName() const
     return m_sourceLibraryName;
 }
 
-const SymbolMaster *MSImmutableForeignSymbol::symbolMaster() const
+SymbolMaster *MSImmutableForeignSymbol::symbolMaster() const
 {
     return m_symbolMaster;
 }

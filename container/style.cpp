@@ -119,12 +119,12 @@ const QString &Style::name() const
     return m_name;
 }
 
-const Blur *Style::blur() const
+Blur *Style::blur() const
 {
     return m_blur;
 }
 
-const BorderOptions *Style::borderOptions() const
+BorderOptions *Style::borderOptions() const
 {
     return m_borderOptions;
 }
@@ -139,7 +139,7 @@ const QList<Fill *> &Style::fills() const
     return m_fills;
 }
 
-const GraphicsContextSettings *Style::contextSettings() const
+GraphicsContextSettings *Style::contextSettings() const
 {
     return m_contextSettings;
 }
@@ -164,7 +164,7 @@ double Style::startDecorationType() const
     return m_startDecorationType;
 }
 
-const TextStyle *Style::textStyle() const
+TextStyle *Style::textStyle() const
 {
     return m_textStyle;
 }

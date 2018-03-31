@@ -10,6 +10,8 @@ class SharedStyle;
 class SharedStyleContainer : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(QString do_objectID READ do_objectID CONSTANT)
+    Q_PROPERTY(QList<SharedStyle*> objects READ objects CONSTANT)
 
 public:
     explicit SharedStyleContainer(QObject *parent = Q_NULLPTR);

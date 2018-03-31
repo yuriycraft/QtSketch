@@ -1,7 +1,6 @@
 #include <QCoreApplication>
 #include <QDirIterator>
 #include <QDebug>
-#include <QThread>
 
 #include "Quazip/quazip.h"
 #include "Quazip/quazipfile.h"

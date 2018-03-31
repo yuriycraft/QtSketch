@@ -10,6 +10,11 @@ class SymbolMaster;
 class MSImmutableForeignSymbol : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(QString do_objectID READ do_objectID CONSTANT)
+    Q_PROPERTY(QString libraryID READ libraryID CONSTANT)
+    Q_PROPERTY(SymbolMaster* originalMaster READ originalMaster CONSTANT)
+    Q_PROPERTY(QString sourceLibraryName READ sourceLibraryName CONSTANT)
+    Q_PROPERTY(SymbolMaster* symbolMaster READ symbolMaster CONSTANT)
 
 public:
     explicit MSImmutableForeignSymbol(QObject *parent = Q_NULLPTR);
@@ -17,9 +22,9 @@ public:
 
     const QString &do_objectID() const;
     const QString &libraryID() const;
-    const SymbolMaster *originalMaster() const;
+    SymbolMaster *originalMaster() const;
     const QString &sourceLibraryName() const;
-    const SymbolMaster *symbolMaster() const;
+    SymbolMaster *symbolMaster() const;
 
 private:
     QString m_do_objectID;

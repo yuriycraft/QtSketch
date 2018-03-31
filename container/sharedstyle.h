@@ -10,6 +10,9 @@ class Style;
 class SharedStyle : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(QString do_objectID READ do_objectID CONSTANT)
+    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(Style* value READ value CONSTANT)
 
 public:
     explicit SharedStyle(QObject *parent = Q_NULLPTR);
@@ -17,7 +20,7 @@ public:
 
     const QString &do_objectID() const;
     const QString &name() const;
-    const Style *value() const;
+    Style *value() const;
 
 private:
     QString m_do_objectID;

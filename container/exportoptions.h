@@ -10,6 +10,10 @@ class ExportFormat;
 class ExportOptions : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(QList<ExportFormat*> exportFormats READ exportFormats CONSTANT)
+    //TODO includedLayerIds
+    Q_PROPERTY(double layerOptions READ layerOptions CONSTANT)
+    Q_PROPERTY(bool shouldTrim READ shouldTrim CONSTANT)
 
 public:
     explicit ExportOptions(QObject *parent = Q_NULLPTR);

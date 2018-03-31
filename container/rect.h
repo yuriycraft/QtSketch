@@ -8,6 +8,11 @@ class QJsonObject;
 class Rect : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(bool constrainProportions READ constrainProportions CONSTANT)
+    Q_PROPERTY(double height READ height CONSTANT)
+    Q_PROPERTY(double width READ width CONSTANT)
+    Q_PROPERTY(double x READ x CONSTANT)
+    Q_PROPERTY(double y READ y CONSTANT)
 
 public:
     explicit Rect(QObject *parent = Q_NULLPTR);

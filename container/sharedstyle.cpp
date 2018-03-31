@@ -50,7 +50,7 @@ const QString &SharedStyle::name() const
     return m_name;
 }
 
-const Style *SharedStyle::value() const
+Style *SharedStyle::value() const
 {
     return m_value;
 }

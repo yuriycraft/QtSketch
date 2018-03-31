@@ -1,13 +1,13 @@
-#include "textstyle.h"
+#include "group.h"
 
 #include <QDebug>
 
-TextStyle::TextStyle(QObject *parent) :
+Group::Group(QObject *parent) :
     BaseContainer(parent)
 {
 }
 
-TextStyle::TextStyle(const QJsonObject &jsonObj, QObject *parent) :
+Group::Group(const QJsonObject &jsonObj, QObject *parent) :
     BaseContainer(parent)
 {
     //TODO

@@ -8,6 +8,8 @@ class QJsonObject;
 class MSJSONFileReference : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(QString _ref READ _ref CONSTANT)
+    Q_PROPERTY(QString _ref_class READ _ref_class CONSTANT)
 
 public:
     explicit MSJSONFileReference(QObject *parent = Q_NULLPTR);

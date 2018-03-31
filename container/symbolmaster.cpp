@@ -11,6 +11,7 @@
 #include "exportoptions.h"
 #include "rect.h"
 #include "rulerdata.h"
+#include "group.h"
 #include "style.h"
 
 SymbolMaster::SymbolMaster(QObject *parent) :
@@ -161,11 +162,10 @@ SymbolMaster::SymbolMaster(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("layers"))
         {
             Q_ASSERT(iter.value().isArray());
-            for(auto colorValue : iter.value().toArray())
+            for(auto layerValue : iter.value().toArray())
             {
-                Q_ASSERT(colorValue.isObject());
-                //TODO
-                qWarning() << "layers not implemented";
+                Q_ASSERT(layerValue.isObject());
+                m_layers.append(createContainer<Group>(layerValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("name"))
@@ -223,7 +223,7 @@ SymbolMaster::SymbolMaster(const QJsonObject &jsonObj, QObject *parent) :
     }
 }
 
-const Color *SymbolMaster::backgroundColor() const
+Color *SymbolMaster::backgroundColor() const
 {
     return m_backgroundColor;
 }
@@ -238,12 +238,12 @@ const QString &SymbolMaster::do_objectID() const
     return m_do_objectID;
 }
 
-const ExportOptions *SymbolMaster::exportOptions() const
+ExportOptions *SymbolMaster::exportOptions() const
 {
     return m_exportOptions;
 }
 
-const Rect *SymbolMaster::frame() const
+Rect *SymbolMaster::frame() const
 {
     return m_frame;
 }
@@ -258,7 +258,7 @@ bool SymbolMaster::hasClickThrough() const
     return m_hasClickThrough;
 }
 
-const RulerData *SymbolMaster::horizontalRulerData() const
+RulerData *SymbolMaster::horizontalRulerData() const
 {
     return m_horizontalRulerData;
 }
@@ -308,6 +308,11 @@ double SymbolMaster::layerListExpandedType() const
     return m_layerListExpandedType;
 }
 
+const QList<Group *> &SymbolMaster::layers() const
+{
+    return m_layers;
+}
+
 const QString &SymbolMaster::name() const
 {
     return m_name;
@@ -343,7 +348,7 @@ bool SymbolMaster::shouldBreakMaskChain() const
     return m_shouldBreakMaskChain;
 }
 
-const Style *SymbolMaster::style() const
+Style *SymbolMaster::style() const
 {
     return m_style;
 }
@@ -353,7 +358,7 @@ const QString &SymbolMaster::symbolID() const
     return m_symbolID;
 }
 
-const RulerData *SymbolMaster::verticalRulerData() const
+RulerData *SymbolMaster::verticalRulerData() const
 {
     return m_verticalRulerData;
 }

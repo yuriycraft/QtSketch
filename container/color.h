@@ -8,6 +8,10 @@ class QJsonObject;
 class Color : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(double alpha READ alpha CONSTANT)
+    Q_PROPERTY(double blue READ blue CONSTANT)
+    Q_PROPERTY(double green READ green CONSTANT)
+    Q_PROPERTY(double red READ red CONSTANT)
 
 public:
     explicit Color(QObject *parent = Q_NULLPTR);

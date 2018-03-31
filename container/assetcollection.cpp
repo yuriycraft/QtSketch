@@ -66,7 +66,7 @@ const QList<Color *> &AssetCollection::colors() const
     return m_colors;
 }
 
-const ImageCollection *AssetCollection::imageCollection() const
+ImageCollection *AssetCollection::imageCollection() const
 {
     return m_imageCollection;
 }

@@ -110,7 +110,7 @@ Document::Document(const QJsonObject &jsonObj, QObject *parent) :
     }
 }
 
-const AssetCollection *Document::assets() const
+AssetCollection *Document::assets() const
 {
     return m_assets;
 }
@@ -145,17 +145,17 @@ const QList<MSImmutableForeignSymbol *> &Document::foreignSymbols() const
     return m_foreignSymbols;
 }
 
-const SharedStyleContainer *Document::layerStyles() const
+SharedStyleContainer *Document::layerStyles() const
 {
     return m_layerStyles;
 }
 
-const SymbolContainer *Document::layerSymbols() const
+SymbolContainer *Document::layerSymbols() const
 {
     return m_layerSymbols;
 }
 
-const SharedTextStyleContainer *Document::layerTextStyles() const
+SharedTextStyleContainer *Document::layerTextStyles() const
 {
     return m_layerTextStyles;
 }

@@ -15,6 +15,18 @@ class TextStyle;
 class Style : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(QString do_objectID READ do_objectID CONSTANT)
+    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(Blur* blur READ blur CONSTANT)
+    Q_PROPERTY(BorderOptions* borderOptions READ borderOptions CONSTANT)
+    Q_PROPERTY(QList<Border*> borders READ borders CONSTANT)
+    Q_PROPERTY(QList<Fill*> fills READ fills CONSTANT)
+    Q_PROPERTY(GraphicsContextSettings* contextSettings READ contextSettings CONSTANT)
+    Q_PROPERTY(double endDecorationType READ endDecorationType CONSTANT)
+    Q_PROPERTY(double miterLimit READ miterLimit CONSTANT)
+    Q_PROPERTY(QString sharedObjectID READ sharedObjectID CONSTANT)
+    Q_PROPERTY(double startDecorationType READ startDecorationType CONSTANT)
+    Q_PROPERTY(TextStyle* textStyle READ textStyle CONSTANT)
 
 public:
     explicit Style(QObject *parent = Q_NULLPTR);
@@ -22,16 +34,16 @@ public:
 
     const QString &do_objectID() const;
     const QString &name() const;
-    const Blur *blur() const;
-    const BorderOptions *borderOptions() const;
+    Blur *blur() const;
+    BorderOptions *borderOptions() const;
     const QList<Border*> &borders() const;
     const QList<Fill*> &fills() const;
-    const GraphicsContextSettings *contextSettings() const;
+    GraphicsContextSettings *contextSettings() const;
     double endDecorationType() const;
     double miterLimit() const;
     const QString &sharedObjectID() const;
     double startDecorationType() const;
-    const TextStyle *textStyle() const;
+    TextStyle *textStyle() const;
 
 private:
     QString m_do_objectID;

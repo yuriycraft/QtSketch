@@ -10,6 +10,7 @@
 #include "exportoptions.h"
 #include "rect.h"
 #include "style.h"
+#include "symbolmaster.h"
 #include "rulerdata.h"
 
 Page::Page(QObject *parent) :
@@ -138,8 +139,8 @@ Page::Page(const QJsonObject &jsonObj, QObject *parent) :
             Q_ASSERT(iter.value().isArray());
             for(auto layerValue : iter.value().toArray())
             {
-                //TODO
-                qWarning() << "layers not implemented";
+                Q_ASSERT(layerValue.isObject());
+                m_layers.append(createContainer<SymbolMaster>(layerValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("hasClickThrough"))
@@ -165,4 +166,104 @@ Page::Page(const QJsonObject &jsonObj, QObject *parent) :
         else
             qWarning() << "unexpected" << iter.key();
     }
+}
+
+const QString &Page::do_objectID() const
+{
+    return m_do_objectID;
+}
+
+ExportOptions *Page::exportOptions() const
+{
+    return m_exportOptions;
+}
+
+Rect *Page::frame() const
+{
+    return m_frame;
+}
+
+bool Page::isFlippedHorizontal() const
+{
+    return m_isFlippedHorizontal;
+}
+
+bool Page::isFlippedVertical() const
+{
+    return m_isFlippedVertical;
+}
+
+bool Page::isLocked() const
+{
+    return m_isLocked;
+}
+
+bool Page::isVisible() const
+{
+    return m_isVisible;
+}
+
+double Page::layerListExpandedType() const
+{
+    return m_layerListExpandedType;
+}
+
+const QString &Page::name() const
+{
+    return m_name;
+}
+
+bool Page::nameIsFixed() const
+{
+    return m_nameIsFixed;
+}
+
+double Page::resizingConstraint() const
+{
+    return m_resizingConstraint;
+}
+
+double Page::resizingType() const
+{
+    return m_resizingType;
+}
+
+double Page::rotation() const
+{
+    return m_rotation;
+}
+
+bool Page::shouldBreakMaskChain() const
+{
+    return m_shouldBreakMaskChain;
+}
+
+Style *Page::style() const
+{
+    return m_style;
+}
+
+bool Page::hasClickThrough() const
+{
+    return m_hasClickThrough;
+}
+
+const QList<SymbolMaster *> &Page::layers() const
+{
+    return m_layers;
+}
+
+RulerData *Page::horizontalRulerData() const
+{
+    return m_horizontalRulerData;
+}
+
+bool Page::includeInCloudUpload() const
+{
+    return m_includeInCloudUpload;
+}
+
+RulerData *Page::verticalRulerData() const
+{
+    return m_verticalRulerData;
 }

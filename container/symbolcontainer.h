@@ -8,6 +8,7 @@ class QJsonObject;
 class SymbolContainer : public BaseContainer
 {
     Q_OBJECT
+    //TODO objects
 
 public:
     explicit SymbolContainer(QObject *parent = Q_NULLPTR);

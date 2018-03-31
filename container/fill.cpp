@@ -85,12 +85,12 @@ Fill::Fill(const QJsonObject &jsonObj, QObject *parent) :
     }
 }
 
-const Color *Fill::color() const
+Color *Fill::color() const
 {
     return m_color;
 }
 
-const GraphicsContextSettings *Fill::contextSettings() const
+GraphicsContextSettings *Fill::contextSettings() const
 {
     return m_contextSettings;
 }
@@ -100,12 +100,12 @@ double Fill::fillType() const
     return m_fillType;
 }
 
-const MSJSONFileReference *Fill::image() const
+MSJSONFileReference *Fill::image() const
 {
     return m_image;
 }
 
-const Gradient *Fill::gradient() const
+Gradient *Fill::gradient() const
 {
     return m_gradient;
 }

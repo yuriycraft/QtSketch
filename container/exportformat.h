@@ -8,6 +8,12 @@ class QJsonObject;
 class ExportFormat : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(double absoluteSize READ absoluteSize CONSTANT)
+    Q_PROPERTY(QString fileFormat READ fileFormat CONSTANT)
+    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(double namingScheme READ namingScheme CONSTANT)
+    Q_PROPERTY(double scale READ scale CONSTANT)
+    Q_PROPERTY(double visibleScaleType READ visibleScaleType CONSTANT)
 
 public:
     explicit ExportFormat(QObject *parent = Q_NULLPTR);

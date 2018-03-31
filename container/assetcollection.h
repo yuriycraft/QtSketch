@@ -11,13 +11,15 @@ class ImageCollection;
 class AssetCollection : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(QList<Color*> colors READ colors CONSTANT)
+    Q_PROPERTY(ImageCollection* imageCollection READ imageCollection CONSTANT)
 
 public:
     explicit AssetCollection(QObject *parent = Q_NULLPTR);
     explicit AssetCollection(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QList<Color*> &colors() const;
-    const ImageCollection *imageCollection() const;
+    ImageCollection *imageCollection() const;
 
 private:
     QList<Color*> m_colors;

@@ -13,6 +13,7 @@ HEADERS += \
     $$PWD/container/gradient.h \
     $$PWD/container/gradientstop.h \
     $$PWD/container/graphicscontextsettings.h \
+    $$PWD/container/group.h \
     $$PWD/container/imagecollection.h \
     $$PWD/container/msimmutableforeignsymbol.h \
     $$PWD/container/msjsonfilereference.h \
@@ -42,6 +43,7 @@ SOURCES += \
     $$PWD/container/gradient.cpp \
     $$PWD/container/gradientstop.cpp \
     $$PWD/container/graphicscontextsettings.cpp \
+    $$PWD/container/group.cpp \
     $$PWD/container/imagecollection.cpp \
     $$PWD/container/msimmutableforeignsymbol.cpp \
     $$PWD/container/msjsonfilereference.cpp \

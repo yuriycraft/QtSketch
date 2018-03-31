@@ -8,6 +8,10 @@ class QJsonObject;
 class BorderOptions : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(QList<double> dashPattern READ dashPattern CONSTANT)
+    Q_PROPERTY(bool isEnabled READ isEnabled CONSTANT)
+    Q_PROPERTY(double lineCapStyle READ lineCapStyle CONSTANT)
+    Q_PROPERTY(double lineJoinStyle READ lineJoinStyle CONSTANT)
 
 public:
     explicit BorderOptions(QObject *parent = Q_NULLPTR);

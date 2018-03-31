@@ -10,6 +10,12 @@ class GradientStop;
 class Gradient : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(double elipseLength READ elipseLength CONSTANT)
+    Q_PROPERTY(QString from READ from CONSTANT)
+    Q_PROPERTY(double gradientType READ gradientType CONSTANT)
+    Q_PROPERTY(bool shouldSmoothenOpacity READ shouldSmoothenOpacity CONSTANT)
+    Q_PROPERTY(QList<GradientStop*> stops READ stops CONSTANT)
+    Q_PROPERTY(QString to READ to CONSTANT)
 
 public:
     explicit Gradient(QObject *parent = Q_NULLPTR);

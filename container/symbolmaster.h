@@ -9,24 +9,53 @@ class Color;
 class ExportOptions;
 class Rect;
 class RulerData;
+class Group;
 class Style;
 
 class SymbolMaster : public BaseContainer
 {
     Q_OBJECT
+    Q_PROPERTY(Color* backgroundColor READ backgroundColor CONSTANT)
+    Q_PROPERTY(double changeIdentifier READ changeIdentifier CONSTANT)
+    Q_PROPERTY(QString do_objectID READ do_objectID CONSTANT)
+    Q_PROPERTY(ExportOptions* exportOptions READ exportOptions CONSTANT)
+    Q_PROPERTY(Rect* frame READ frame CONSTANT)
+    Q_PROPERTY(bool hasBackgroundColor READ hasBackgroundColor CONSTANT)
+    Q_PROPERTY(bool hasClickThrough READ hasClickThrough CONSTANT)
+    Q_PROPERTY(RulerData* horizontalRulerData READ horizontalRulerData CONSTANT)
+    Q_PROPERTY(bool includeBackgroundColorInExport READ includeBackgroundColorInExport CONSTANT)
+    Q_PROPERTY(bool includeBackgroundColorInInstance READ includeBackgroundColorInInstance CONSTANT)
+    Q_PROPERTY(bool includeInCloudUpload READ includeInCloudUpload CONSTANT)
+    Q_PROPERTY(bool isFlippedHorizontal READ isFlippedHorizontal CONSTANT)
+    Q_PROPERTY(bool isFlippedVertical READ isFlippedVertical CONSTANT)
+    Q_PROPERTY(bool isFlowHome READ isFlowHome CONSTANT)
+    Q_PROPERTY(bool isLocked READ isLocked CONSTANT)
+    Q_PROPERTY(bool isVisible READ isVisible CONSTANT)
+    Q_PROPERTY(double layerListExpandedType READ layerListExpandedType CONSTANT)
+    Q_PROPERTY(QList<Group*> layers READ layers CONSTANT)
+    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(bool nameIsFixed READ nameIsFixed CONSTANT)
+    Q_PROPERTY(bool resizesContent READ resizesContent CONSTANT)
+    Q_PROPERTY(double resizingConstraint READ resizingConstraint CONSTANT)
+    Q_PROPERTY(double resizingType READ resizingType CONSTANT)
+    Q_PROPERTY(double rotation READ rotation CONSTANT)
+    Q_PROPERTY(bool shouldBreakMaskChain READ shouldBreakMaskChain CONSTANT)
+    Q_PROPERTY(Style* style READ style CONSTANT)
+    Q_PROPERTY(QString symbolID READ symbolID CONSTANT)
+    Q_PROPERTY(RulerData* verticalRulerData READ verticalRulerData CONSTANT)
 
 public:
     explicit SymbolMaster(QObject *parent = Q_NULLPTR);
     explicit SymbolMaster(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
-    const Color *backgroundColor() const;
+    Color *backgroundColor() const;
     double changeIdentifier() const;
     const QString &do_objectID() const;
-    const ExportOptions *exportOptions() const;
-    const Rect *frame() const;
+    ExportOptions *exportOptions() const;
+    Rect *frame() const;
     bool hasBackgroundColor() const;
     bool hasClickThrough() const;
-    const RulerData *horizontalRulerData() const;
+    RulerData *horizontalRulerData() const;
     bool includeBackgroundColorInExport() const;
     bool includeBackgroundColorInInstance() const;
     bool includeInCloudUpload() const;
@@ -36,7 +65,7 @@ public:
     bool isLocked() const;
     bool isVisible() const;
     double layerListExpandedType() const;
-    //TODO layers
+    const QList<Group*> &layers() const;
     const QString &name() const;
     bool nameIsFixed() const;
     bool resizesContent() const;
@@ -44,9 +73,9 @@ public:
     double resizingType() const;
     double rotation() const;
     bool shouldBreakMaskChain() const;
-    const Style *style() const;
+    Style *style() const;
     const QString &symbolID() const;
-    const RulerData *verticalRulerData() const;
+    RulerData *verticalRulerData() const;
 
 private:
     Color *m_backgroundColor;
@@ -66,7 +95,7 @@ private:
     bool m_isLocked;
     bool m_isVisible;
     double m_layerListExpandedType;
-    //TODO layers
+    QList<Group*> m_layers;
     QString m_name;
     bool m_nameIsFixed;
     bool m_resizesContent;

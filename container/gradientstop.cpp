@@ -10,7 +10,7 @@ GradientStop::GradientStop(const QJsonObject &jsonObj, QObject *parent) :
 {
 }
 
-const Color *GradientStop::color() const
+Color *GradientStop::color() const
 {
     return m_color;
 }

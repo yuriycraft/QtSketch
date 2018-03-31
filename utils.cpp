@@ -32,15 +32,18 @@
 #include "container/symbolmaster.h"
 #include "container/textstyle.h"
 
-// QString QJsonValue::toString() const { return toString(QStringLiteral()); }
-
 BaseContainer *createContainer(const QString &path, QObject *parent)
 {
     QFile file(path);
     if(!file.open(QIODevice::ReadOnly))
         throw QStringLiteral("Could not open file %0 because %1").arg(path).arg(file.errorString());
 
-    return createContainer(file.readAll(), parent);
+    return createContainer(file, parent);
+}
+
+BaseContainer *createContainer(QIODevice &device, QObject *parent)
+{
+    return createContainer(device.readAll(), parent);
 }
 
 BaseContainer *createContainer(const QByteArray &content, QObject *parent)

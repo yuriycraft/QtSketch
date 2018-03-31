@@ -1,0 +1,3 @@
+[submodule "Quazip"]
+	path = Quazip
+	url = https://github.com/0xFEEDC0DE64/Quazip.git

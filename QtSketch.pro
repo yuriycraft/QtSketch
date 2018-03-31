@@ -18,3 +18,4 @@ SOURCES += \
     main.cpp
 
 include(sketchlib.pri)
+include(Quazip/Quazip.pri)

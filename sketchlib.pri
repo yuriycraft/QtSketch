@@ -1,6 +1,7 @@
 HEADERS += \
     $$PWD/basecontainer.h \
     $$PWD/utils.h \
+    $$PWD/container/artboard.h \
     $$PWD/container/assetcollection.h \
     $$PWD/container/blur.h \
     $$PWD/container/border.h \
@@ -20,17 +21,21 @@ HEADERS += \
     $$PWD/container/page.h \
     $$PWD/container/rect.h \
     $$PWD/container/rulerdata.h \
-    $$PWD/container/sharedstylecontainer.h \
+    $$PWD/container/shapegroup.h \
     $$PWD/container/sharedstyle.h \
+    $$PWD/container/sharedstylecontainer.h \
     $$PWD/container/sharedtextstylecontainer.h \
     $$PWD/container/style.h \
     $$PWD/container/symbolcontainer.h \
+    $$PWD/container/symbolinstance.h \
     $$PWD/container/symbolmaster.h \
+    $$PWD/container/text.h \
     $$PWD/container/textstyle.h
 
 SOURCES += \
     $$PWD/basecontainer.cpp \
     $$PWD/utils.cpp \
+    $$PWD/container/artboard.cpp \
     $$PWD/container/assetcollection.cpp \
     $$PWD/container/blur.cpp \
     $$PWD/container/border.cpp \
@@ -50,10 +55,13 @@ SOURCES += \
     $$PWD/container/page.cpp \
     $$PWD/container/rect.cpp \
     $$PWD/container/rulerdata.cpp \
-    $$PWD/container/sharedstylecontainer.cpp \
+    $$PWD/container/shapegroup.cpp \
     $$PWD/container/sharedstyle.cpp \
+    $$PWD/container/sharedstylecontainer.cpp \
     $$PWD/container/sharedtextstylecontainer.cpp \
     $$PWD/container/style.cpp \
     $$PWD/container/symbolcontainer.cpp \
+    $$PWD/container/symbolinstance.cpp \
     $$PWD/container/symbolmaster.cpp \
+    $$PWD/container/text.cpp \
     $$PWD/container/textstyle.cpp

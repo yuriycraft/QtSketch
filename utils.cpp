@@ -7,6 +7,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
+#include "container/artboard.h"
 #include "container/assetcollection.h"
 #include "container/blur.h"
 #include "container/border.h"
@@ -26,12 +27,15 @@
 #include "container/page.h"
 #include "container/rect.h"
 #include "container/rulerdata.h"
+#include "container/shapegroup.h"
 #include "container/sharedstyle.h"
 #include "container/sharedstylecontainer.h"
 #include "container/sharedtextstylecontainer.h"
 #include "container/style.h"
 #include "container/symbolcontainer.h"
+#include "container/symbolinstance.h"
 #include "container/symbolmaster.h"
+#include "container/text.h"
 #include "container/textstyle.h"
 
 BaseContainer *createContainer(const QString &path, QObject *parent)
@@ -78,7 +82,9 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
 
     auto classString = classValue.toString();
 
-    if(classString == QStringLiteral("assetCollection"))
+    if(classString == QStringLiteral("artboard"))
+        return new Artboard(jsonObj, parent);
+    else if(classString == QStringLiteral("assetCollection"))
         return new AssetCollection(jsonObj, parent);
     else if(classString == QStringLiteral("blur"))
         return new Blur(jsonObj, parent);
@@ -116,6 +122,8 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
         return new Rect(jsonObj, parent);
     else if(classString == QStringLiteral("rulerData"))
         return new RulerData(jsonObj, parent);
+    else if(classString == QStringLiteral("shapeGroup"))
+        return new ShapeGroup(jsonObj, parent);
     else if(classString == QStringLiteral("sharedStyle"))
         return new SharedStyle(jsonObj, parent);
     else if(classString == QStringLiteral("sharedStyleContainer"))
@@ -126,14 +134,14 @@ BaseContainer *createContainer(const QJsonObject &jsonObj, QObject *parent)
         return new Style(jsonObj, parent);
     else if(classString == QStringLiteral("symbolContainer"))
         return new SymbolContainer(jsonObj, parent);
+    else if(classString == QStringLiteral("symbolInstance"))
+        return new SymbolInstance(jsonObj, parent);
     else if(classString == QStringLiteral("symbolMaster"))
         return new SymbolMaster(jsonObj, parent);
+    else if(classString == QStringLiteral("text"))
+        return new Text(jsonObj, parent);
     else if(classString == QStringLiteral("textStyle"))
         return new TextStyle(jsonObj, parent);
     else
-    {
-        //throw QStringLiteral("Unknown container type %0").arg(classString);
-        qWarning() << "Unknown container type" << classString;
-        return Q_NULLPTR;
-    }
+        throw QStringLiteral("Unknown container type %0").arg(classString);
 }

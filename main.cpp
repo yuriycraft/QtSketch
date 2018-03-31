@@ -5,9 +5,9 @@
 
 #include "utils.h"
 
-#include "document.h"
-#include "msjsonfilereference.h"
-#include "page.h"
+#include "container/document.h"
+#include "container/msjsonfilereference.h"
+#include "container/page.h"
 
 int main(int argc, char *argv[])
 {

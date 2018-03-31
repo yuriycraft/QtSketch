@@ -15,60 +15,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    main.cpp \
-    assetcollection.cpp \
-    basecontainer.cpp \
-    document.cpp \
-    imagecollection.cpp \
-    msimmutableforeignsymbol.cpp \
-    msjsonfilereference.cpp \
-    sharedstylecontainer.cpp \
-    sharedstyle.cpp \
-    sharedtextstylecontainer.cpp \
-    symbolcontainer.cpp \
-    utils.cpp \
-    color.cpp \
-    style.cpp \
-    symbolmaster.cpp \
-    fill.cpp \
-    border.cpp \
-    borderoptions.cpp \
-    textstyle.cpp \
-    graphicscontextsettings.cpp \
-    blur.cpp \
-    gradient.cpp \
-    gradientstop.cpp \
-    exportoptions.cpp \
-    rect.cpp \
-    rulerdata.cpp \
-    exportformat.cpp \
-    page.cpp
+    main.cpp
 
-HEADERS += \
-    assetcollection.h \
-    basecontainer.h \
-    document.h \
-    imagecollection.h \
-    msimmutableforeignsymbol.h \
-    msjsonfilereference.h \
-    sharedstylecontainer.h \
-    sharedstyle.h \
-    sharedtextstylecontainer.h \
-    symbolcontainer.h \
-    utils.h \
-    color.h \
-    style.h \
-    symbolmaster.h \
-    fill.h \
-    border.h \
-    borderoptions.h \
-    textstyle.h \
-    graphicscontextsettings.h \
-    blur.h \
-    gradient.h \
-    gradientstop.h \
-    exportoptions.h \
-    rect.h \
-    rulerdata.h \
-    exportformat.h \
-    page.h
+include(sketchlib.pri)

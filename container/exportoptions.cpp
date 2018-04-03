@@ -52,7 +52,7 @@ bool ExportOptions::parseProperty(const QString &key, const QJsonValue &value)
         for(auto includedLayerIdValue : value.toArray())
         {
             //TODO
-            qWarning() << "includedLayerIds not implemented";
+            //qWarning() << "includedLayerIds not implemented";
         }
         return true;
     }

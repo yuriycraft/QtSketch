@@ -17,7 +17,7 @@ bool SymbolContainer::parseProperty(const QString &key, const QJsonValue &value)
         for(auto objectValue : value.toArray())
         {
             //TODO
-            qWarning() << "objects not implemented";
+            //qWarning() << "objects not implemented";
         }
         return true;
     }

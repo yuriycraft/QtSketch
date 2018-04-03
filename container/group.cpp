@@ -41,7 +41,7 @@ bool Group::parseProperty(const QString &key, const QJsonValue &value)
     if(key == QStringLiteral("flow"))
     {
         Q_ASSERT(value.isObject());
-        qWarning() << "flow not implemented";
+        //qWarning() << "flow not implemented";
         return true;
     }
 

@@ -30,7 +30,7 @@ bool RulerData::parseProperty(const QString &key, const QJsonValue &value)
         for(auto guideValue : value.toArray())
         {
             //TODO
-            qWarning() << "guides not implemented";
+            //qWarning() << "guides not implemented";
         }
         return true;
     }

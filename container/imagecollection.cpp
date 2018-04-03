@@ -17,7 +17,7 @@ bool ImageCollection::parseProperty(const QString &key, const QJsonValue &value)
         for(auto imageValue : value.toArray())
         {
             //TODO
-            qWarning() << "images not implemented";
+            //qWarning() << "images not implemented";
         }
         return true;
     }

@@ -102,7 +102,7 @@ bool SymbolInstance::parseProperty(const QString &key, const QJsonValue &value)
         for(auto overrideValue : value.toArray())
         {
             Q_ASSERT(overrideValue.isObject());
-            qWarning() << "overrideValues not implemented";
+            //qWarning() << "overrideValues not implemented";
         }
         return true;
     }
@@ -110,7 +110,7 @@ bool SymbolInstance::parseProperty(const QString &key, const QJsonValue &value)
     if(key == QStringLiteral("overrides"))
     {
         Q_ASSERT(value.isObject());
-        qWarning() << "overrides not implemented";
+        //qWarning() << "overrides not implemented";
         return true;
     }
 

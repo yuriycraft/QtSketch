@@ -25,7 +25,7 @@ bool TextStyle::parseProperty(const QString &key, const QJsonValue &value)
 
     if(key == QStringLiteral("encodedAttributes"))
     {
-        qWarning() << "encodedAttributes not implemented";
+        //qWarning() << "encodedAttributes not implemented";
         return true;
     }
 

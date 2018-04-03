@@ -5,12 +5,20 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "containerfactory.h"
-
-#include "exportoptions.h"
-
 SymbolInstance::SymbolInstance(QObject *parent) :
-    Layer(parent)
+    Layer(parent),
+    m_nameIsFixed(false),
+    m_resizingConstraint(0.),
+    m_resizingType(0.),
+    m_scale(0.),
+    m_shouldBreakMaskChain(false),
+    m_verticalSpacing(0.),
+    m_horizontalSpacing(0.),
+    m_layerListExpandedType(0.),
+    m_masterInfluenceEdgeMaxXPadding(0.),
+    m_masterInfluenceEdgeMaxYPadding(0.),
+    m_masterInfluenceEdgeMinXPadding(0.),
+    m_masterInfluenceEdgeMinYPadding(0.)
 {
 }
 
@@ -49,19 +57,9 @@ double SymbolInstance::verticalSpacing() const
     return m_verticalSpacing;
 }
 
-ExportOptions *SymbolInstance::exportOptions() const
-{
-    return m_exportOptions;
-}
-
 double SymbolInstance::horizontalSpacing() const
 {
     return m_horizontalSpacing;
-}
-
-bool SymbolInstance::isLocked() const
-{
-    return m_isLocked;
 }
 
 double SymbolInstance::layerListExpandedType() const
@@ -158,24 +156,10 @@ bool SymbolInstance::parseProperty(const QString &key, const QJsonValue &value)
         return true;
     }
 
-    if(key == QStringLiteral("exportOptions"))
-    {
-        Q_ASSERT(value.isObject());
-        m_exportOptions = ContainerFactory::createContainer<ExportOptions>(value.toObject());
-        return true;
-    }
-
     if(key == QStringLiteral("horizontalSpacing"))
     {
         Q_ASSERT(value.isDouble());
         m_horizontalSpacing = value.toDouble();
-        return true;
-    }
-
-    if(key == QStringLiteral("isLocked"))
-    {
-        Q_ASSERT(value.isBool());
-        m_isLocked = value.toBool();
         return true;
     }
 

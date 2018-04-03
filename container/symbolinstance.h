@@ -5,8 +5,6 @@
 
 class QJsonObject;
 
-class ExportOptions;
-
 class SymbolInstance : public Layer
 {
     Q_OBJECT
@@ -19,9 +17,7 @@ class SymbolInstance : public Layer
     Q_PROPERTY(bool shouldBreakMaskChain READ shouldBreakMaskChain CONSTANT)
     Q_PROPERTY(QString symbolID READ symbolID CONSTANT)
     Q_PROPERTY(double verticalSpacing READ verticalSpacing CONSTANT)
-    Q_PROPERTY(ExportOptions* exportOptions READ exportOptions CONSTANT)
     Q_PROPERTY(double horizontalSpacing READ horizontalSpacing CONSTANT)
-    Q_PROPERTY(bool isLocked READ isLocked CONSTANT)
     Q_PROPERTY(double layerListExpandedType READ layerListExpandedType CONSTANT)
     Q_PROPERTY(double masterInfluenceEdgeMaxXPadding READ masterInfluenceEdgeMaxXPadding CONSTANT)
     Q_PROPERTY(double masterInfluenceEdgeMaxYPadding READ masterInfluenceEdgeMaxYPadding CONSTANT)
@@ -40,9 +36,7 @@ public:
     bool shouldBreakMaskChain() const;
     const QString &symbolID() const;
     double verticalSpacing() const;
-    ExportOptions *exportOptions() const;
     double horizontalSpacing() const;
-    bool isLocked() const;
     double layerListExpandedType() const;
     double masterInfluenceEdgeMaxXPadding() const;
     double masterInfluenceEdgeMaxYPadding() const;
@@ -63,9 +57,7 @@ private:
     bool m_shouldBreakMaskChain;
     QString m_symbolID;
     double m_verticalSpacing;
-    ExportOptions *m_exportOptions;
     double m_horizontalSpacing;
-    bool m_isLocked;
     double m_layerListExpandedType;
     double m_masterInfluenceEdgeMaxXPadding;
     double m_masterInfluenceEdgeMaxYPadding;

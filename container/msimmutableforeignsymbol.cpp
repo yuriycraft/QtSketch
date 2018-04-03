@@ -14,11 +14,6 @@ MSImmutableForeignSymbol::MSImmutableForeignSymbol(QObject *parent) :
 {
 }
 
-const QString &MSImmutableForeignSymbol::do_objectID() const
-{
-    return m_do_objectID;
-}
-
 const QString &MSImmutableForeignSymbol::libraryID() const
 {
     return m_libraryID;
@@ -41,13 +36,6 @@ SymbolMaster *MSImmutableForeignSymbol::symbolMaster() const
 
 bool MSImmutableForeignSymbol::parseProperty(const QString &key, const QJsonValue &value)
 {
-    if(key == QStringLiteral("do_objectID"))
-    {
-        Q_ASSERT(value.isString());
-        m_do_objectID = value.toString();
-        return true;
-    }
-
     if(key == QStringLiteral("libraryID"))
     {
         Q_ASSERT(value.isString());

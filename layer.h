@@ -5,12 +5,14 @@
 
 class Rect;
 class Style;
+class ExportOptions;
 
 class Layer : public BaseContainer
 {
     Q_OBJECT
     Q_PROPERTY(QString do_objectID READ do_objectID CONSTANT)
     Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(bool nameIsFixed READ nameIsFixed CONSTANT)
     Q_PROPERTY(Rect* frame READ frame CONSTANT)
     Q_PROPERTY(bool isFlippedVertical READ isFlippedVertical CONSTANT)
     Q_PROPERTY(bool isFlippedHorizontal READ isFlippedHorizontal CONSTANT)
@@ -18,6 +20,11 @@ class Layer : public BaseContainer
     Q_PROPERTY(ResizingConstraint resizingConstraints READ resizingConstraints CONSTANT)
     Q_PROPERTY(double rotation READ rotation CONSTANT)
     Q_PROPERTY(Style* style READ style CONSTANT)
+    Q_PROPERTY(ExportOptions* exportOptions READ exportOptions CONSTANT)
+    Q_PROPERTY(bool isLocked READ isLocked CONSTANT)
+    Q_PROPERTY(double resizingConstraint READ resizingConstraint CONSTANT)
+    Q_PROPERTY(double resizingType READ resizingType CONSTANT)
+    Q_PROPERTY(bool shouldBreakMaskChain READ shouldBreakMaskChain CONSTANT)
 
 protected:
     explicit Layer(QObject *parent = Q_NULLPTR);
@@ -38,6 +45,7 @@ public:
 
     const QString &do_objectID() const;
     const QString &name() const;
+    bool nameIsFixed() const;
     Rect *frame() const;
     bool isFlippedVertical() const;
     bool isFlippedHorizontal() const;
@@ -45,6 +53,11 @@ public:
     ResizingConstraint resizingConstraints() const;
     double rotation() const;
     Style *style() const;
+    ExportOptions *exportOptions() const;
+    bool isLocked() const;
+    double resizingConstraint() const;
+    double resizingType() const;
+    bool shouldBreakMaskChain() const;
 
 protected:
     // BaseContainer interface
@@ -53,6 +66,7 @@ protected:
 private:
     QString m_do_objectID;
     QString m_name;
+    bool m_nameIsFixed;
     Rect *m_frame;
     bool m_isFlippedVertical;
     bool m_isFlippedHorizontal;
@@ -60,6 +74,11 @@ private:
     ResizingConstraint m_resizingConstraints;
     double m_rotation;
     Style *m_style;
+    ExportOptions *m_exportOptions;
+    bool m_isLocked;
+    double m_resizingConstraint;
+    double m_resizingType;
+    bool m_shouldBreakMaskChain;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(Layer::ResizingConstraints)

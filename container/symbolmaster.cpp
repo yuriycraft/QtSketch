@@ -7,17 +7,12 @@
 #include "containerfactory.h"
 
 #include "color.h"
-#include "exportoptions.h"
-#include "rect.h"
 #include "rulerdata.h"
-#include "group.h"
-#include "style.h"
 
 SymbolMaster::SymbolMaster(QObject *parent) :
     Artboard(parent),
     m_backgroundColor(Q_NULLPTR),
     m_changeIdentifier(0.),
-    m_exportOptions(Q_NULLPTR),
     m_hasBackgroundColor(false),
     m_hasClickThrough(false),
     m_horizontalRulerData(Q_NULLPTR),
@@ -25,7 +20,6 @@ SymbolMaster::SymbolMaster(QObject *parent) :
     m_includeBackgroundColorInInstance(false),
     m_includeInCloudUpload(false),
     m_isFlowHome(false),
-    m_isLocked(false),
     m_layerListExpandedType(0.),
     m_nameIsFixed(false),
     m_resizesContent(false),
@@ -44,11 +38,6 @@ Color *SymbolMaster::backgroundColor() const
 double SymbolMaster::changeIdentifier() const
 {
     return m_changeIdentifier;
-}
-
-ExportOptions *SymbolMaster::exportOptions() const
-{
-    return m_exportOptions;
 }
 
 bool SymbolMaster::hasBackgroundColor() const
@@ -84,11 +73,6 @@ bool SymbolMaster::includeInCloudUpload() const
 bool SymbolMaster::isFlowHome() const
 {
     return m_isFlowHome;
-}
-
-bool SymbolMaster::isLocked() const
-{
-    return m_isLocked;
 }
 
 double SymbolMaster::layerListExpandedType() const
@@ -147,13 +131,6 @@ bool SymbolMaster::parseProperty(const QString &key, const QJsonValue &value)
         return true;
     }
 
-    if(key == QStringLiteral("exportOptions"))
-    {
-        Q_ASSERT(value.isObject());
-        m_exportOptions = ContainerFactory::createContainer<ExportOptions>(value.toObject(), this);
-        return true;
-    }
-
     if(key == QStringLiteral("hasBackgroundColor"))
     {
         Q_ASSERT(value.isBool());
@@ -200,13 +177,6 @@ bool SymbolMaster::parseProperty(const QString &key, const QJsonValue &value)
     {
         Q_ASSERT(value.isBool());
         m_isFlowHome = value.toBool();
-        return true;
-    }
-
-    if(key == QStringLiteral("isLocked"))
-    {
-        Q_ASSERT(value.isBool());
-        m_isLocked = value.toBool();
         return true;
     }
 

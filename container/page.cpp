@@ -5,16 +5,10 @@
 
 #include "containerfactory.h"
 
-#include "exportoptions.h"
-#include "rect.h"
-#include "style.h"
-#include "symbolmaster.h"
 #include "rulerdata.h"
 
 Page::Page(QObject *parent) :
     Group(parent),
-    m_exportOptions(Q_NULLPTR),
-    m_isLocked(false),
     m_layerListExpandedType(0.),
     m_nameIsFixed(false),
     m_resizingConstraint(0.),
@@ -25,16 +19,6 @@ Page::Page(QObject *parent) :
     m_includeInCloudUpload(false),
     m_verticalRulerData(Q_NULLPTR)
 {
-}
-
-ExportOptions *Page::exportOptions() const
-{
-    return m_exportOptions;
-}
-
-bool Page::isLocked() const
-{
-    return m_isLocked;
 }
 
 double Page::layerListExpandedType() const
@@ -84,20 +68,6 @@ RulerData *Page::verticalRulerData() const
 
 bool Page::parseProperty(const QString &key, const QJsonValue &value)
 {
-    if(key == QStringLiteral("exportOptions"))
-    {
-        Q_ASSERT(value.isObject());
-        m_exportOptions = ContainerFactory::createContainer<ExportOptions>(value.toObject(), this);
-        return true;
-    }
-
-    if(key == QStringLiteral("isLocked"))
-    {
-        Q_ASSERT(value.isBool());
-        m_isLocked = value.toBool();
-        return true;
-    }
-
     if(key == QStringLiteral("layerListExpandedType"))
     {
         Q_ASSERT(value.isDouble());

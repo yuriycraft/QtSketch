@@ -18,7 +18,6 @@ class Document : public BaseContainer
     Q_PROPERTY(AssetCollection* assets READ assets CONSTANT)
     Q_PROPERTY(double colorSpace READ colorSpace CONSTANT)
     Q_PROPERTY(double currentPageIndex READ currentPageIndex CONSTANT)
-    Q_PROPERTY(QString do_objectID READ do_objectID CONSTANT)
     Q_PROPERTY(bool enableLayerInteraction READ enableLayerInteraction CONSTANT)
     Q_PROPERTY(bool enableSliceInteraction READ enableSliceInteraction CONSTANT)
     Q_PROPERTY(QList<MSImmutableForeignSymbol*> foreignSymbols READ foreignSymbols CONSTANT)
@@ -33,7 +32,6 @@ public:
     AssetCollection *assets() const;
     double colorSpace() const;
     double currentPageIndex() const;
-    const QString do_objectID() const;
     bool enableLayerInteraction() const;
     bool enableSliceInteraction() const;
     const QList<MSImmutableForeignSymbol*> &foreignSymbols() const;
@@ -50,7 +48,6 @@ private:
     AssetCollection *m_assets;
     double m_colorSpace;
     double m_currentPageIndex;
-    QString m_do_objectID;
     bool m_enableLayerInteraction;
     bool m_enableSliceInteraction;
     QList<MSImmutableForeignSymbol*> m_foreignSymbols;

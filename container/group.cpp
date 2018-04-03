@@ -10,13 +10,19 @@
 #include "layer.h"
 
 Group::Group(QObject *parent) :
-    Layer(parent)
+    Layer(parent),
+    m_hasClickThrough(false)
 {
 }
 
 const QList<Layer *> &Group::layers() const
 {
     return m_layers;
+}
+
+bool Group::hasClickThrough() const
+{
+    return m_hasClickThrough;
 }
 
 bool Group::parseProperty(const QString &key, const QJsonValue &value)
@@ -36,6 +42,13 @@ bool Group::parseProperty(const QString &key, const QJsonValue &value)
     {
         Q_ASSERT(value.isObject());
         qWarning() << "flow not implemented";
+        return true;
+    }
+
+    if(key == QStringLiteral("hasClickThrough"))
+    {
+        Q_ASSERT(value.isBool());
+        m_hasClickThrough = value.toBool();
         return true;
     }
 

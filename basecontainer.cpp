@@ -1,7 +1,7 @@
 #include "basecontainer.h"
 
-#include <QJsonObject>
 #include <QDebug>
+#include <QJsonObject>
 
 const QHash<QJsonValue::Type, QString> BaseContainer::m_types {
     { QJsonValue::Null, QStringLiteral("Null") },
@@ -18,6 +18,11 @@ BaseContainer::BaseContainer(QObject *parent) :
 {
 }
 
+const QString &BaseContainer::do_objectID() const
+{
+    return m_do_objectID;
+}
+
 void BaseContainer::parseFromJson(const QJsonObject &jsonObj)
 {
     for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
@@ -32,8 +37,12 @@ void BaseContainer::parseFromJson(const QJsonObject &jsonObj)
 
 bool BaseContainer::parseProperty(const QString &key, const QJsonValue &value)
 {
-    Q_UNUSED(key)
-    Q_UNUSED(value)
+    if(key == QStringLiteral("do_objectID"))
+    {
+        Q_ASSERT(value.isString());
+        m_do_objectID = value.toString();
+        return true;
+    }
 
     return false;
 }

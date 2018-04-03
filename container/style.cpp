@@ -23,11 +23,6 @@ Style::Style(QObject *parent) :
 {
 }
 
-const QString &Style::do_objectID() const
-{
-    return m_do_objectID;
-}
-
 const QString &Style::name() const
 {
     return m_name;
@@ -85,13 +80,6 @@ TextStyle *Style::textStyle() const
 
 bool Style::parseProperty(const QString &key, const QJsonValue &value)
 {
-    if(key == QStringLiteral("do_objectID"))
-    {
-        Q_ASSERT(value.isString());
-        m_do_objectID = value.toString();
-        return true;
-    }
-
     if(key == QStringLiteral("name"))
     {
         Q_ASSERT(value.isString());

@@ -5,17 +5,11 @@
 
 class QJsonObject;
 
-class ExportOptions;
-class Rect;
-class Style;
-class SymbolMaster;
 class RulerData;
 
 class Page : public Group
 {
     Q_OBJECT
-    Q_PROPERTY(ExportOptions* exportOptions READ exportOptions CONSTANT)
-    Q_PROPERTY(bool isLocked READ isLocked CONSTANT)
     Q_PROPERTY(double layerListExpandedType READ layerListExpandedType CONSTANT)
     Q_PROPERTY(bool nameIsFixed READ nameIsFixed CONSTANT)
     Q_PROPERTY(double resizingConstraint READ resizingConstraint CONSTANT)
@@ -29,8 +23,6 @@ class Page : public Group
 public:
     Q_INVOKABLE explicit Page(QObject *parent = Q_NULLPTR);
 
-    ExportOptions *exportOptions() const;
-    bool isLocked() const;
     double layerListExpandedType() const;
     bool nameIsFixed() const;
     double resizingConstraint() const;
@@ -46,8 +38,6 @@ protected:
     virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
-    ExportOptions *m_exportOptions;
-    bool m_isLocked;
     double m_layerListExpandedType;
     bool m_nameIsFixed;
     double m_resizingConstraint;

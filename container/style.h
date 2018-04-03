@@ -15,7 +15,6 @@ class TextStyle;
 class Style : public BaseContainer
 {
     Q_OBJECT
-    Q_PROPERTY(QString do_objectID READ do_objectID CONSTANT)
     Q_PROPERTY(QString name READ name CONSTANT)
     Q_PROPERTY(Blur* blur READ blur CONSTANT)
     Q_PROPERTY(BorderOptions* borderOptions READ borderOptions CONSTANT)
@@ -31,7 +30,6 @@ class Style : public BaseContainer
 public:
     Q_INVOKABLE explicit Style(QObject *parent = Q_NULLPTR);
 
-    const QString &do_objectID() const;
     const QString &name() const;
     Blur *blur() const;
     BorderOptions *borderOptions() const;
@@ -49,7 +47,6 @@ protected:
     virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
-    QString m_do_objectID;
     QString m_name;
     Blur *m_blur;
     BorderOptions *m_borderOptions;

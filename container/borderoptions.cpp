@@ -8,11 +8,6 @@ BorderOptions::BorderOptions(QObject *parent) :
 {
 }
 
-const QString &BorderOptions::do_objectID() const
-{
-    return m_do_objectID;
-}
-
 const QList<double> &BorderOptions::dashPattern() const
 {
     return m_dashPattern;
@@ -35,13 +30,6 @@ double BorderOptions::lineJoinStyle() const
 
 bool BorderOptions::parseProperty(const QString &key, const QJsonValue &value)
 {
-    if(key == QStringLiteral("do_objectID"))
-    {
-        Q_ASSERT(value.isString());
-        m_do_objectID = value.toString();
-        return true;
-    }
-
     if(key == QStringLiteral("dashPattern"))
     {
         Q_ASSERT(value.isArray());

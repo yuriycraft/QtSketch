@@ -41,11 +41,6 @@ double Document::currentPageIndex() const
     return m_currentPageIndex;
 }
 
-const QString Document::do_objectID() const
-{
-    return m_do_objectID;
-}
-
 bool Document::enableLayerInteraction() const
 {
     return m_enableLayerInteraction;
@@ -101,13 +96,6 @@ bool Document::parseProperty(const QString &key, const QJsonValue &value)
     {
         Q_ASSERT(value.isDouble());
         m_currentPageIndex = value.toDouble();
-        return true;
-    }
-
-    if(key == QStringLiteral("do_objectID"))
-    {
-        Q_ASSERT(value.isString());
-        m_do_objectID = value.toString();
         return true;
     }
 

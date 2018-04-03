@@ -13,11 +13,6 @@ SharedStyleContainer::SharedStyleContainer(QObject *parent) :
 {
 }
 
-const QString &SharedStyleContainer::do_objectID() const
-{
-    return m_do_objectID;
-}
-
 const QList<SharedStyle *> &SharedStyleContainer::objects() const
 {
     return m_objects;
@@ -25,13 +20,6 @@ const QList<SharedStyle *> &SharedStyleContainer::objects() const
 
 bool SharedStyleContainer::parseProperty(const QString &key, const QJsonValue &value)
 {
-    if(key == QStringLiteral("do_objectID"))
-    {
-        Q_ASSERT(value.isString());
-        m_do_objectID = value.toString();
-        return true;
-    }
-
     if(key == QStringLiteral("objects"))
     {
         Q_ASSERT(value.isArray());

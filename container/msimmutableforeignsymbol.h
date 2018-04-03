@@ -10,7 +10,6 @@ class SymbolMaster;
 class MSImmutableForeignSymbol : public BaseContainer
 {
     Q_OBJECT
-    Q_PROPERTY(QString do_objectID READ do_objectID CONSTANT)
     Q_PROPERTY(QString libraryID READ libraryID CONSTANT)
     Q_PROPERTY(SymbolMaster* originalMaster READ originalMaster CONSTANT)
     Q_PROPERTY(QString sourceLibraryName READ sourceLibraryName CONSTANT)
@@ -19,7 +18,6 @@ class MSImmutableForeignSymbol : public BaseContainer
 public:
     Q_INVOKABLE explicit MSImmutableForeignSymbol(QObject *parent = Q_NULLPTR);
 
-    const QString &do_objectID() const;
     const QString &libraryID() const;
     SymbolMaster *originalMaster() const;
     const QString &sourceLibraryName() const;
@@ -30,7 +28,6 @@ protected:
     virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
-    QString m_do_objectID;
     QString m_libraryID;
     SymbolMaster *m_originalMaster;
     QString m_sourceLibraryName;

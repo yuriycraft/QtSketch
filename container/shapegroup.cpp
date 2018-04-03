@@ -1,11 +1,11 @@
 #include "shapegroup.h"
 
 ShapeGroup::ShapeGroup(QObject *parent) :
-    Layer(parent)
+    Group(parent)
 {
 }
 
 bool ShapeGroup::parseProperty(const QString &key, const QJsonValue &value)
 {
-    return Layer::parseProperty(key, value);
+    return Group::parseProperty(key, value);
 }

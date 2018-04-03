@@ -25,11 +25,14 @@
 #include "container/innershadow.h"
 #include "container/msimmutableforeignsymbol.h"
 #include "container/msjsonfilereference.h"
+#include "container/oval.h"
 #include "container/page.h"
 #include "container/rect.h"
+#include "container/rectangle.h"
 #include "container/rulerdata.h"
 #include "container/shadow.h"
 #include "container/shapegroup.h"
+#include "container/shapepath.h"
 #include "container/sharedstyle.h"
 #include "container/sharedstylecontainer.h"
 #include "container/sharedtextstylecontainer.h"
@@ -61,11 +64,14 @@ QHash<QString, QMetaObject> ContainerFactory::m_metaObjects {
     { QStringLiteral("innerShadow"), InnerShadow::staticMetaObject },
     { QStringLiteral("MSImmutableForeignSymbol"), MSImmutableForeignSymbol::staticMetaObject },
     { QStringLiteral("MSJSONFileReference"), MSJSONFileReference::staticMetaObject },
+    { QStringLiteral("oval"), Oval::staticMetaObject },
     { QStringLiteral("page"), Page::staticMetaObject },
     { QStringLiteral("rect"), Rect::staticMetaObject },
+    { QStringLiteral("rectangle"), Rectangle::staticMetaObject },
     { QStringLiteral("rulerData"), RulerData::staticMetaObject },
     { QStringLiteral("shadow"), Shadow::staticMetaObject },
     { QStringLiteral("shapeGroup"), ShapeGroup::staticMetaObject },
+    { QStringLiteral("shapePath"), ShapePath::staticMetaObject },
     { QStringLiteral("sharedStyle"), SharedStyle::staticMetaObject },
     { QStringLiteral("sharedStyleContainer"), SharedStyleContainer::staticMetaObject },
     { QStringLiteral("sharedTextStyleContainer"), SharedTextStyleContainer::staticMetaObject },

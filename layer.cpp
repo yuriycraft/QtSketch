@@ -23,7 +23,8 @@ Layer::Layer(QObject *parent) :
     m_isLocked(false),
     m_resizingConstraint(0.),
     m_resizingType(0.),
-    m_shouldBreakMaskChain(false)
+    m_shouldBreakMaskChain(false),
+    m_layerListExpandedType(0.)
 {
 }
 
@@ -100,6 +101,11 @@ double Layer::resizingType() const
 bool Layer::shouldBreakMaskChain() const
 {
     return m_shouldBreakMaskChain;
+}
+
+double Layer::layerListExpandedType() const
+{
+    return m_layerListExpandedType;
 }
 
 bool Layer::parseProperty(const QString &key, const QJsonValue &value)
@@ -206,6 +212,13 @@ bool Layer::parseProperty(const QString &key, const QJsonValue &value)
     {
         Q_ASSERT(value.isBool());
         m_shouldBreakMaskChain = value.toBool();
+        return true;
+    }
+
+    if(key == QStringLiteral("layerListExpandedType"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_layerListExpandedType = value.toDouble();
         return true;
     }
 

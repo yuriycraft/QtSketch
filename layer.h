@@ -25,6 +25,7 @@ class Layer : public BaseContainer
     Q_PROPERTY(double resizingConstraint READ resizingConstraint CONSTANT)
     Q_PROPERTY(double resizingType READ resizingType CONSTANT)
     Q_PROPERTY(bool shouldBreakMaskChain READ shouldBreakMaskChain CONSTANT)
+    Q_PROPERTY(double layerListExpandedType READ layerListExpandedType CONSTANT)
 
 protected:
     explicit Layer(QObject *parent = Q_NULLPTR);
@@ -58,6 +59,7 @@ public:
     double resizingConstraint() const;
     double resizingType() const;
     bool shouldBreakMaskChain() const;
+    double layerListExpandedType() const;
 
 protected:
     // BaseContainer interface
@@ -79,6 +81,7 @@ private:
     double m_resizingConstraint;
     double m_resizingType;
     bool m_shouldBreakMaskChain;
+    double m_layerListExpandedType;
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(Layer::ResizingConstraints)

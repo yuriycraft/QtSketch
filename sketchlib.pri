@@ -21,11 +21,14 @@ HEADERS += \
     $$PWD/container/innershadow.h \
     $$PWD/container/msimmutableforeignsymbol.h \
     $$PWD/container/msjsonfilereference.h \
+    $$PWD/container/oval.h \
     $$PWD/container/page.h \
     $$PWD/container/rect.h \
+    $$PWD/container/rectangle.h \
     $$PWD/container/rulerdata.h \
     $$PWD/container/shadow.h \
     $$PWD/container/shapegroup.h \
+    $$PWD/container/shapepath.h \
     $$PWD/container/sharedstyle.h \
     $$PWD/container/sharedstylecontainer.h \
     $$PWD/container/sharedtextstylecontainer.h \
@@ -60,11 +63,14 @@ SOURCES += \
     $$PWD/container/innershadow.cpp \
     $$PWD/container/msimmutableforeignsymbol.cpp \
     $$PWD/container/msjsonfilereference.cpp \
+    $$PWD/container/oval.cpp \
     $$PWD/container/page.cpp \
     $$PWD/container/rect.cpp \
+    $$PWD/container/rectangle.cpp \
     $$PWD/container/rulerdata.cpp \
     $$PWD/container/shadow.cpp \
     $$PWD/container/shapegroup.cpp \
+    $$PWD/container/shapepath.cpp \
     $$PWD/container/sharedstyle.cpp \
     $$PWD/container/sharedstylecontainer.cpp \
     $$PWD/container/sharedtextstylecontainer.cpp \

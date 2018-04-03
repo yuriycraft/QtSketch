@@ -69,5 +69,12 @@ int main(int argc, char *argv[])
         }
     }
 
+    qDebug() << "summary of missing properties:";
+    {
+        const auto &missing = BaseContainer::missing();
+        for(auto iter = missing.constBegin(); iter != missing.constEnd(); iter++)
+            qDebug() << iter.key() << iter.value();
+    }
+
     return 0;
 }

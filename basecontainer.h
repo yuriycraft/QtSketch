@@ -21,11 +21,14 @@ public:
 
     void parseFromJson(const QJsonObject &jsonObj);
 
+    static const QHash<QString, int> &missing();
+
 protected:
     virtual bool parseProperty(const QString &key, const QJsonValue &value);
 
 private:
     static const QHash<QJsonValue::Type, QString> m_types;
+    static QHash<QString, int> m_missing;
 
     QString m_do_objectID;
 };

@@ -13,6 +13,8 @@ const QHash<QJsonValue::Type, QString> BaseContainer::m_types {
     { QJsonValue::Undefined, QStringLiteral("Undefined") }
 };
 
+QHash<QString, int> BaseContainer::m_missing;
+
 BaseContainer::BaseContainer(QObject *parent) :
     QObject(parent)
 {
@@ -31,8 +33,21 @@ void BaseContainer::parseFromJson(const QJsonObject &jsonObj)
             continue;
 
         if(!parseProperty(iter.key(), iter.value()))
-            qWarning() << "unknown property" << metaObject()->className() << iter.key() << m_types.value(iter.value().type());
+        {
+            QString key = QStringLiteral("%0::%1").arg(metaObject()->className(), iter.key());
+            if(m_missing.contains(key))
+                m_missing[key]++;
+            else
+                m_missing.insert(key, 1);
+
+            //qWarning() << "unknown property" << metaObject()->className() << iter.key() << m_types.value(iter.value().type());
+        }
     }
+}
+
+const QHash<QString, int> &BaseContainer::missing()
+{
+    return m_missing;
 }
 
 bool BaseContainer::parseProperty(const QString &key, const QJsonValue &value)

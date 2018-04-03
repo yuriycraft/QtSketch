@@ -23,6 +23,7 @@ HEADERS += \
     $$PWD/container/page.h \
     $$PWD/container/rect.h \
     $$PWD/container/rulerdata.h \
+    $$PWD/container/shadow.h \
     $$PWD/container/shapegroup.h \
     $$PWD/container/sharedstyle.h \
     $$PWD/container/sharedstylecontainer.h \
@@ -59,6 +60,7 @@ SOURCES += \
     $$PWD/container/page.cpp \
     $$PWD/container/rect.cpp \
     $$PWD/container/rulerdata.cpp \
+    $$PWD/container/shadow.cpp \
     $$PWD/container/shapegroup.cpp \
     $$PWD/container/sharedstyle.cpp \
     $$PWD/container/sharedstylecontainer.cpp \

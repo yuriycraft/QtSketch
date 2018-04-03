@@ -28,6 +28,7 @@
 #include "container/page.h"
 #include "container/rect.h"
 #include "container/rulerdata.h"
+#include "container/shadow.h"
 #include "container/shapegroup.h"
 #include "container/sharedstyle.h"
 #include "container/sharedstylecontainer.h"
@@ -61,6 +62,7 @@ QHash<QString, QMetaObject> ContainerFactory::m_metaObjects {
     { QStringLiteral("page"), Page::staticMetaObject },
     { QStringLiteral("rect"), Rect::staticMetaObject },
     { QStringLiteral("rulerData"), RulerData::staticMetaObject },
+    { QStringLiteral("shadow"), Shadow::staticMetaObject },
     { QStringLiteral("shapeGroup"), ShapeGroup::staticMetaObject },
     { QStringLiteral("sharedStyle"), SharedStyle::staticMetaObject },
     { QStringLiteral("sharedStyleContainer"), SharedStyleContainer::staticMetaObject },

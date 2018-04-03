@@ -17,6 +17,7 @@ HEADERS += \
     $$PWD/container/graphicscontextsettings.h \
     $$PWD/container/group.h \
     $$PWD/container/imagecollection.h \
+    $$PWD/container/innershadow.h \
     $$PWD/container/msimmutableforeignsymbol.h \
     $$PWD/container/msjsonfilereference.h \
     $$PWD/container/page.h \
@@ -52,6 +53,7 @@ SOURCES += \
     $$PWD/container/graphicscontextsettings.cpp \
     $$PWD/container/group.cpp \
     $$PWD/container/imagecollection.cpp \
+    $$PWD/container/innershadow.cpp \
     $$PWD/container/msimmutableforeignsymbol.cpp \
     $$PWD/container/msjsonfilereference.cpp \
     $$PWD/container/page.cpp \

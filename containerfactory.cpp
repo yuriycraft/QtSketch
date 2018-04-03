@@ -22,6 +22,7 @@
 #include "container/graphicscontextsettings.h"
 #include "container/group.h"
 #include "container/imagecollection.h"
+#include "container/innershadow.h"
 #include "container/msimmutableforeignsymbol.h"
 #include "container/msjsonfilereference.h"
 #include "container/page.h"
@@ -54,6 +55,7 @@ QHash<QString, QMetaObject> ContainerFactory::m_metaObjects {
     { QStringLiteral("graphicsContextSettings"), GraphicsContextSettings::staticMetaObject },
     { QStringLiteral("group"), Group::staticMetaObject },
     { QStringLiteral("imageCollection"), ImageCollection::staticMetaObject },
+    { QStringLiteral("innerShadow"), InnerShadow::staticMetaObject },
     { QStringLiteral("MSImmutableForeignSymbol"), MSImmutableForeignSymbol::staticMetaObject },
     { QStringLiteral("MSJSONFileReference"), MSJSONFileReference::staticMetaObject },
     { QStringLiteral("page"), Page::staticMetaObject },

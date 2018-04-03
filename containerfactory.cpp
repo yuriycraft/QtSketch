@@ -43,6 +43,7 @@
 #include "container/symbolmaster.h"
 #include "container/text.h"
 #include "container/textstyle.h"
+#include "container/triangle.h"
 
 QHash<QString, QMetaObject> ContainerFactory::m_metaObjects {
     { QStringLiteral("artboard"), Artboard::staticMetaObject },
@@ -81,7 +82,8 @@ QHash<QString, QMetaObject> ContainerFactory::m_metaObjects {
     { QStringLiteral("symbolInstance"), SymbolInstance::staticMetaObject },
     { QStringLiteral("symbolMaster"), SymbolMaster::staticMetaObject },
     { QStringLiteral("text"), Text::staticMetaObject },
-    { QStringLiteral("textStyle"), TextStyle::staticMetaObject }
+    { QStringLiteral("textStyle"), TextStyle::staticMetaObject },
+    { QStringLiteral("triangle"), Triangle::staticMetaObject }
 };
 
 BaseContainer *ContainerFactory::createContainer(const QString &path, QObject *parent)

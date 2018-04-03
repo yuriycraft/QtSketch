@@ -8,7 +8,7 @@ class ShapePath : public Layer
     Q_OBJECT
 
 public:
-    Q_INVOKABLE explicit ShapePath(QObject *parent = nullptr);
+    Q_INVOKABLE explicit ShapePath(QObject *parent = Q_NULLPTR);
 
 protected:
     // BaseContainer interface

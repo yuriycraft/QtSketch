@@ -38,7 +38,8 @@ HEADERS += \
     $$PWD/container/symbolinstance.h \
     $$PWD/container/symbolmaster.h \
     $$PWD/container/text.h \
-    $$PWD/container/textstyle.h
+    $$PWD/container/textstyle.h \
+    $$PWD/container/triangle.h
 
 SOURCES += \
     $$PWD/basecontainer.cpp \
@@ -80,4 +81,5 @@ SOURCES += \
     $$PWD/container/symbolinstance.cpp \
     $$PWD/container/symbolmaster.cpp \
     $$PWD/container/text.cpp \
-    $$PWD/container/textstyle.cpp
+    $$PWD/container/textstyle.cpp \
+    $$PWD/container/triangle.cpp

@@ -1,18 +1,18 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H
+#ifndef TRIANGLE_H
+#define TRIANGLE_H
 
 #include "layer.h"
 
-class Rectangle : public Layer
+class Triangle : public Layer
 {
     Q_OBJECT
 
 public:
-    Q_INVOKABLE explicit Rectangle(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Triangle(QObject *parent = Q_NULLPTR);
 
 protected:
     // BaseContainer interface
     virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 };
 
-#endif // RECTANGLE_H
+#endif // TRIANGLE_H

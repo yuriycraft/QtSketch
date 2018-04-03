@@ -1,5 +1,7 @@
-#include <QCoreApplication>
+#include <QApplication>
 #include <QDirIterator>
+#include <QTabWidget>
+#include <QLabel>
 #include <QDebug>
 
 #include "Quazip/quazip.h"
@@ -31,7 +33,7 @@ template<typename T> T* createContainerZip(QuaZip &zip, const QString &filename,
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
 
     qSetMessagePattern(QStringLiteral("%{time dd.MM.yyyy HH:mm:ss.zzz} "
                                       "["
@@ -44,30 +46,45 @@ int main(int argc, char *argv[])
                                       "%{function}(): "
                                       "%{message}"));
 
+    auto parentWidget = new QTabWidget;
+
     QDirIterator iter(QStringLiteral("sketches"), QStringList { QStringLiteral("*.sketch") }, QDir::Files);
     while(iter.hasNext())
     {
-        try
+        QuaZip zip(iter.next());
+
+        qDebug() << zip.getZipName();
+
+        if(!zip.open(QuaZip::mdUnzip))
+            continue;
+
+        Document *document;
+        try {
+            document = createContainerZip<Document>(zip, QStringLiteral("document.json"));
+        } catch(QString msg) {
+            parentWidget->addTab(new QLabel(QStringLiteral("<span style=\"color: red;\">Could not load document.json: %0</span>").arg(msg), parentWidget), zip.getZipName());
+            continue;
+        }
+
+        auto tabWidget = new QTabWidget(parentWidget);
+
+        for(auto pageRef : document->pages())
         {
-            QuaZip zip(iter.next());
-
-            qDebug() << zip.getZipName();
-
-            if(!zip.open(QuaZip::mdUnzip))
-                throw QStringLiteral("Could not open sketch file");
-
-            auto document = createContainerZip<Document>(zip, QStringLiteral("document.json"));
-
-            for(auto pageRef : document->pages())
-            {
-                auto page = createContainerZip<Page>(zip, pageRef->_ref() + ".json");
+            Page *page;
+            try {
+                page = createContainerZip<Page>(zip, pageRef->_ref() + ".json");
+            } catch (QString msg) {
+                tabWidget->addTab(new QLabel(QStringLiteral("<span style=\"color: red;\">Could not load %0: %1</span>").arg(pageRef->_ref(), msg), tabWidget), pageRef->_ref());
+                continue;
             }
+
+            tabWidget->addTab(new QLabel(QStringLiteral("TODO"), tabWidget), page->name());
         }
-        catch(QString msg)
-        {
-            qCritical() << msg;
-        }
+
+        parentWidget->addTab(tabWidget, zip.getZipName());
     }
+
+    parentWidget->show();
 
     qDebug() << "summary of missing properties:";
     {
@@ -76,5 +93,5 @@ int main(int argc, char *argv[])
             qDebug() << iter.key() << iter.value();
     }
 
-    return 0;
+    return a.exec();
 }

@@ -1,11 +1,11 @@
 #ifndef SHAPEGROUP_H
 #define SHAPEGROUP_H
 
-#include "basecontainer.h"
+#include "layer.h"
 
 class QJsonObject;
 
-class ShapeGroup : public BaseContainer
+class ShapeGroup : public Layer
 {
     Q_OBJECT
 

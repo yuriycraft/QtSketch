@@ -8,6 +8,7 @@
 
 #include "container/artboard.h"
 #include "container/assetcollection.h"
+#include "container/bitmap.h"
 #include "container/blur.h"
 #include "container/border.h"
 #include "container/borderoptions.h"
@@ -32,6 +33,7 @@
 #include "container/sharedstyle.h"
 #include "container/sharedstylecontainer.h"
 #include "container/sharedtextstylecontainer.h"
+#include "container/slice.h"
 #include "container/style.h"
 #include "container/symbolcontainer.h"
 #include "container/symbolinstance.h"
@@ -42,6 +44,7 @@
 QHash<QString, QMetaObject> ContainerFactory::m_metaObjects {
     { QStringLiteral("artboard"), Artboard::staticMetaObject },
     { QStringLiteral("assetCollection"), AssetCollection::staticMetaObject },
+    { QStringLiteral("bitmap"), Bitmap::staticMetaObject },
     { QStringLiteral("blur"), Blur::staticMetaObject },
     { QStringLiteral("border"), Border::staticMetaObject },
     { QStringLiteral("borderOptions"), BorderOptions::staticMetaObject },
@@ -66,6 +69,7 @@ QHash<QString, QMetaObject> ContainerFactory::m_metaObjects {
     { QStringLiteral("sharedStyle"), SharedStyle::staticMetaObject },
     { QStringLiteral("sharedStyleContainer"), SharedStyleContainer::staticMetaObject },
     { QStringLiteral("sharedTextStyleContainer"), SharedTextStyleContainer::staticMetaObject },
+    { QStringLiteral("slice"), Slice::staticMetaObject },
     { QStringLiteral("style"), Style::staticMetaObject },
     { QStringLiteral("symbolContainer"), SymbolContainer::staticMetaObject },
     { QStringLiteral("symbolInstance"), SymbolInstance::staticMetaObject },

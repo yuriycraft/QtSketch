@@ -26,7 +26,7 @@ void BaseContainer::parseFromJson(const QJsonObject &jsonObj)
             continue;
 
         if(!parseProperty(iter.key(), iter.value()))
-            qWarning() << "unknown property" << jsonObj.value(QStringLiteral("_class")).toString() << iter.key() << m_types.value(iter.value().type());
+            qWarning() << "unknown property" << metaObject()->className() << iter.key() << m_types.value(iter.value().type());
     }
 }
 

@@ -1,22 +1,18 @@
-#ifndef TEXT_H
-#define TEXT_H
+#ifndef BITMAP_H
+#define BITMAP_H
 
 #include "layer.h"
 
-class QJsonObject;
-
-class Text : public Layer
+class Bitmap : public Layer
 {
     Q_OBJECT
 
 public:
-    Q_INVOKABLE explicit Text(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Bitmap(QObject *parent = Q_NULLPTR);
 
 protected:
     // BaseContainer interface
     virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
-
-private:
 };
 
-#endif // TEXT_H
+#endif // BITMAP_H

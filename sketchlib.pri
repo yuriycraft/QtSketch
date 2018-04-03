@@ -4,6 +4,7 @@ HEADERS += \
     $$PWD/layer.h \
     $$PWD/container/artboard.h \
     $$PWD/container/assetcollection.h \
+    $$PWD/container/bitmap.h \
     $$PWD/container/blur.h \
     $$PWD/container/border.h \
     $$PWD/container/borderoptions.h \
@@ -28,6 +29,7 @@ HEADERS += \
     $$PWD/container/sharedstyle.h \
     $$PWD/container/sharedstylecontainer.h \
     $$PWD/container/sharedtextstylecontainer.h \
+    $$PWD/container/slice.h \
     $$PWD/container/style.h \
     $$PWD/container/symbolcontainer.h \
     $$PWD/container/symbolinstance.h \
@@ -41,6 +43,7 @@ SOURCES += \
     $$PWD/layer.cpp \
     $$PWD/container/artboard.cpp \
     $$PWD/container/assetcollection.cpp \
+    $$PWD/container/bitmap.cpp \
     $$PWD/container/blur.cpp \
     $$PWD/container/border.cpp \
     $$PWD/container/borderoptions.cpp \
@@ -65,6 +68,7 @@ SOURCES += \
     $$PWD/container/sharedstyle.cpp \
     $$PWD/container/sharedstylecontainer.cpp \
     $$PWD/container/sharedtextstylecontainer.cpp \
+    $$PWD/container/slice.cpp \
     $$PWD/container/style.cpp \
     $$PWD/container/symbolcontainer.cpp \
     $$PWD/container/symbolinstance.cpp \

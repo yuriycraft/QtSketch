@@ -4,46 +4,9 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-Blur::Blur(QObject *parent) :
-    BaseContainer(parent)
-{
-}
-
 Blur::Blur(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent)
+    BaseContainer(jsonObj, parent)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
-    {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("isEnabled"))
-        {
-            Q_ASSERT(iter.value().isBool());
-            m_isEnabled = iter.value().toBool();
-        }
-        else if(iter.key() == QStringLiteral("center"))
-        {
-            Q_ASSERT(iter.value().isString());
-            m_center = iter.value().toString();
-        }
-        else if(iter.key() == QStringLiteral("motionAngle"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_motionAngle = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("radius"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_radius = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("type"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_type = iter.value().toDouble();
-        }
-        else
-            qWarning() << "unexpected" << iter.key();
-    }
 }
 
 bool Blur::isEnabled() const
@@ -69,4 +32,44 @@ double Blur::radius() const
 double Blur::type() const
 {
     return m_type;
+}
+
+bool Blur::parseProperty(const QString &key, const QJsonValue &value)
+{
+    if(key == QStringLiteral("isEnabled"))
+    {
+        Q_ASSERT(value.isBool());
+        m_isEnabled = value.toBool();
+        return true;
+    }
+
+    if(key == QStringLiteral("center"))
+    {
+        Q_ASSERT(value.isString());
+        m_center = value.toString();
+        return true;
+    }
+
+    if(key == QStringLiteral("motionAngle"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_motionAngle = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("radius"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_radius = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("type"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_type = value.toDouble();
+        return true;
+    }
+
+    return BaseContainer::parseProperty(key, value);
 }

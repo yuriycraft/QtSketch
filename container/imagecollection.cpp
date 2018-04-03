@@ -5,28 +5,23 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-ImageCollection::ImageCollection(QObject *parent) :
-    BaseContainer(parent)
+ImageCollection::ImageCollection(const QJsonObject &jsonObj, QObject *parent) :
+    BaseContainer(jsonObj, parent)
 {
 }
 
-ImageCollection::ImageCollection(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent)
+bool ImageCollection::parseProperty(const QString &key, const QJsonValue &value)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
+    if(key == QStringLiteral("images"))
     {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("images"))
+        Q_ASSERT(value.isObject());
+        for(auto imageValue : value.toArray())
         {
-            Q_ASSERT(iter.value().isObject());
-            for(auto imageValue : iter.value().toArray())
-            {
-                //TODO
-                qWarning() << "images not implemented";
-            }
+            //TODO
+            qWarning() << "images not implemented";
         }
-        else
-            qWarning() << "unexpected" << iter.key();
+        return true;
     }
+
+    return BaseContainer::parseProperty(key, value);
 }

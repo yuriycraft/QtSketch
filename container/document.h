@@ -28,7 +28,6 @@ class Document : public BaseContainer
     Q_PROPERTY(QList<MSJSONFileReference*> pages READ pages CONSTANT)
 
 public:
-    Q_INVOKABLE explicit Document(QObject *parent = Q_NULLPTR);
     Q_INVOKABLE explicit Document(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     AssetCollection *assets() const;
@@ -42,6 +41,10 @@ public:
     SymbolContainer *layerSymbols() const;
     SharedTextStyleContainer *layerTextStyles() const;
     const QList<MSJSONFileReference*> &pages() const;
+
+protected:
+    // BaseContainer interface
+    virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
     AssetCollection *m_assets;

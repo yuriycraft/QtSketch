@@ -36,7 +36,6 @@ class Page : public BaseContainer
     Q_PROPERTY(RulerData* verticalRulerData READ verticalRulerData CONSTANT)
 
 public:
-    Q_INVOKABLE explicit Page(QObject *parent = Q_NULLPTR);
     Q_INVOKABLE explicit Page(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QString &do_objectID() const;
@@ -59,6 +58,10 @@ public:
     RulerData *horizontalRulerData() const;
     bool includeInCloudUpload() const;
     RulerData *verticalRulerData() const;
+
+protected:
+    // BaseContainer interface
+    virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
     QString m_do_objectID;

@@ -4,51 +4,9 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-ExportFormat::ExportFormat(QObject *parent) :
-    BaseContainer(parent)
-{
-}
-
 ExportFormat::ExportFormat(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent)
+    BaseContainer(jsonObj, parent)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
-    {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("absoluteSize"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_absoluteSize = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("fileFormat"))
-        {
-            Q_ASSERT(iter.value().isString());
-            m_fileFormat = iter.value().toString();
-        }
-        else if(iter.key() == QStringLiteral("name"))
-        {
-            Q_ASSERT(iter.value().isString());
-            m_name = iter.value().toString();
-        }
-        else if(iter.key() == QStringLiteral("namingScheme"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_namingScheme = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("scale"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_scale = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("visibleScaleType"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_visibleScaleType = iter.value().toDouble();
-        }
-        else
-            qWarning() << "unexpected" << iter.key();
-    }
 }
 
 double ExportFormat::absoluteSize() const
@@ -79,4 +37,45 @@ double ExportFormat::scale() const
 double ExportFormat::visibleScaleType() const
 {
     return m_visibleScaleType;
+}
+
+bool ExportFormat::parseProperty(const QString &key, const QJsonValue &value)
+{
+    if(key == QStringLiteral("absoluteSize"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_absoluteSize = value.toDouble();
+    }
+
+    if(key == QStringLiteral("fileFormat"))
+    {
+        Q_ASSERT(value.isString());
+        m_fileFormat = value.toString();
+    }
+
+    if(key == QStringLiteral("name"))
+    {
+        Q_ASSERT(value.isString());
+        m_name = value.toString();
+    }
+
+    if(key == QStringLiteral("namingScheme"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_namingScheme = value.toDouble();
+    }
+
+    if(key == QStringLiteral("scale"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_scale = value.toDouble();
+    }
+
+    if(key == QStringLiteral("visibleScaleType"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_visibleScaleType = value.toDouble();
+    }
+
+    return BaseContainer::parseProperty(key, value);
 }

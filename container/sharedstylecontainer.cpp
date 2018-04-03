@@ -9,35 +9,9 @@
 
 #include "sharedstyle.h"
 
-SharedStyleContainer::SharedStyleContainer(QObject *parent) :
-    BaseContainer(parent)
-{
-}
-
 SharedStyleContainer::SharedStyleContainer(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent)
+    BaseContainer(jsonObj, parent)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
-    {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("do_objectID"))
-        {
-            Q_ASSERT(iter.value().isString());
-            m_do_objectID = iter.value().toString();
-        }
-        else if(iter.key() == QStringLiteral("objects"))
-        {
-            Q_ASSERT(iter.value().isArray());
-            for(auto objectValue : iter.value().toArray())
-            {
-                Q_ASSERT(objectValue.isObject());
-                m_objects.append(ContainerFactory::createContainer<SharedStyle>(objectValue.toObject(), this));
-            }
-        }
-        else
-            qWarning() << "unexpected" << iter.key();
-    }
 }
 
 const QString &SharedStyleContainer::do_objectID() const
@@ -48,4 +22,27 @@ const QString &SharedStyleContainer::do_objectID() const
 const QList<SharedStyle *> &SharedStyleContainer::objects() const
 {
     return m_objects;
+}
+
+bool SharedStyleContainer::parseProperty(const QString &key, const QJsonValue &value)
+{
+    if(key == QStringLiteral("do_objectID"))
+    {
+        Q_ASSERT(value.isString());
+        m_do_objectID = value.toString();
+        return true;
+    }
+
+    if(key == QStringLiteral("objects"))
+    {
+        Q_ASSERT(value.isArray());
+        for(auto objectValue : value.toArray())
+        {
+            Q_ASSERT(objectValue.isObject());
+            m_objects.append(ContainerFactory::createContainer<SharedStyle>(objectValue.toObject(), this));
+        }
+        return true;
+    }
+
+    return BaseContainer::parseProperty(key, value);
 }

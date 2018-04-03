@@ -5,40 +5,36 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-RulerData::RulerData(QObject *parent) :
-    BaseContainer(parent),
-    m_base(0.)
-{
-}
-
 RulerData::RulerData(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent),
+    BaseContainer(jsonObj, parent),
     m_base(0.)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
-    {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("base"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_base = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("guides"))
-        {
-            Q_ASSERT(iter.value().isArray());
-            for(auto guideValue : iter.value().toArray())
-            {
-                //TODO
-                qWarning() << "guides not implemented";
-            }
-        }
-        else
-            qWarning() << "unexpected" << iter.key();
-    }
 }
 
 double RulerData::base() const
 {
     return m_base;
+}
+
+bool RulerData::parseProperty(const QString &key, const QJsonValue &value)
+{
+    if(key == QStringLiteral("base"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_base = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("guides"))
+    {
+        Q_ASSERT(value.isArray());
+        for(auto guideValue : value.toArray())
+        {
+            //TODO
+            qWarning() << "guides not implemented";
+        }
+        return true;
+    }
+
+    return BaseContainer::parseProperty(key, value);
 }

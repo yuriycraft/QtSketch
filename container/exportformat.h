@@ -16,7 +16,6 @@ class ExportFormat : public BaseContainer
     Q_PROPERTY(double visibleScaleType READ visibleScaleType CONSTANT)
 
 public:
-    Q_INVOKABLE explicit ExportFormat(QObject *parent = Q_NULLPTR);
     Q_INVOKABLE explicit ExportFormat(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     double absoluteSize() const;
@@ -25,6 +24,10 @@ public:
     double namingScheme() const;
     double scale() const;
     double visibleScaleType() const;
+
+protected:
+    // BaseContainer interface
+    virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
     double m_absoluteSize;

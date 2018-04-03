@@ -16,13 +16,16 @@ class ExportOptions : public BaseContainer
     Q_PROPERTY(bool shouldTrim READ shouldTrim CONSTANT)
 
 public:
-    Q_INVOKABLE explicit ExportOptions(QObject *parent = Q_NULLPTR);
     Q_INVOKABLE explicit ExportOptions(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QList<ExportFormat*> &exportFormats() const;
     //TODO includedLayerIds
     double layerOptions() const;
     bool shouldTrim() const;
+
+protected:
+    // BaseContainer interface
+    virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
     QList<ExportFormat*> m_exportFormats;

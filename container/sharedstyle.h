@@ -15,12 +15,15 @@ class SharedStyle : public BaseContainer
     Q_PROPERTY(Style* value READ value CONSTANT)
 
 public:
-    Q_INVOKABLE explicit SharedStyle(QObject *parent = Q_NULLPTR);
     Q_INVOKABLE explicit SharedStyle(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QString &do_objectID() const;
     const QString &name() const;
     Style *value() const;
+
+protected:
+    // BaseContainer interface
+    virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
     QString m_do_objectID;

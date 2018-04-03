@@ -1,7 +1,7 @@
 #include "layer.h"
 
-Layer::Layer(QObject *parent) :
-    BaseContainer(parent),
+Layer::Layer(const QJsonObject &jsonObj, QObject *parent) :
+    BaseContainer(jsonObj, parent),
     m_frame(Q_NULLPTR),
     m_isFlippedVertical(false),
     m_isFlippedHorizontal(false),

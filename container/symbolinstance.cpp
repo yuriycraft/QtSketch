@@ -2,14 +2,15 @@
 
 #include <QDebug>
 
-SymbolInstance::SymbolInstance(QObject *parent) :
-    BaseContainer(parent)
+SymbolInstance::SymbolInstance(const QJsonObject &jsonObj, QObject *parent) :
+    BaseContainer(jsonObj, parent)
 {
 }
 
-SymbolInstance::SymbolInstance(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent)
+bool SymbolInstance::parseProperty(const QString &key, const QJsonValue &value)
 {
     //TODO
     qWarning() << "not implemented";
+
+    return BaseContainer::parseProperty(key, value);
 }

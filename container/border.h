@@ -17,7 +17,6 @@ class Border : public BaseContainer
     Q_PROPERTY(double thickness READ thickness CONSTANT)
 
 public:
-    Q_INVOKABLE explicit Border(QObject *parent = Q_NULLPTR);
     Q_INVOKABLE explicit Border(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     Color *color() const;
@@ -25,6 +24,10 @@ public:
     bool isEnabled() const;
     double position() const;
     double thickness() const;
+
+protected:
+    // BaseContainer interface
+    virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
     Color *m_color;

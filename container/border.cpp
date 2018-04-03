@@ -8,56 +8,14 @@
 
 #include "color.h"
 
-Border::Border(QObject *parent) :
-    BaseContainer(parent),
-    m_color(Q_NULLPTR),
-    m_fillType(0.),
-    m_isEnabled(false),
-    m_position(0.),
-    m_thickness(0.)
-{
-}
-
 Border::Border(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent),
+    BaseContainer(jsonObj, parent),
     m_color(Q_NULLPTR),
     m_fillType(0.),
     m_isEnabled(false),
     m_position(0.),
     m_thickness(0.)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
-    {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("color"))
-        {
-            Q_ASSERT(iter.value().isObject());
-            m_color = ContainerFactory::createContainer<Color>(iter.value().toObject(), this);
-        }
-        else if(iter.key() == QStringLiteral("fillType"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_fillType = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("isEnabled"))
-        {
-            Q_ASSERT(iter.value().isBool());
-            m_isEnabled = iter.value().toBool();
-        }
-        else if(iter.key() == QStringLiteral("position"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_position = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("thickness"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_thickness = iter.value().toDouble();
-        }
-        else
-            qWarning() << "unexpected" << iter.key();
-    }
 }
 
 Color *Border::color() const
@@ -83,4 +41,44 @@ double Border::position() const
 double Border::thickness() const
 {
     return m_thickness;
+}
+
+bool Border::parseProperty(const QString &key, const QJsonValue &value)
+{
+    if(key == QStringLiteral("color"))
+    {
+        Q_ASSERT(value.isObject());
+        m_color = ContainerFactory::createContainer<Color>(value.toObject(), this);
+        return true;
+    }
+
+    if(key == QStringLiteral("fillType"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_fillType = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("isEnabled"))
+    {
+        Q_ASSERT(value.isBool());
+        m_isEnabled = value.toBool();
+        return true;
+    }
+
+    if(key == QStringLiteral("position"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_position = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("thickness"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_thickness = value.toDouble();
+        return true;
+    }
+
+    return BaseContainer::parseProperty(key, value);
 }

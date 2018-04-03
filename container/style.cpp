@@ -14,99 +14,14 @@
 #include "graphicscontextsettings.h"
 #include "textstyle.h"
 
-Style::Style(QObject *parent) :
-    BaseContainer(parent),
-    m_blur(Q_NULLPTR),
-    m_borderOptions(Q_NULLPTR),
-    m_miterLimit(0.),
-    m_startDecorationType(0.),
-    m_textStyle(Q_NULLPTR)
-{
-}
-
 Style::Style(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent),
+    BaseContainer(jsonObj, parent),
     m_blur(Q_NULLPTR),
     m_borderOptions(Q_NULLPTR),
     m_miterLimit(0.),
     m_startDecorationType(0.),
     m_textStyle(Q_NULLPTR)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
-    {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("do_objectID"))
-        {
-            Q_ASSERT(iter.value().isString());
-            m_do_objectID = iter.value().toString();
-        }
-        else if(iter.key() == QStringLiteral("name"))
-        {
-            Q_ASSERT(iter.value().isString());
-            m_name = iter.value().toString();
-        }
-        else if(iter.key() == QStringLiteral("blur"))
-        {
-            Q_ASSERT(iter.value().isObject());
-            m_blur = ContainerFactory::createContainer<Blur>(iter.value().toObject(), this);
-        }
-        else if(iter.key() == QStringLiteral("borderOptions"))
-        {
-            Q_ASSERT(iter.value().isObject());
-            m_borderOptions = ContainerFactory::createContainer<BorderOptions>(iter.value().toObject(), this);
-        }
-        else if(iter.key() == QStringLiteral("borders"))
-        {
-            Q_ASSERT(iter.value().isArray());
-            for(auto fillValue : iter.value().toArray())
-            {
-                Q_ASSERT(fillValue.isObject());
-                m_borders.append(ContainerFactory::createContainer<Border>(fillValue.toObject(), this));
-            }
-        }
-        else if(iter.key() == QStringLiteral("fills"))
-        {
-            Q_ASSERT(iter.value().isArray());
-            for(auto fillValue : iter.value().toArray())
-            {
-                Q_ASSERT(fillValue.isObject());
-                m_fills.append(ContainerFactory::createContainer<Fill>(fillValue.toObject(), this));
-            }
-        }
-        else if(iter.key() == QStringLiteral("contextSettings"))
-        {
-            Q_ASSERT(iter.value().isObject());
-            m_contextSettings = ContainerFactory::createContainer<GraphicsContextSettings>(iter.value().toObject(), this);
-        }
-        else if(iter.key() == QStringLiteral("endDecorationType"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_endDecorationType = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("miterLimit"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_miterLimit = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("sharedObjectID"))
-        {
-            Q_ASSERT(iter.value().isString());
-            m_sharedObjectID = iter.value().toString();
-        }
-        else if(iter.key() == QStringLiteral("startDecorationType"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_startDecorationType = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("textStyle"))
-        {
-            Q_ASSERT(iter.value().isObject());
-            m_textStyle = ContainerFactory::createContainer<TextStyle>(iter.value().toObject(), this);
-        }
-        else
-            qWarning() << "unexpected" << iter.key();
-    }
 }
 
 const QString &Style::do_objectID() const
@@ -167,4 +82,101 @@ double Style::startDecorationType() const
 TextStyle *Style::textStyle() const
 {
     return m_textStyle;
+}
+
+bool Style::parseProperty(const QString &key, const QJsonValue &value)
+{
+    if(key == QStringLiteral("do_objectID"))
+    {
+        Q_ASSERT(value.isString());
+        m_do_objectID = value.toString();
+        return true;
+    }
+
+    if(key == QStringLiteral("name"))
+    {
+        Q_ASSERT(value.isString());
+        m_name = value.toString();
+        return true;
+    }
+
+    if(key == QStringLiteral("blur"))
+    {
+        Q_ASSERT(value.isObject());
+        m_blur = ContainerFactory::createContainer<Blur>(value.toObject(), this);
+        return true;
+    }
+
+    if(key == QStringLiteral("borderOptions"))
+    {
+        Q_ASSERT(value.isObject());
+        m_borderOptions = ContainerFactory::createContainer<BorderOptions>(value.toObject(), this);
+        return true;
+    }
+
+    if(key == QStringLiteral("borders"))
+    {
+        Q_ASSERT(value.isArray());
+        for(auto fillValue : value.toArray())
+        {
+            Q_ASSERT(fillValue.isObject());
+            m_borders.append(ContainerFactory::createContainer<Border>(fillValue.toObject(), this));
+        }
+        return true;
+    }
+
+    if(key == QStringLiteral("fills"))
+    {
+        Q_ASSERT(value.isArray());
+        for(auto fillValue : value.toArray())
+        {
+            Q_ASSERT(fillValue.isObject());
+            m_fills.append(ContainerFactory::createContainer<Fill>(fillValue.toObject(), this));
+        }
+        return true;
+    }
+
+    if(key == QStringLiteral("contextSettings"))
+    {
+        Q_ASSERT(value.isObject());
+        m_contextSettings = ContainerFactory::createContainer<GraphicsContextSettings>(value.toObject(), this);
+        return true;
+    }
+
+    if(key == QStringLiteral("endDecorationType"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_endDecorationType = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("miterLimit"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_miterLimit = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("sharedObjectID"))
+    {
+        Q_ASSERT(value.isString());
+        m_sharedObjectID = value.toString();
+        return true;
+    }
+
+    if(key == QStringLiteral("startDecorationType"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_startDecorationType = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("textStyle"))
+    {
+        Q_ASSERT(value.isObject());
+        m_textStyle = ContainerFactory::createContainer<TextStyle>(value.toObject(), this);
+        return true;
+    }
+
+    return BaseContainer::parseProperty(key, value);
 }

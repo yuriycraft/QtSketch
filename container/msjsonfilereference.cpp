@@ -4,31 +4,9 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-MSJSONFileReference::MSJSONFileReference(QObject *parent) :
-    BaseContainer(parent)
-{
-}
-
 MSJSONFileReference::MSJSONFileReference(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent)
+    BaseContainer(jsonObj, parent)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
-    {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("_ref"))
-        {
-            Q_ASSERT(iter.value().isString());
-            m__ref = iter.value().toString();
-        }
-        else if(iter.key() == QStringLiteral("_ref_class"))
-        {
-            Q_ASSERT(iter.value().isString());
-            m__ref_class = iter.value().toString();
-        }
-        else
-            qWarning() << "unexpected" << iter.key();
-    }
 }
 
 const QString &MSJSONFileReference::_ref() const
@@ -39,4 +17,23 @@ const QString &MSJSONFileReference::_ref() const
 const QString &MSJSONFileReference::_ref_class() const
 {
     return m__ref_class;
+}
+
+bool MSJSONFileReference::parseProperty(const QString &key, const QJsonValue &value)
+{
+    if(key == QStringLiteral("_ref"))
+    {
+        Q_ASSERT(value.isString());
+        m__ref = value.toString();
+        return true;
+    }
+
+    if(key == QStringLiteral("_ref_class"))
+    {
+        Q_ASSERT(value.isString());
+        m__ref_class = value.toString();
+        return true;
+    }
+
+    return BaseContainer::parseProperty(key, value);
 }

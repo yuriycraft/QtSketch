@@ -5,28 +5,23 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-SymbolContainer::SymbolContainer(QObject *parent) :
-    BaseContainer(parent)
+SymbolContainer::SymbolContainer(const QJsonObject &jsonObj, QObject *parent) :
+    BaseContainer(jsonObj, parent)
 {
 }
 
-SymbolContainer::SymbolContainer(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent)
+bool SymbolContainer::parseProperty(const QString &key, const QJsonValue &value)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
+    if(key == QStringLiteral("objects"))
     {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("objects"))
+        Q_ASSERT(value.isArray());
+        for(auto objectValue : value.toArray())
         {
-            Q_ASSERT(iter.value().isArray());
-            for(auto objectValue : iter.value().toArray())
-            {
-                //TODO
-                qWarning() << "objects not implemented";
-            }
+            //TODO
+            qWarning() << "objects not implemented";
         }
-        else
-            qWarning() << "unexpected" << iter.key();
+        return true;
     }
+
+    return BaseContainer::parseProperty(key, value);
 }

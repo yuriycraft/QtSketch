@@ -4,56 +4,14 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-Rect::Rect(QObject *parent) :
-    BaseContainer(parent),
-    m_constrainProportions(false),
-    m_height(0.),
-    m_width(0.),
-    m_x(0.),
-    m_y(0.)
-{
-}
-
 Rect::Rect(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent),
+    BaseContainer(jsonObj, parent),
     m_constrainProportions(false),
     m_height(0.),
     m_width(0.),
     m_x(0.),
     m_y(0.)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
-    {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("constrainProportions"))
-        {
-            Q_ASSERT(iter.value().isBool());
-            m_constrainProportions = iter.value().toBool();
-        }
-        else if(iter.key() == QStringLiteral("height"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_height = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("width"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_width = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("x"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_x = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("y"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_y = iter.value().toDouble();
-        }
-        else
-            qWarning() << "unexpected" << iter.key();
-    }
 }
 
 bool Rect::constrainProportions() const
@@ -79,4 +37,44 @@ double Rect::x() const
 double Rect::y() const
 {
     return m_y;
+}
+
+bool Rect::parseProperty(const QString &key, const QJsonValue &value)
+{
+    if(key == QStringLiteral("constrainProportions"))
+    {
+        Q_ASSERT(value.isBool());
+        m_constrainProportions = value.toBool();
+        return true;
+    }
+
+    if(key == QStringLiteral("height"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_height = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("width"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_width = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("x"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_x = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("y"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_y = value.toDouble();
+        return true;
+    }
+
+    return BaseContainer::parseProperty(key, value);
 }

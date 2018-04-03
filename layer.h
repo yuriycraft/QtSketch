@@ -20,7 +20,7 @@ class Layer : public BaseContainer
     Q_PROPERTY(Style* style READ style CONSTANT)
 
 protected:
-    explicit Layer(QObject *parent = Q_NULLPTR);
+    explicit Layer(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
 public:
     enum ResizingConstraint

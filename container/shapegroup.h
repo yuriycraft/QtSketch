@@ -10,8 +10,11 @@ class ShapeGroup : public BaseContainer
     Q_OBJECT
 
 public:
-    Q_INVOKABLE explicit ShapeGroup(QObject *parent = Q_NULLPTR);
     Q_INVOKABLE explicit ShapeGroup(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+
+protected:
+    // BaseContainer interface
+    virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
 };

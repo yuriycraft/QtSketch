@@ -29,7 +29,6 @@ class Style : public BaseContainer
     Q_PROPERTY(TextStyle* textStyle READ textStyle CONSTANT)
 
 public:
-    Q_INVOKABLE explicit Style(QObject *parent = Q_NULLPTR);
     Q_INVOKABLE explicit Style(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QString &do_objectID() const;
@@ -44,6 +43,10 @@ public:
     const QString &sharedObjectID() const;
     double startDecorationType() const;
     TextStyle *textStyle() const;
+
+protected:
+    // BaseContainer interface
+    virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
     QString m_do_objectID;

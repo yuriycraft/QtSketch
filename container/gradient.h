@@ -18,7 +18,6 @@ class Gradient : public BaseContainer
     Q_PROPERTY(QString to READ to CONSTANT)
 
 public:
-    Q_INVOKABLE explicit Gradient(QObject *parent = Q_NULLPTR);
     Q_INVOKABLE explicit Gradient(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     double elipseLength() const;
@@ -27,6 +26,10 @@ public:
     bool shouldSmoothenOpacity() const;
     const QList<GradientStop*> &stops() const;
     const QString &to() const;
+
+protected:
+    // BaseContainer interface
+    virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
     double m_elipseLength;

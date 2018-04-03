@@ -5,45 +5,9 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-BorderOptions::BorderOptions(QObject *parent) :
-    BaseContainer(parent)
-{
-}
-
 BorderOptions::BorderOptions(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(parent)
+    BaseContainer(jsonObj, parent)
 {
-    for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
-    {
-        if(iter.key() == QStringLiteral("_class"))
-            continue;
-        else if(iter.key() == QStringLiteral("dashPattern"))
-        {
-            Q_ASSERT(iter.value().isArray());
-            for(auto dashPatternValue : iter.value().toArray())
-            {
-                Q_ASSERT(dashPatternValue.isDouble());
-                m_dashPattern.append(dashPatternValue.toDouble());
-            }
-        }
-        else if(iter.key() == QStringLiteral("isEnabled"))
-        {
-            Q_ASSERT(iter.value().isBool());
-            m_isEnabled = iter.value().toBool();
-        }
-        else if(iter.key() == QStringLiteral("lineCapStyle"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_lineCapStyle = iter.value().toDouble();
-        }
-        else if(iter.key() == QStringLiteral("lineJoinStyle"))
-        {
-            Q_ASSERT(iter.value().isDouble());
-            m_lineJoinStyle = iter.value().toDouble();
-        }
-        else
-            qWarning() << "unexpected" << iter.key();
-    }
 }
 
 const QList<double> &BorderOptions::dashPattern() const
@@ -64,4 +28,41 @@ double BorderOptions::lineCapStyle() const
 double BorderOptions::lineJoinStyle() const
 {
     return m_lineJoinStyle;
+}
+
+bool BorderOptions::parseProperty(const QString &key, const QJsonValue &value)
+{
+    if(key == QStringLiteral("dashPattern"))
+    {
+        Q_ASSERT(value.isArray());
+        for(auto dashPatternValue : value.toArray())
+        {
+            Q_ASSERT(dashPatternValue.isDouble());
+            m_dashPattern.append(dashPatternValue.toDouble());
+        }
+        return true;
+    }
+
+    if(key == QStringLiteral("isEnabled"))
+    {
+        Q_ASSERT(value.isBool());
+        m_isEnabled = value.toBool();
+        return true;
+    }
+
+    if(key == QStringLiteral("lineCapStyle"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_lineCapStyle = value.toDouble();
+        return true;
+    }
+
+    if(key == QStringLiteral("lineJoinStyle"))
+    {
+        Q_ASSERT(value.isDouble());
+        m_lineJoinStyle = value.toDouble();
+        return true;
+    }
+
+    return BaseContainer::parseProperty(key, value);
 }

@@ -28,7 +28,7 @@ class Document : public BaseContainer
     Q_PROPERTY(QList<MSJSONFileReference*> pages READ pages CONSTANT)
 
 public:
-    Q_INVOKABLE explicit Document(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Document(QObject *parent = Q_NULLPTR);
 
     AssetCollection *assets() const;
     double colorSpace() const;

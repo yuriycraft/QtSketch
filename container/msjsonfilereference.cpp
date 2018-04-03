@@ -4,8 +4,8 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-MSJSONFileReference::MSJSONFileReference(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+MSJSONFileReference::MSJSONFileReference(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

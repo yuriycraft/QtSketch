@@ -10,8 +10,8 @@
 #include "color.h"
 #include "imagecollection.h"
 
-AssetCollection::AssetCollection(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+AssetCollection::AssetCollection(QObject *parent) :
+    BaseContainer(parent),
     m_imageCollection(Q_NULLPTR)
 {
 }

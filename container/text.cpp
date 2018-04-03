@@ -2,8 +2,8 @@
 
 #include <QDebug>
 
-Text::Text(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+Text::Text(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

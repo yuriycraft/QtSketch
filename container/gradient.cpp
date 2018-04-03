@@ -9,8 +9,8 @@
 
 #include "gradientstop.h"
 
-Gradient::Gradient(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+Gradient::Gradient(QObject *parent) :
+    BaseContainer(parent),
     m_elipseLength(0.),
     m_gradientType(0.),
     m_shouldSmoothenOpacity(false)

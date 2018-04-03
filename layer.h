@@ -20,7 +20,7 @@ class Layer : public BaseContainer
     Q_PROPERTY(Style* style READ style CONSTANT)
 
 protected:
-    explicit Layer(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    explicit Layer(QObject *parent = Q_NULLPTR);
 
 public:
     enum ResizingConstraint
@@ -45,6 +45,10 @@ public:
     ResizingConstraint resizingConstraints() const;
     double rotation() const;
     Style *style() const;
+
+protected:
+    // BaseContainer interface
+    virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
     QString m_do_objectID;

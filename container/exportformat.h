@@ -16,7 +16,7 @@ class ExportFormat : public BaseContainer
     Q_PROPERTY(double visibleScaleType READ visibleScaleType CONSTANT)
 
 public:
-    Q_INVOKABLE explicit ExportFormat(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit ExportFormat(QObject *parent = Q_NULLPTR);
 
     double absoluteSize() const;
     const QString &fileFormat() const;

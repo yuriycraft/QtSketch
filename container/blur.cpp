@@ -4,8 +4,8 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-Blur::Blur(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+Blur::Blur(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

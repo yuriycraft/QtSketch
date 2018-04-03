@@ -15,7 +15,7 @@ class Rect : public BaseContainer
     Q_PROPERTY(double y READ y CONSTANT)
 
 public:
-    Q_INVOKABLE explicit Rect(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Rect(QObject *parent = Q_NULLPTR);
 
     bool constrainProportions() const;
     double height() const;

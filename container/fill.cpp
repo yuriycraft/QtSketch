@@ -11,8 +11,8 @@
 #include "msjsonfilereference.h"
 #include "gradient.h"
 
-Fill::Fill(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+Fill::Fill(QObject *parent) :
+    BaseContainer(parent),
     m_color(Q_NULLPTR),
     m_fillType(0.),
     m_gradient(Q_NULLPTR)

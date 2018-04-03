@@ -4,8 +4,8 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-ExportFormat::ExportFormat(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+ExportFormat::ExportFormat(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 
@@ -45,36 +45,42 @@ bool ExportFormat::parseProperty(const QString &key, const QJsonValue &value)
     {
         Q_ASSERT(value.isDouble());
         m_absoluteSize = value.toDouble();
+        return true;
     }
 
     if(key == QStringLiteral("fileFormat"))
     {
         Q_ASSERT(value.isString());
         m_fileFormat = value.toString();
+        return true;
     }
 
     if(key == QStringLiteral("name"))
     {
         Q_ASSERT(value.isString());
         m_name = value.toString();
+        return true;
     }
 
     if(key == QStringLiteral("namingScheme"))
     {
         Q_ASSERT(value.isDouble());
         m_namingScheme = value.toDouble();
+        return true;
     }
 
     if(key == QStringLiteral("scale"))
     {
         Q_ASSERT(value.isDouble());
         m_scale = value.toDouble();
+        return true;
     }
 
     if(key == QStringLiteral("visibleScaleType"))
     {
         Q_ASSERT(value.isDouble());
         m_visibleScaleType = value.toDouble();
+        return true;
     }
 
     return BaseContainer::parseProperty(key, value);

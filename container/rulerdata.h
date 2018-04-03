@@ -11,7 +11,7 @@ class RulerData : public BaseContainer
     Q_PROPERTY(double base READ base CONSTANT)
 
 public:
-    Q_INVOKABLE explicit RulerData(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit RulerData(QObject *parent = Q_NULLPTR);
 
     double base() const;
 

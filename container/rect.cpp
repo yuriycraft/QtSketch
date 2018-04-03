@@ -4,8 +4,8 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-Rect::Rect(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+Rect::Rect(QObject *parent) :
+    BaseContainer(parent),
     m_constrainProportions(false),
     m_height(0.),
     m_width(0.),

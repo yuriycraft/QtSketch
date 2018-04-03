@@ -2,8 +2,8 @@
 
 #include <QDebug>
 
-TextStyle::TextStyle(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+TextStyle::TextStyle(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

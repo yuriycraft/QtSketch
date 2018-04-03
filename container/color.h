@@ -14,7 +14,7 @@ class Color : public BaseContainer
     Q_PROPERTY(double red READ red CONSTANT)
 
 public:
-    Q_INVOKABLE explicit Color(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Color(QObject *parent = Q_NULLPTR);
 
     double alpha() const;
     double blue() const;

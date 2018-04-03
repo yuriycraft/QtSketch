@@ -2,8 +2,8 @@
 
 #include <QDebug>
 
-ShapeGroup::ShapeGroup(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+ShapeGroup::ShapeGroup(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

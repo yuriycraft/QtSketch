@@ -2,8 +2,8 @@
 
 #include <QDebug>
 
-SymbolInstance::SymbolInstance(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+SymbolInstance::SymbolInstance(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

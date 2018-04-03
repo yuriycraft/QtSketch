@@ -14,8 +14,8 @@
 #include "graphicscontextsettings.h"
 #include "textstyle.h"
 
-Style::Style(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+Style::Style(QObject *parent) :
+    BaseContainer(parent),
     m_blur(Q_NULLPTR),
     m_borderOptions(Q_NULLPTR),
     m_miterLimit(0.),

@@ -7,8 +7,8 @@
 
 #include "color.h"
 
-GradientStop::GradientStop(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+GradientStop::GradientStop(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

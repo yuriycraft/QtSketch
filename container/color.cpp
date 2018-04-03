@@ -4,8 +4,8 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-Color::Color(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+Color::Color(QObject *parent) :
+    BaseContainer(parent),
     m_alpha(0.),
     m_blue(0.),
     m_green(0.),

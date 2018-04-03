@@ -1,10 +1,9 @@
 #include "basecontainer.h"
 
 #include <QJsonObject>
-#include <QJsonValue>
 #include <QDebug>
 
-QHash<QJsonValue::Type, QString> types {
+const QHash<QJsonValue::Type, QString> BaseContainer::m_types {
     { QJsonValue::Null, QStringLiteral("Null") },
     { QJsonValue::Bool, QStringLiteral("Bool") },
     { QJsonValue::Double, QStringLiteral("Double") },
@@ -14,8 +13,12 @@ QHash<QJsonValue::Type, QString> types {
     { QJsonValue::Undefined, QStringLiteral("Undefined") }
 };
 
-BaseContainer::BaseContainer(const QJsonObject &jsonObj, QObject *parent) :
+BaseContainer::BaseContainer(QObject *parent) :
     QObject(parent)
+{
+}
+
+void BaseContainer::parseFromJson(const QJsonObject &jsonObj)
 {
     for(auto iter = jsonObj.constBegin(); iter != jsonObj.constEnd(); iter++)
     {
@@ -23,7 +26,7 @@ BaseContainer::BaseContainer(const QJsonObject &jsonObj, QObject *parent) :
             continue;
 
         if(!parseProperty(iter.key(), iter.value()))
-            qWarning() << "unknown property" << iter.key() << types.value(iter.value().type());
+            qWarning() << "unknown property" << jsonObj.value(QStringLiteral("_class")).toString() << iter.key() << m_types.value(iter.value().type());
     }
 }
 

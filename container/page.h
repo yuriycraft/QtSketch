@@ -36,7 +36,7 @@ class Page : public BaseContainer
     Q_PROPERTY(RulerData* verticalRulerData READ verticalRulerData CONSTANT)
 
 public:
-    Q_INVOKABLE explicit Page(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Page(QObject *parent = Q_NULLPTR);
 
     const QString &do_objectID() const;
     ExportOptions *exportOptions() const;

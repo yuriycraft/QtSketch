@@ -14,7 +14,7 @@ class GradientStop : public BaseContainer
     Q_PROPERTY(double position READ position CONSTANT)
 
 public:
-    Q_INVOKABLE explicit GradientStop(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit GradientStop(QObject *parent = Q_NULLPTR);
 
     Color *color() const;
     double position() const;

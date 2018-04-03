@@ -4,8 +4,8 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-GraphicsContextSettings::GraphicsContextSettings(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+GraphicsContextSettings::GraphicsContextSettings(QObject *parent) :
+    BaseContainer(parent),
     m_blendMode(0.),
     m_opacity(0.)
 {

@@ -14,8 +14,8 @@
 #include "sharedtextstylecontainer.h"
 #include "msjsonfilereference.h"
 
-Document::Document(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+Document::Document(QObject *parent) :
+    BaseContainer(parent),
     m_assets(Q_NULLPTR),
     m_colorSpace(0.),
     m_currentPageIndex(0.),

@@ -12,7 +12,7 @@ class GraphicsContextSettings : public BaseContainer
     Q_PROPERTY(double opacity READ opacity CONSTANT)
 
 public:
-    Q_INVOKABLE explicit GraphicsContextSettings(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit GraphicsContextSettings(QObject *parent = Q_NULLPTR);
 
     double blendMode() const;
     double opacity() const;

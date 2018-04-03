@@ -118,13 +118,15 @@ BaseContainer *ContainerFactory::createContainer(const QJsonObject &jsonObj, QOb
     if(!m_metaObjects.contains(classString))
         throw QStringLiteral("Unknown container type %0").arg(classString);
 
-    auto obj = m_metaObjects.value(classString).newInstance(Q_ARG(const QJsonObject &, jsonObj), Q_ARG(QObject *, parent));
+    auto obj = m_metaObjects.value(classString).newInstance(Q_ARG(QObject *, parent));
     if(!obj)
         throw QStringLiteral("Container class could not be constructed");
 
     auto container = qobject_cast<BaseContainer*>(obj);
     if(!container)
         throw QStringLiteral("Container object could be casted to BaseContainer");
+
+    container->parseFromJson(jsonObj);
 
     return container;
 }

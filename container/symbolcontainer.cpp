@@ -5,8 +5,8 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-SymbolContainer::SymbolContainer(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+SymbolContainer::SymbolContainer(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

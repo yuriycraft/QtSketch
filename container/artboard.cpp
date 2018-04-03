@@ -2,8 +2,8 @@
 
 #include <QDebug>
 
-Artboard::Artboard(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+Artboard::Artboard(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

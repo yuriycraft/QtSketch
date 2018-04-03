@@ -5,8 +5,8 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-ImageCollection::ImageCollection(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+ImageCollection::ImageCollection(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

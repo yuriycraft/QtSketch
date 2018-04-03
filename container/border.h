@@ -11,18 +11,33 @@ class Border : public BaseContainer
 {
     Q_OBJECT
     Q_PROPERTY(Color* color READ color CONSTANT)
-    Q_PROPERTY(double fillType READ fillType CONSTANT)
+    Q_PROPERTY(FillType fillType READ fillType CONSTANT)
     Q_PROPERTY(bool isEnabled READ isEnabled CONSTANT)
-    Q_PROPERTY(double position READ position CONSTANT)
+    Q_PROPERTY(Position position READ position CONSTANT)
     Q_PROPERTY(double thickness READ thickness CONSTANT)
 
 public:
-    Q_INVOKABLE explicit Border(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Border(QObject *parent = Q_NULLPTR);
+
+    enum class FillType {
+        FlatColor = 0,
+        LinearGradient = 1,
+        RadialGradient = 2,
+        AngularGradient = 3
+    };
+    Q_ENUM(FillType)
+
+    enum class Position {
+        Inside = 0,
+        Center = 1,
+        Outside = 2
+    };
+    Q_ENUM(Position)
 
     Color *color() const;
-    double fillType() const;
+    FillType fillType() const;
     bool isEnabled() const;
-    double position() const;
+    Position position() const;
     double thickness() const;
 
 protected:
@@ -31,9 +46,9 @@ protected:
 
 private:
     Color *m_color;
-    double m_fillType;
+    FillType m_fillType;
     bool m_isEnabled;
-    double m_position;
+    Position m_position;
     double m_thickness;
 };
 

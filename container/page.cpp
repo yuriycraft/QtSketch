@@ -13,8 +13,8 @@
 #include "symbolmaster.h"
 #include "rulerdata.h"
 
-Page::Page(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+Page::Page(QObject *parent) :
+    BaseContainer(parent),
     m_exportOptions(Q_NULLPTR),
     m_frame(Q_NULLPTR),
     m_isFlippedHorizontal(false),

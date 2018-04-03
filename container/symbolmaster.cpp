@@ -14,8 +14,8 @@
 #include "group.h"
 #include "style.h"
 
-SymbolMaster::SymbolMaster(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+SymbolMaster::SymbolMaster(QObject *parent) :
+    BaseContainer(parent),
     m_backgroundColor(Q_NULLPTR),
     m_changeIdentifier(0.),
     m_exportOptions(Q_NULLPTR),

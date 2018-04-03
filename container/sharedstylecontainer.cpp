@@ -9,8 +9,8 @@
 
 #include "sharedstyle.h"
 
-SharedStyleContainer::SharedStyleContainer(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+SharedStyleContainer::SharedStyleContainer(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

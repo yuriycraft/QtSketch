@@ -11,8 +11,8 @@
 
 #include "exportformat.h"
 
-ExportOptions::ExportOptions(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+ExportOptions::ExportOptions(QObject *parent) :
+    BaseContainer(parent),
     m_layerOptions(0.),
     m_shouldTrim(false)
 {

@@ -8,8 +8,8 @@
 
 #include "symbolmaster.h"
 
-MSImmutableForeignSymbol::MSImmutableForeignSymbol(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+MSImmutableForeignSymbol::MSImmutableForeignSymbol(QObject *parent) :
+    BaseContainer(parent),
     m_originalMaster(Q_NULLPTR),
     m_symbolMaster(Q_NULLPTR)
 {

@@ -14,8 +14,9 @@ class BorderOptions : public BaseContainer
     Q_PROPERTY(double lineJoinStyle READ lineJoinStyle CONSTANT)
 
 public:
-    Q_INVOKABLE explicit BorderOptions(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit BorderOptions(QObject *parent = Q_NULLPTR);
 
+    const QString &do_objectID() const;
     const QList<double> &dashPattern() const;
     bool isEnabled() const;
     double lineCapStyle() const;
@@ -26,6 +27,7 @@ protected:
     virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 
 private:
+    QString m_do_objectID;
     QList<double> m_dashPattern;
     bool m_isEnabled;
     double m_lineCapStyle;

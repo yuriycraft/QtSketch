@@ -5,8 +5,8 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-RulerData::RulerData(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent),
+RulerData::RulerData(QObject *parent) :
+    BaseContainer(parent),
     m_base(0.)
 {
 }

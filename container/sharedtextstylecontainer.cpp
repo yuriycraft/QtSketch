@@ -9,8 +9,8 @@
 
 #include "sharedstyle.h"
 
-SharedTextStyleContainer::SharedTextStyleContainer(const QJsonObject &jsonObj, QObject *parent) :
-    BaseContainer(jsonObj, parent)
+SharedTextStyleContainer::SharedTextStyleContainer(QObject *parent) :
+    BaseContainer(parent)
 {
 }
 

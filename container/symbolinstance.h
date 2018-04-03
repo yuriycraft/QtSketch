@@ -1,11 +1,11 @@
 #ifndef SYMBOLINSTANCE_H
 #define SYMBOLINSTANCE_H
 
-#include "basecontainer.h"
+#include "layer.h"
 
 class QJsonObject;
 
-class SymbolInstance : public BaseContainer
+class SymbolInstance : public Layer
 {
     Q_OBJECT
 

@@ -1,8 +1,6 @@
 #include "blur.h"
 
-#include <QDebug>
 #include <QJsonValue>
-#include <QJsonObject>
 
 Blur::Blur(QObject *parent) :
     BaseContainer(parent)

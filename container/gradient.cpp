@@ -1,6 +1,5 @@
 #include "gradient.h"
 
-#include <QDebug>
 #include <QJsonValue>
 #include <QJsonObject>
 #include <QJsonArray>

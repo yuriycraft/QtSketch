@@ -1,8 +1,6 @@
 #include "graphicscontextsettings.h"
 
-#include <QDebug>
 #include <QJsonValue>
-#include <QJsonObject>
 
 GraphicsContextSettings::GraphicsContextSettings(QObject *parent) :
     BaseContainer(parent),

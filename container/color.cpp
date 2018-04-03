@@ -1,8 +1,6 @@
 #include "color.h"
 
-#include <QDebug>
 #include <QJsonValue>
-#include <QJsonObject>
 
 Color::Color(QObject *parent) :
     BaseContainer(parent),

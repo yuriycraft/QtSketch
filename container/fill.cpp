@@ -1,6 +1,5 @@
 #include "fill.h"
 
-#include <QDebug>
 #include <QJsonValue>
 #include <QJsonObject>
 

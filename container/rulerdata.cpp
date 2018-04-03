@@ -2,7 +2,6 @@
 
 #include <QDebug>
 #include <QJsonValue>
-#include <QJsonObject>
 #include <QJsonArray>
 
 RulerData::RulerData(QObject *parent) :

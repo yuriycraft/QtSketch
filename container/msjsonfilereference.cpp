@@ -1,8 +1,6 @@
 #include "msjsonfilereference.h"
 
-#include <QDebug>
 #include <QJsonValue>
-#include <QJsonObject>
 
 MSJSONFileReference::MSJSONFileReference(QObject *parent) :
     BaseContainer(parent)

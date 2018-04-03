@@ -1,6 +1,5 @@
 #include "sharedstylecontainer.h"
 
-#include <QDebug>
 #include <QJsonValue>
 #include <QJsonObject>
 #include <QJsonArray>

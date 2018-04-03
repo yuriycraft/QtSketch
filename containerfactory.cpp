@@ -1,7 +1,6 @@
 #include "containerfactory.h"
 
 #include <QDebug>
-#include <QString>
 #include <QFile>
 #include <QJsonParseError>
 #include <QJsonDocument>

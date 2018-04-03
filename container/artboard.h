@@ -1,9 +1,9 @@
 #ifndef ARTBOARD_H
 #define ARTBOARD_H
 
-#include "basecontainer.h"
+#include "group.h"
 
-class Artboard : public BaseContainer
+class Artboard : public Group
 {
     Q_OBJECT
 

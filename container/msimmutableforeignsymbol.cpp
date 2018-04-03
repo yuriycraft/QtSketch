@@ -1,6 +1,5 @@
 #include "msimmutableforeignsymbol.h"
 
-#include <QDebug>
 #include <QJsonValue>
 #include <QJsonObject>
 

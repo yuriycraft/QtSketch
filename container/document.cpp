@@ -1,6 +1,5 @@
 #include "document.h"
 
-#include <QDebug>
 #include <QJsonValue>
 #include <QJsonObject>
 #include <QJsonArray>

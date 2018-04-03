@@ -1,6 +1,5 @@
 #include "symbolmaster.h"
 
-#include <QDebug>
 #include <QJsonValue>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -15,30 +14,24 @@
 #include "style.h"
 
 SymbolMaster::SymbolMaster(QObject *parent) :
-    BaseContainer(parent),
+    Artboard(parent),
     m_backgroundColor(Q_NULLPTR),
     m_changeIdentifier(0.),
     m_exportOptions(Q_NULLPTR),
-    m_frame(Q_NULLPTR),
     m_hasBackgroundColor(false),
     m_hasClickThrough(false),
     m_horizontalRulerData(Q_NULLPTR),
     m_includeBackgroundColorInExport(false),
     m_includeBackgroundColorInInstance(false),
     m_includeInCloudUpload(false),
-    m_isFlippedHorizontal(false),
-    m_isFlippedVertical(false),
     m_isFlowHome(false),
     m_isLocked(false),
-    m_isVisible(false),
     m_layerListExpandedType(0.),
     m_nameIsFixed(false),
     m_resizesContent(false),
     m_resizingConstraint(0.),
     m_resizingType(0.),
-    m_rotation(0.),
     m_shouldBreakMaskChain(false),
-    m_style(Q_NULLPTR),
     m_verticalRulerData(Q_NULLPTR)
 {
 }
@@ -53,19 +46,9 @@ double SymbolMaster::changeIdentifier() const
     return m_changeIdentifier;
 }
 
-const QString &SymbolMaster::do_objectID() const
-{
-    return m_do_objectID;
-}
-
 ExportOptions *SymbolMaster::exportOptions() const
 {
     return m_exportOptions;
-}
-
-Rect *SymbolMaster::frame() const
-{
-    return m_frame;
 }
 
 bool SymbolMaster::hasBackgroundColor() const
@@ -98,16 +81,6 @@ bool SymbolMaster::includeInCloudUpload() const
     return m_includeInCloudUpload;
 }
 
-bool SymbolMaster::isFlippedHorizontal() const
-{
-    return m_isFlippedHorizontal;
-}
-
-bool SymbolMaster::isFlippedVertical() const
-{
-    return m_isFlippedVertical;
-}
-
 bool SymbolMaster::isFlowHome() const
 {
     return m_isFlowHome;
@@ -118,24 +91,9 @@ bool SymbolMaster::isLocked() const
     return m_isLocked;
 }
 
-bool SymbolMaster::isVisible() const
-{
-    return m_isVisible;
-}
-
 double SymbolMaster::layerListExpandedType() const
 {
     return m_layerListExpandedType;
-}
-
-const QList<Group *> &SymbolMaster::layers() const
-{
-    return m_layers;
-}
-
-const QString &SymbolMaster::name() const
-{
-    return m_name;
 }
 
 bool SymbolMaster::nameIsFixed() const
@@ -158,19 +116,9 @@ double SymbolMaster::resizingType() const
     return m_resizingType;
 }
 
-double SymbolMaster::rotation() const
-{
-    return m_rotation;
-}
-
 bool SymbolMaster::shouldBreakMaskChain() const
 {
     return m_shouldBreakMaskChain;
-}
-
-Style *SymbolMaster::style() const
-{
-    return m_style;
 }
 
 const QString &SymbolMaster::symbolID() const
@@ -199,24 +147,10 @@ bool SymbolMaster::parseProperty(const QString &key, const QJsonValue &value)
         return true;
     }
 
-    if(key == QStringLiteral("do_objectID"))
-    {
-        Q_ASSERT(value.isString());
-        m_do_objectID = value.toString();
-        return true;
-    }
-
     if(key == QStringLiteral("exportOptions"))
     {
         Q_ASSERT(value.isObject());
         m_exportOptions = ContainerFactory::createContainer<ExportOptions>(value.toObject(), this);
-        return true;
-    }
-
-    if(key == QStringLiteral("frame"))
-    {
-        Q_ASSERT(value.isObject());
-        m_frame = ContainerFactory::createContainer<Rect>(value.toObject(), this);
         return true;
     }
 
@@ -262,20 +196,6 @@ bool SymbolMaster::parseProperty(const QString &key, const QJsonValue &value)
         return true;
     }
 
-    if(key == QStringLiteral("isFlippedHorizontal"))
-    {
-        Q_ASSERT(value.isBool());
-        m_isFlippedHorizontal = value.toBool();
-        return true;
-    }
-
-    if(key == QStringLiteral("isFlippedVertical"))
-    {
-        Q_ASSERT(value.isBool());
-        m_isFlippedVertical = value.toBool();
-        return true;
-    }
-
     if(key == QStringLiteral("isFlowHome"))
     {
         Q_ASSERT(value.isBool());
@@ -290,35 +210,10 @@ bool SymbolMaster::parseProperty(const QString &key, const QJsonValue &value)
         return true;
     }
 
-    if(key == QStringLiteral("isVisible"))
-    {
-        Q_ASSERT(value.isBool());
-        m_isVisible = value.toBool();
-        return true;
-    }
-
     if(key == QStringLiteral("layerListExpandedType"))
     {
         Q_ASSERT(value.isDouble());
         m_layerListExpandedType = value.toDouble();
-        return true;
-    }
-
-    if(key == QStringLiteral("layers"))
-    {
-        Q_ASSERT(value.isArray());
-        for(auto layerValue : value.toArray())
-        {
-            Q_ASSERT(layerValue.isObject());
-            m_layers.append(ContainerFactory::createContainer<Group>(layerValue.toObject(), this));
-        }
-        return true;
-    }
-
-    if(key == QStringLiteral("name"))
-    {
-        Q_ASSERT(value.isString());
-        m_name = value.toString();
         return true;
     }
 
@@ -350,24 +245,10 @@ bool SymbolMaster::parseProperty(const QString &key, const QJsonValue &value)
         return true;
     }
 
-    if(key == QStringLiteral("rotation"))
-    {
-        Q_ASSERT(value.isDouble());
-        m_rotation = value.toDouble();
-        return true;
-    }
-
     if(key == QStringLiteral("shouldBreakMaskChain"))
     {
         Q_ASSERT(value.isBool());
         m_shouldBreakMaskChain = value.toBool();
-        return true;
-    }
-
-    if(key == QStringLiteral("style"))
-    {
-        Q_ASSERT(value.isObject());
-        m_style = ContainerFactory::createContainer<Style>(value.toObject(), this);
         return true;
     }
 
@@ -385,5 +266,5 @@ bool SymbolMaster::parseProperty(const QString &key, const QJsonValue &value)
         return true;
     }
 
-    return BaseContainer::parseProperty(key, value);
+    return Artboard::parseProperty(key, value);
 }

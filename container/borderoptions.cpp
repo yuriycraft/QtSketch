@@ -1,8 +1,6 @@
 #include "borderoptions.h"
 
-#include <QDebug>
 #include <QJsonValue>
-#include <QJsonObject>
 #include <QJsonArray>
 
 BorderOptions::BorderOptions(QObject *parent) :

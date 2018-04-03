@@ -1,8 +1,6 @@
 #include "exportformat.h"
 
-#include <QDebug>
 #include <QJsonValue>
-#include <QJsonObject>
 
 ExportFormat::ExportFormat(QObject *parent) :
     BaseContainer(parent)

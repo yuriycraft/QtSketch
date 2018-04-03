@@ -1,6 +1,5 @@
 #include "border.h"
 
-#include <QDebug>
 #include <QJsonValue>
 #include <QJsonObject>
 

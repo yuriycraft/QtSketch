@@ -2,7 +2,6 @@
 
 #include <QDebug>
 #include <QJsonValue>
-#include <QJsonObject>
 #include <QJsonArray>
 
 SymbolContainer::SymbolContainer(QObject *parent) :

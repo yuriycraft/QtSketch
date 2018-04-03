@@ -32,10 +32,10 @@ public:
         auto container = createContainer(arg, parent);
         auto castedContainer = qobject_cast<T1*>(container);
 
-        if(castedContainer)
-            return castedContainer;
-        else
+        if(!castedContainer)
             throw QStringLiteral("not expected type");
+
+        return castedContainer;
     }
 };
 

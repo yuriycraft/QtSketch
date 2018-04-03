@@ -1,8 +1,6 @@
 #include "rect.h"
 
-#include <QDebug>
 #include <QJsonValue>
-#include <QJsonObject>
 
 Rect::Rect(QObject *parent) :
     BaseContainer(parent),

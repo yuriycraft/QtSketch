@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "gradientstop.h"
 
@@ -53,7 +53,7 @@ Gradient::Gradient(const QJsonObject &jsonObj, QObject *parent) :
             for(auto gradientStopValue : iter.value().toArray())
             {
                 Q_ASSERT(gradientStopValue.isObject());
-                m_stops.append(createContainer<GradientStop>(gradientStopValue.toObject(), this));
+                m_stops.append(ContainerFactory::createContainer<GradientStop>(gradientStopValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("to"))

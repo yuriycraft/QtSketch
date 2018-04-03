@@ -14,8 +14,8 @@ class BorderOptions : public BaseContainer
     Q_PROPERTY(double lineJoinStyle READ lineJoinStyle CONSTANT)
 
 public:
-    explicit BorderOptions(QObject *parent = Q_NULLPTR);
-    explicit BorderOptions(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit BorderOptions(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit BorderOptions(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QList<double> &dashPattern() const;
     bool isEnabled() const;

@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "color.h"
 #include "exportoptions.h"
@@ -77,7 +77,7 @@ SymbolMaster::SymbolMaster(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("backgroundColor"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_backgroundColor = createContainer<Color>(iter.value().toObject(), this);
+            m_backgroundColor = ContainerFactory::createContainer<Color>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("changeIdentifier"))
         {
@@ -92,12 +92,12 @@ SymbolMaster::SymbolMaster(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("exportOptions"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_exportOptions = createContainer<ExportOptions>(iter.value().toObject(), this);
+            m_exportOptions = ContainerFactory::createContainer<ExportOptions>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("frame"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_frame = createContainer<Rect>(iter.value().toObject(), this);
+            m_frame = ContainerFactory::createContainer<Rect>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("hasBackgroundColor"))
         {
@@ -112,7 +112,7 @@ SymbolMaster::SymbolMaster(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("horizontalRulerData"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_horizontalRulerData = createContainer<RulerData>(iter.value().toObject(), this);
+            m_horizontalRulerData = ContainerFactory::createContainer<RulerData>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("includeBackgroundColorInExport"))
         {
@@ -165,7 +165,7 @@ SymbolMaster::SymbolMaster(const QJsonObject &jsonObj, QObject *parent) :
             for(auto layerValue : iter.value().toArray())
             {
                 Q_ASSERT(layerValue.isObject());
-                m_layers.append(createContainer<Group>(layerValue.toObject(), this));
+                m_layers.append(ContainerFactory::createContainer<Group>(layerValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("name"))
@@ -206,7 +206,7 @@ SymbolMaster::SymbolMaster(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("style"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_style = createContainer<Style>(iter.value().toObject(), this);
+            m_style = ContainerFactory::createContainer<Style>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("symbolID"))
         {
@@ -216,7 +216,7 @@ SymbolMaster::SymbolMaster(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("verticalRulerData"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_verticalRulerData = createContainer<RulerData>(iter.value().toObject(), this);
+            m_verticalRulerData = ContainerFactory::createContainer<RulerData>(iter.value().toObject(), this);
         }
         else
             qWarning() << "unexpected" << iter.key();

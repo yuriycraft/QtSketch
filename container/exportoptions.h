@@ -16,8 +16,8 @@ class ExportOptions : public BaseContainer
     Q_PROPERTY(bool shouldTrim READ shouldTrim CONSTANT)
 
 public:
-    explicit ExportOptions(QObject *parent = Q_NULLPTR);
-    explicit ExportOptions(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit ExportOptions(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit ExportOptions(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QList<ExportFormat*> &exportFormats() const;
     //TODO includedLayerIds

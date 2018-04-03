@@ -15,8 +15,8 @@ class AssetCollection : public BaseContainer
     Q_PROPERTY(ImageCollection* imageCollection READ imageCollection CONSTANT)
 
 public:
-    explicit AssetCollection(QObject *parent = Q_NULLPTR);
-    explicit AssetCollection(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit AssetCollection(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit AssetCollection(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QList<Color*> &colors() const;
     ImageCollection *imageCollection() const;

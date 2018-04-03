@@ -29,8 +29,8 @@ class Style : public BaseContainer
     Q_PROPERTY(TextStyle* textStyle READ textStyle CONSTANT)
 
 public:
-    explicit Style(QObject *parent = Q_NULLPTR);
-    explicit Style(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Style(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Style(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QString &do_objectID() const;
     const QString &name() const;

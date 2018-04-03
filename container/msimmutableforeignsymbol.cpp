@@ -4,7 +4,7 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "symbolmaster.h"
 
@@ -37,7 +37,7 @@ MSImmutableForeignSymbol::MSImmutableForeignSymbol(const QJsonObject &jsonObj, Q
         else if(iter.key() == QStringLiteral("originalMaster"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_originalMaster = createContainer<SymbolMaster>(iter.value().toObject(), this);
+            m_originalMaster = ContainerFactory::createContainer<SymbolMaster>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("sourceLibraryName"))
         {
@@ -47,7 +47,7 @@ MSImmutableForeignSymbol::MSImmutableForeignSymbol(const QJsonObject &jsonObj, Q
         else if(iter.key() == QStringLiteral("symbolMaster"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_symbolMaster = createContainer<SymbolMaster>(iter.value().toObject(), this);
+            m_symbolMaster = ContainerFactory::createContainer<SymbolMaster>(iter.value().toObject(), this);
         }
         else
             qWarning() << "unexpected" << iter.key();

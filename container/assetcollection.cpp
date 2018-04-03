@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "color.h"
 #include "imagecollection.h"
@@ -30,7 +30,7 @@ AssetCollection::AssetCollection(const QJsonObject &jsonObj, QObject *parent) :
             for(auto colorValue : iter.value().toArray())
             {
                 Q_ASSERT(colorValue.isObject());
-                m_colors.append(createContainer<Color>(colorValue.toObject(), this));
+                m_colors.append(ContainerFactory::createContainer<Color>(colorValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("gradients"))
@@ -45,7 +45,7 @@ AssetCollection::AssetCollection(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("imageCollection"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_imageCollection = createContainer<ImageCollection>(iter.value().toObject(), this);
+            m_imageCollection = ContainerFactory::createContainer<ImageCollection>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("images"))
         {

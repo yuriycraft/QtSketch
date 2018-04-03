@@ -10,8 +10,8 @@ class Group : public BaseContainer
     Q_OBJECT
 
 public:
-    explicit Group(QObject *parent = Q_NULLPTR);
-    explicit Group(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Group(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Group(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
 private:
 };

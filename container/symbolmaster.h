@@ -45,8 +45,8 @@ class SymbolMaster : public BaseContainer
     Q_PROPERTY(RulerData* verticalRulerData READ verticalRulerData CONSTANT)
 
 public:
-    explicit SymbolMaster(QObject *parent = Q_NULLPTR);
-    explicit SymbolMaster(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit SymbolMaster(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit SymbolMaster(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     Color *backgroundColor() const;
     double changeIdentifier() const;

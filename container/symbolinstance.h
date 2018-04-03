@@ -10,8 +10,8 @@ class SymbolInstance : public BaseContainer
     Q_OBJECT
 
 public:
-    explicit SymbolInstance(QObject *parent = Q_NULLPTR);
-    explicit SymbolInstance(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit SymbolInstance(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit SymbolInstance(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
 private:
 };

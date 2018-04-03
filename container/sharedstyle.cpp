@@ -4,7 +4,7 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "style.h"
 
@@ -33,7 +33,7 @@ SharedStyle::SharedStyle(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("value"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_value = createContainer<Style>(iter.value().toObject(), this);
+            m_value = ContainerFactory::createContainer<Style>(iter.value().toObject(), this);
         }
         else
             qWarning() << "unexpected" << iter.key();

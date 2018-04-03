@@ -11,8 +11,8 @@ class ImageCollection : public BaseContainer
     //TODO images
 
 public:
-    explicit ImageCollection(QObject *parent = Q_NULLPTR);
-    explicit ImageCollection(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit ImageCollection(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit ImageCollection(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     //TODO images
 

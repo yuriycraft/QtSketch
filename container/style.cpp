@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "blur.h"
 #include "borderoptions.h"
@@ -49,12 +49,12 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("blur"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_blur = createContainer<Blur>(iter.value().toObject(), this);
+            m_blur = ContainerFactory::createContainer<Blur>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("borderOptions"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_borderOptions = createContainer<BorderOptions>(iter.value().toObject(), this);
+            m_borderOptions = ContainerFactory::createContainer<BorderOptions>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("borders"))
         {
@@ -62,7 +62,7 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
             for(auto fillValue : iter.value().toArray())
             {
                 Q_ASSERT(fillValue.isObject());
-                m_borders.append(createContainer<Border>(fillValue.toObject(), this));
+                m_borders.append(ContainerFactory::createContainer<Border>(fillValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("fills"))
@@ -71,13 +71,13 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
             for(auto fillValue : iter.value().toArray())
             {
                 Q_ASSERT(fillValue.isObject());
-                m_fills.append(createContainer<Fill>(fillValue.toObject(), this));
+                m_fills.append(ContainerFactory::createContainer<Fill>(fillValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("contextSettings"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_contextSettings = createContainer<GraphicsContextSettings>(iter.value().toObject(), this);
+            m_contextSettings = ContainerFactory::createContainer<GraphicsContextSettings>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("endDecorationType"))
         {
@@ -102,7 +102,7 @@ Style::Style(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("textStyle"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_textStyle = createContainer<TextStyle>(iter.value().toObject(), this);
+            m_textStyle = ContainerFactory::createContainer<TextStyle>(iter.value().toObject(), this);
         }
         else
             qWarning() << "unexpected" << iter.key();

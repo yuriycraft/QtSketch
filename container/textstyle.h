@@ -10,8 +10,8 @@ class TextStyle : public BaseContainer
     Q_OBJECT
 
 public:
-    explicit TextStyle(QObject *parent = Q_NULLPTR);
-    explicit TextStyle(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit TextStyle(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit TextStyle(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
 private:
 };

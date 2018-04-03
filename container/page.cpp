@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "exportoptions.h"
 #include "rect.h"
@@ -67,12 +67,12 @@ Page::Page(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("exportOptions"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_exportOptions = createContainer<ExportOptions>(iter.value().toObject(), this);
+            m_exportOptions = ContainerFactory::createContainer<ExportOptions>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("frame"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_frame = createContainer<Rect>(iter.value().toObject(), this);
+            m_frame = ContainerFactory::createContainer<Rect>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("isFlippedHorizontal"))
         {
@@ -132,7 +132,7 @@ Page::Page(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("style"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_style = createContainer<Style>(iter.value().toObject(), this);
+            m_style = ContainerFactory::createContainer<Style>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("layers"))
         {
@@ -140,7 +140,7 @@ Page::Page(const QJsonObject &jsonObj, QObject *parent) :
             for(auto layerValue : iter.value().toArray())
             {
                 Q_ASSERT(layerValue.isObject());
-                m_layers.append(createContainer<SymbolMaster>(layerValue.toObject(), this));
+                m_layers.append(ContainerFactory::createContainer<SymbolMaster>(layerValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("hasClickThrough"))
@@ -151,7 +151,7 @@ Page::Page(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("horizontalRulerData"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_horizontalRulerData = createContainer<RulerData>(iter.value().toObject(), this);
+            m_horizontalRulerData = ContainerFactory::createContainer<RulerData>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("includeInCloudUpload"))
         {
@@ -161,7 +161,7 @@ Page::Page(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("verticalRulerData"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_verticalRulerData = createContainer<RulerData>(iter.value().toObject(), this);
+            m_verticalRulerData = ContainerFactory::createContainer<RulerData>(iter.value().toObject(), this);
         }
         else
             qWarning() << "unexpected" << iter.key();

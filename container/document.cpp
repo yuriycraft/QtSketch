@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "assetcollection.h"
 #include "msimmutableforeignsymbol.h"
@@ -45,7 +45,7 @@ Document::Document(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("assets"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_assets = createContainer<AssetCollection>(iter.value().toObject(), this);
+            m_assets = ContainerFactory::createContainer<AssetCollection>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("colorSpace"))
         {
@@ -78,23 +78,23 @@ Document::Document(const QJsonObject &jsonObj, QObject *parent) :
             for(auto pageValue : iter.value().toArray())
             {
                 Q_ASSERT(pageValue.isObject());
-                m_foreignSymbols.append(createContainer<MSImmutableForeignSymbol>(pageValue.toObject(), this));
+                m_foreignSymbols.append(ContainerFactory::createContainer<MSImmutableForeignSymbol>(pageValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("layerStyles"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_layerStyles = createContainer<SharedStyleContainer>(iter.value().toObject(), this);
+            m_layerStyles = ContainerFactory::createContainer<SharedStyleContainer>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("layerSymbols"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_layerSymbols = createContainer<SymbolContainer>(iter.value().toObject(), this);
+            m_layerSymbols = ContainerFactory::createContainer<SymbolContainer>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("layerTextStyles"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_layerTextStyles = createContainer<SharedTextStyleContainer>(iter.value().toObject(), this);
+            m_layerTextStyles = ContainerFactory::createContainer<SharedTextStyleContainer>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("pages"))
         {
@@ -102,7 +102,7 @@ Document::Document(const QJsonObject &jsonObj, QObject *parent) :
             for(auto pageValue : iter.value().toArray())
             {
                 Q_ASSERT(pageValue.isObject());
-                m_pages.append(createContainer<MSJSONFileReference>(pageValue.toObject(), this));
+                m_pages.append(ContainerFactory::createContainer<MSJSONFileReference>(pageValue.toObject(), this));
             }
         }
         else

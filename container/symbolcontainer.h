@@ -11,8 +11,8 @@ class SymbolContainer : public BaseContainer
     //TODO objects
 
 public:
-    explicit SymbolContainer(QObject *parent = Q_NULLPTR);
-    explicit SymbolContainer(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit SymbolContainer(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit SymbolContainer(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     //TODO objects
 

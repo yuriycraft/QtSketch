@@ -25,8 +25,8 @@ class Fill : public BaseContainer
     Q_PROPERTY(double patternTileScale READ patternTileScale CONSTANT)
 
 public:
-    explicit Fill(QObject *parent = Q_NULLPTR);
-    explicit Fill(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Fill(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Fill(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     Color *color() const;
     GraphicsContextSettings *contextSettings() const;

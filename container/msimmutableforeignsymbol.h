@@ -17,8 +17,8 @@ class MSImmutableForeignSymbol : public BaseContainer
     Q_PROPERTY(SymbolMaster* symbolMaster READ symbolMaster CONSTANT)
 
 public:
-    explicit MSImmutableForeignSymbol(QObject *parent = Q_NULLPTR);
-    explicit MSImmutableForeignSymbol(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit MSImmutableForeignSymbol(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit MSImmutableForeignSymbol(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QString &do_objectID() const;
     const QString &libraryID() const;

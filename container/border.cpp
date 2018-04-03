@@ -4,7 +4,7 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "color.h"
 
@@ -33,7 +33,7 @@ Border::Border(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("color"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_color = createContainer<Color>(iter.value().toObject(), this);
+            m_color = ContainerFactory::createContainer<Color>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("fillType"))
         {

@@ -15,8 +15,8 @@ class SharedStyle : public BaseContainer
     Q_PROPERTY(Style* value READ value CONSTANT)
 
 public:
-    explicit SharedStyle(QObject *parent = Q_NULLPTR);
-    explicit SharedStyle(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit SharedStyle(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit SharedStyle(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     const QString &do_objectID() const;
     const QString &name() const;

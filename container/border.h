@@ -17,8 +17,8 @@ class Border : public BaseContainer
     Q_PROPERTY(double thickness READ thickness CONSTANT)
 
 public:
-    explicit Border(QObject *parent = Q_NULLPTR);
-    explicit Border(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Border(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Border(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     Color *color() const;
     double fillType() const;

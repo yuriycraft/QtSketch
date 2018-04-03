@@ -10,8 +10,8 @@ class Artboard : public BaseContainer
     Q_OBJECT
 
 public:
-    explicit Artboard(QObject *parent = Q_NULLPTR);
-    explicit Artboard(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Artboard(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Artboard(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
 private:
 };

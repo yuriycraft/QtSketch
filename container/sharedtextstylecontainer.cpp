@@ -5,7 +5,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "sharedstyle.h"
 
@@ -27,7 +27,7 @@ SharedTextStyleContainer::SharedTextStyleContainer(const QJsonObject &jsonObj, Q
             for(auto objectValue : iter.value().toArray())
             {
                 Q_ASSERT(objectValue.isObject());
-                m_objects.append(createContainer<SharedStyle>(objectValue.toObject(), this));
+                m_objects.append(ContainerFactory::createContainer<SharedStyle>(objectValue.toObject(), this));
             }
         }
         else

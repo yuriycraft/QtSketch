@@ -7,7 +7,7 @@
 
 #include <QJsonDocument>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "exportformat.h"
 
@@ -33,7 +33,7 @@ ExportOptions::ExportOptions(const QJsonObject &jsonObj, QObject *parent) :
             for(auto colorValue : iter.value().toArray())
             {
                 Q_ASSERT(colorValue.isObject());
-                m_exportFormats.append(createContainer<ExportFormat>(colorValue.toObject(), this));
+                m_exportFormats.append(ContainerFactory::createContainer<ExportFormat>(colorValue.toObject(), this));
             }
         }
         else if(iter.key() == QStringLiteral("includedLayerIds"))

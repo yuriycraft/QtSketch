@@ -4,7 +4,7 @@
 #include <QJsonValue>
 #include <QJsonObject>
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "color.h"
 #include "graphicscontextsettings.h"
@@ -33,12 +33,12 @@ Fill::Fill(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("color"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_color = createContainer<Color>(iter.value().toObject(), this);
+            m_color = ContainerFactory::createContainer<Color>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("contextSettings"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_contextSettings = createContainer<GraphicsContextSettings>(iter.value().toObject(), this);
+            m_contextSettings = ContainerFactory::createContainer<GraphicsContextSettings>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("fillType"))
         {
@@ -48,12 +48,12 @@ Fill::Fill(const QJsonObject &jsonObj, QObject *parent) :
         else if(iter.key() == QStringLiteral("image"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_image = createContainer<MSJSONFileReference>(iter.value().toObject(), this);
+            m_image = ContainerFactory::createContainer<MSJSONFileReference>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("gradient"))
         {
             Q_ASSERT(iter.value().isObject());
-            m_gradient = createContainer<Gradient>(iter.value().toObject(), this);
+            m_gradient = ContainerFactory::createContainer<Gradient>(iter.value().toObject(), this);
         }
         else if(iter.key() == QStringLiteral("isEnabled"))
         {

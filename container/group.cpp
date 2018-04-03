@@ -11,5 +11,5 @@ Group::Group(const QJsonObject &jsonObj, QObject *parent) :
     BaseContainer(parent)
 {
     //TODO
-    //qWarning() << "not implemented";
+    qWarning() << "not implemented";
 }

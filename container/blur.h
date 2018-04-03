@@ -15,8 +15,8 @@ class Blur : public BaseContainer
     Q_PROPERTY(double type READ type CONSTANT)
 
 public:
-    explicit Blur(QObject *parent = Q_NULLPTR);
-    explicit Blur(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Blur(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Blur(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     bool isEnabled() const;
     const QString &center() const;

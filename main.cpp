@@ -5,7 +5,7 @@
 #include "Quazip/quazip.h"
 #include "Quazip/quazipfile.h"
 
-#include "utils.h"
+#include "containerfactory.h"
 
 #include "container/document.h"
 #include "container/msjsonfilereference.h"
@@ -20,7 +20,7 @@ template<typename T> T* createContainerZip(QuaZip &zip, const QString &filename,
     if(!file.open(QIODevice::ReadOnly))
         throw QStringLiteral("Could not open %0 because %1").arg(filename, file.errorString());
 
-    auto container = createContainer(file, parent);
+    auto container = ContainerFactory::createContainer(file, parent);
     auto castedContainer = qobject_cast<T*>(container);
 
     if(castedContainer)

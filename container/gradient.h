@@ -18,8 +18,8 @@ class Gradient : public BaseContainer
     Q_PROPERTY(QString to READ to CONSTANT)
 
 public:
-    explicit Gradient(QObject *parent = Q_NULLPTR);
-    explicit Gradient(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Gradient(QObject *parent = Q_NULLPTR);
+    Q_INVOKABLE explicit Gradient(const QJsonObject &jsonObj, QObject *parent = Q_NULLPTR);
 
     double elipseLength() const;
     const QString &from() const;

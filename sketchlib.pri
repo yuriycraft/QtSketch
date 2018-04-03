@@ -1,5 +1,7 @@
 HEADERS += \
     $$PWD/basecontainer.h \
+    $$PWD/containerfactory.h \
+    $$PWD/layer.h \
     $$PWD/container/artboard.h \
     $$PWD/container/assetcollection.h \
     $$PWD/container/blur.h \
@@ -29,11 +31,12 @@ HEADERS += \
     $$PWD/container/symbolinstance.h \
     $$PWD/container/symbolmaster.h \
     $$PWD/container/text.h \
-    $$PWD/container/textstyle.h \
-    $$PWD/containerfactory.h
+    $$PWD/container/textstyle.h
 
 SOURCES += \
     $$PWD/basecontainer.cpp \
+    $$PWD/containerfactory.cpp \
+    $$PWD/layer.cpp \
     $$PWD/container/artboard.cpp \
     $$PWD/container/assetcollection.cpp \
     $$PWD/container/blur.cpp \
@@ -63,5 +66,4 @@ SOURCES += \
     $$PWD/container/symbolinstance.cpp \
     $$PWD/container/symbolmaster.cpp \
     $$PWD/container/text.cpp \
-    $$PWD/container/textstyle.cpp \
-    $$PWD/containerfactory.cpp
+    $$PWD/container/textstyle.cpp

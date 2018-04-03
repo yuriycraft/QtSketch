@@ -7,7 +7,7 @@ class BaseContainer : public QObject
 {
     Q_OBJECT
 
-public:
+protected:
     explicit BaseContainer(QObject *parent = nullptr);
 };
 

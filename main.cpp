@@ -20,6 +20,7 @@
 #include "container/group.h"
 #include "container/text.h"
 #include "container/bitmap.h"
+#include "container/rectangle.h"
 
 template<typename T> T* createContainerZip(QuaZip &zip, const QString &filename, QObject *parent = Q_NULLPTR)
 {
@@ -91,38 +92,40 @@ int main(int argc, char *argv[])
                  maxY = page->frame()->y() + page->frame()->height();
 
             {
-                std::function<void(Layer*,double&,double&,double&,double&)> getBounds;
-                getBounds = [&getBounds](Layer *layer, double &minX, double &minY, double &maxX, double &maxY) {
-                    if(minX > layer->frame()->x())
-                        minX = layer->frame()->x();
-                    if(minY > layer->frame()->y())
-                        minY = layer->frame()->y();
-                    if(maxX < layer->frame()->x() + layer->frame()->width())
-                        maxX = layer->frame()->x() + layer->frame()->width();
-                    if(maxY < layer->frame()->y() + layer->frame()->height())
-                        maxY = layer->frame()->y() + layer->frame()->height();
+                std::function<void(Layer*,double&,double&,double&,double&,double,double)> getBounds;
+                getBounds = [&getBounds](Layer *layer, double &minX, double &minY, double &maxX, double &maxY, double xOffset, double yOffset) {
+                    auto x = xOffset + layer->frame()->x();
+                    auto y = yOffset + layer->frame()->y();
+                    if(minX > x)
+                        minX = x;
+                    if(minY > y)
+                        minY = y;
+                    if(maxX < x + layer->frame()->width())
+                        maxX = x + layer->frame()->width();
+                    if(maxY < y + layer->frame()->height())
+                        maxY = y + layer->frame()->height();
 
                     if(auto group = qobject_cast<Group*>(layer))
                     {
                         for(auto subLayer : group->layers())
-                            getBounds(subLayer, minX, minY, maxX, maxY);
+                            getBounds(subLayer, minX, minY, maxX, maxY, x, y);
                     }
                 };
 
-                getBounds(page, minX, minY, maxX, maxY);
+                getBounds(page, minX, minY, maxX, maxY, 0., 0.);
             }
 
-            auto scene = new QGraphicsScene(minX, minY, maxX - minX, maxY - minY);
+            auto scene = new QGraphicsScene(minX, minY, maxX - minX + 1.,  maxY - minY + 1.);
 
             {
-                std::function<void(Layer*)> createItem;
-                createItem = [&createItem, &scene, &zip](Layer *layer){
+                std::function<void(Layer*,double,double)> createItem;
+                createItem = [&createItem, &scene, &zip](Layer *layer,double xOffset, double yOffset){
                     if(auto text = qobject_cast<Text*>(layer))
                     {
                         auto textItem = scene->addText(text->name());
-                        textItem->setPos(text->frame()->x(), text->frame()->y());
+                        textItem->setPos(xOffset + text->frame()->x(), yOffset + text->frame()->y());
                     }
-                    if(auto bitmap = qobject_cast<Bitmap*>(layer))
+                    else if(auto bitmap = qobject_cast<Bitmap*>(layer))
                     {
                         auto path = bitmap->image()->_ref() + ".png";
 
@@ -147,16 +150,19 @@ int main(int argc, char *argv[])
                         }
 
                         auto bitmapItem = scene->addPixmap(QPixmap::fromImage(image.scaled(bitmap->frame()->width(), bitmap->frame()->height())));
-                        bitmapItem->setPos(bitmap->frame()->x(), bitmap->frame()->y());
+                        bitmapItem->setPos(xOffset + bitmap->frame()->x(), yOffset + bitmap->frame()->y());
                     }
                     else if(auto group = qobject_cast<Group*>(layer))
                     {
                         for(auto subLayer : group->layers())
-                            createItem(subLayer);
+                            createItem(subLayer, xOffset + subLayer->frame()->x(), yOffset + subLayer->frame()->y());
                     }
+
+                    scene->addRect(xOffset + layer->frame()->x(), yOffset + layer->frame()->y(),
+                                   layer->frame()->width(), layer->frame()->height());
                 };
 
-                createItem(page);
+                createItem(page, 0., 0.);
             }
 
             tabWidget->addTab(new QGraphicsView(scene, tabWidget), page->name());

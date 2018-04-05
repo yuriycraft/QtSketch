@@ -27,6 +27,7 @@
 #include "container/msjsonfilereference.h"
 #include "container/oval.h"
 #include "container/page.h"
+#include "container/polygon.h"
 #include "container/rect.h"
 #include "container/rectangle.h"
 #include "container/rulerdata.h"
@@ -67,6 +68,7 @@ QHash<QString, QMetaObject> ContainerFactory::m_metaObjects {
     { QStringLiteral("MSJSONFileReference"), MSJSONFileReference::staticMetaObject },
     { QStringLiteral("oval"), Oval::staticMetaObject },
     { QStringLiteral("page"), Page::staticMetaObject },
+    { QStringLiteral("polygon"), Polygon::staticMetaObject },
     { QStringLiteral("rect"), Rect::staticMetaObject },
     { QStringLiteral("rectangle"), Rectangle::staticMetaObject },
     { QStringLiteral("rulerData"), RulerData::staticMetaObject },

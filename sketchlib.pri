@@ -23,6 +23,7 @@ HEADERS += \
     $$PWD/container/msjsonfilereference.h \
     $$PWD/container/oval.h \
     $$PWD/container/page.h \
+    $$PWD/container/polygon.h \
     $$PWD/container/rect.h \
     $$PWD/container/rectangle.h \
     $$PWD/container/rulerdata.h \
@@ -66,6 +67,7 @@ SOURCES += \
     $$PWD/container/msjsonfilereference.cpp \
     $$PWD/container/oval.cpp \
     $$PWD/container/page.cpp \
+    $$PWD/container/polygon.cpp \
     $$PWD/container/rect.cpp \
     $$PWD/container/rectangle.cpp \
     $$PWD/container/rulerdata.cpp \

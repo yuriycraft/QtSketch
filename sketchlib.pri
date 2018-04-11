@@ -1,3 +1,6 @@
+INCLUDEPATH += $$PWD
+DEPENDPATH += $$PWD
+
 HEADERS += \
     $$PWD/basecontainer.h \
     $$PWD/containerfactory.h \

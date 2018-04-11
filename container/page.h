@@ -1,5 +1,4 @@
-#ifndef PAGE_H
-#define PAGE_H
+#pragma once
 
 #include "group.h"
 
@@ -48,5 +47,3 @@ private:
     bool m_includeInCloudUpload;
     RulerData *m_verticalRulerData;
 };
-
-#endif // PAGE_H

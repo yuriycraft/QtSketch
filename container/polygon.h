@@ -1,5 +1,4 @@
-#ifndef POLYGON_H
-#define POLYGON_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -16,5 +15,3 @@ protected:
 
 private:
 };
-
-#endif // POLYGON_H

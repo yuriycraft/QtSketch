@@ -1,5 +1,4 @@
-#ifndef IMAGECOLLECTION_H
-#define IMAGECOLLECTION_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -22,5 +21,3 @@ protected:
 private:
     //TODO images
 };
-
-#endif // IMAGECOLLECTION_H

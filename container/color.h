@@ -1,5 +1,4 @@
-#ifndef COLOR_H
-#define COLOR_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -31,5 +30,3 @@ private:
     double m_green;
     double m_red;
 };
-
-#endif // COLOR_H

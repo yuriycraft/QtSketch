@@ -1,5 +1,4 @@
-#ifndef ASSETCOLLECTION_H
-#define ASSETCOLLECTION_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -30,5 +29,3 @@ private:
     ImageCollection *m_imageCollection;
     //TODO images
 };
-
-#endif // ASSETCOLLECTION_H

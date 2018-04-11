@@ -1,5 +1,4 @@
-#ifndef TRIANGLE_H
-#define TRIANGLE_H
+#pragma once
 
 #include "layer.h"
 
@@ -14,5 +13,3 @@ protected:
     // BaseContainer interface
     virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 };
-
-#endif // TRIANGLE_H

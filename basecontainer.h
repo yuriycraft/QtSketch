@@ -1,5 +1,4 @@
-#ifndef BASECONTAINER_H
-#define BASECONTAINER_H
+#pragma once
 
 #include <QObject>
 #include <QHash>
@@ -32,5 +31,3 @@ private:
 
     QString m_do_objectID;
 };
-
-#endif // BASECONTAINER_H

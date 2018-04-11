@@ -1,5 +1,4 @@
-#ifndef LAYER_H
-#define LAYER_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -85,5 +84,3 @@ private:
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(Layer::ResizingConstraints)
-
-#endif // LAYER_H

@@ -1,5 +1,4 @@
-#ifndef EXPORTOPTIONS_H
-#define EXPORTOPTIONS_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -33,5 +32,3 @@ private:
     double m_layerOptions;
     bool m_shouldTrim;
 };
-
-#endif // EXPORTOPTIONS_H

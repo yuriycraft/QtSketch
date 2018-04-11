@@ -1,5 +1,4 @@
-#ifndef SYMBOLCONTAINER_H
-#define SYMBOLCONTAINER_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -22,5 +21,3 @@ protected:
 private:
     //TODO objects
 };
-
-#endif // SYMBOLCONTAINER_H

@@ -1,5 +1,4 @@
-#ifndef INNERSHADOW_H
-#define INNERSHADOW_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -41,5 +40,3 @@ private:
     double m_offsetY;
     double m_spread;
 };
-
-#endif // INNERSHADOW_H

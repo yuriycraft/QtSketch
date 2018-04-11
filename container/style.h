@@ -1,5 +1,4 @@
-#ifndef STYLE_H
-#define STYLE_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -59,5 +58,3 @@ private:
     double m_startDecorationType;
     TextStyle *m_textStyle;
 };
-
-#endif // STYLE_H

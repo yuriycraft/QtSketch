@@ -1,5 +1,4 @@
-#ifndef RECT_H
-#define RECT_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -34,5 +33,3 @@ private:
     double m_x;
     double m_y;
 };
-
-#endif // RECT_H

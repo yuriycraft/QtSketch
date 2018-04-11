@@ -1,5 +1,4 @@
-#ifndef SYMBOLINSTANCE_H
-#define SYMBOLINSTANCE_H
+#pragma once
 
 #include "layer.h"
 
@@ -64,5 +63,3 @@ private:
     double m_masterInfluenceEdgeMinXPadding;
     double m_masterInfluenceEdgeMinYPadding;
 };
-
-#endif // SYMBOLINSTANCE_H

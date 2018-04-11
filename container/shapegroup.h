@@ -1,5 +1,4 @@
-#ifndef SHAPEGROUP_H
-#define SHAPEGROUP_H
+#pragma once
 
 #include "group.h"
 
@@ -18,5 +17,3 @@ protected:
 
 private:
 };
-
-#endif // SHAPEGROUP_H

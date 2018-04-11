@@ -1,5 +1,4 @@
-#ifndef MSJSONFILEREFERENCE_H
-#define MSJSONFILEREFERENCE_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -25,5 +24,3 @@ private:
     QString m__ref;
     QString m__ref_class;
 };
-
-#endif // MSJSONFILEREFERENCE_H

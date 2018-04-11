@@ -1,5 +1,4 @@
-#ifndef ARTBOARD_H
-#define ARTBOARD_H
+#pragma once
 
 #include "group.h"
 
@@ -23,5 +22,3 @@ private:
     Color *m_backgroundColor;
     bool m_hasBackgroundColor;
 };
-
-#endif // ARTBOARD_H

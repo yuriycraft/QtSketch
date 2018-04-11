@@ -1,5 +1,4 @@
-#ifndef TEXTSTYLE_H
-#define TEXTSTYLE_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -22,5 +21,3 @@ protected:
 private:
     double m_verticalAlignment;
 };
-
-#endif // TEXTSTYLE_H

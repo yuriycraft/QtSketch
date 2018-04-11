@@ -1,5 +1,4 @@
-#ifndef RULERDATA_H
-#define RULERDATA_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -22,5 +21,3 @@ protected:
 private:
     double m_base;
 };
-
-#endif // RULERDATA_H

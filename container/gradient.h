@@ -1,5 +1,4 @@
-#ifndef GRADIENT_H
-#define GRADIENT_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -39,5 +38,3 @@ private:
     QList<GradientStop*> m_stops;
     QString m_to;
 };
-
-#endif // GRADIENT_H

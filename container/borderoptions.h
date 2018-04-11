@@ -1,5 +1,4 @@
-#ifndef BORDEROPTIONS_H
-#define BORDEROPTIONS_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -31,5 +30,3 @@ private:
     double m_lineCapStyle;
     double m_lineJoinStyle;
 };
-
-#endif // BORDEROPTIONS_H

@@ -1,5 +1,4 @@
-#ifndef SHADOW_H
-#define SHADOW_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -41,5 +40,3 @@ private:
     double m_offsetY;
     double m_spread;
 };
-
-#endif // SHADOW_H

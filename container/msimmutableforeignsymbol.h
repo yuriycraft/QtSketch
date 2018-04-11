@@ -1,5 +1,4 @@
-#ifndef MSIMMUTABLEFOREIGNSYMBOL_H
-#define MSIMMUTABLEFOREIGNSYMBOL_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -33,5 +32,3 @@ private:
     QString m_sourceLibraryName;
     SymbolMaster *m_symbolMaster;
 };
-
-#endif // MSIMMUTABLEFOREIGNSYMBOL_H

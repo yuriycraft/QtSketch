@@ -1,5 +1,4 @@
-#ifndef BORDER_H
-#define BORDER_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -51,5 +50,3 @@ private:
     Position m_position;
     double m_thickness;
 };
-
-#endif // BORDER_H

@@ -1,5 +1,4 @@
-#ifndef SLICE_H
-#define SLICE_H
+#pragma once
 
 #include "layer.h"
 
@@ -23,5 +22,3 @@ private:
     Color *m_backgroundColor;
     bool m_hasBackgroundColor;
 };
-
-#endif // SLICE_H

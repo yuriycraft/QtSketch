@@ -1,5 +1,4 @@
-#ifndef GRADIENTSTOP_H
-#define GRADIENTSTOP_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -27,5 +26,3 @@ private:
     Color *m_color;
     double m_position;
 };
-
-#endif // GRADIENTSTOP_H

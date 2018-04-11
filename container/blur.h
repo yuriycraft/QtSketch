@@ -1,5 +1,4 @@
-#ifndef BLUR_H
-#define BLUR_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -34,5 +33,3 @@ private:
     double m_radius;
     double m_type;
 };
-
-#endif // BLUR_H

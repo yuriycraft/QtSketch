@@ -1,5 +1,4 @@
-#ifndef SHAREDSTYLE_H
-#define SHAREDSTYLE_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -27,5 +26,3 @@ private:
     QString m_name;
     Style *m_value;
 };
-
-#endif // SHAREDSTYLE_H

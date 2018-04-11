@@ -1,5 +1,4 @@
-#ifndef GRAPHICSCONTEXTSETTINGS_H
-#define GRAPHICSCONTEXTSETTINGS_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -25,5 +24,3 @@ private:
     double m_blendMode;
     double m_opacity;
 };
-
-#endif // GRAPHICSCONTEXTSETTINGS_H

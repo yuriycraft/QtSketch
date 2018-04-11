@@ -1,5 +1,4 @@
-#ifndef SYMBOLMASTER_H
-#define SYMBOLMASTER_H
+#pragma once
 
 #include "artboard.h"
 
@@ -73,5 +72,3 @@ private:
     QString m_symbolID;
     RulerData *m_verticalRulerData;
 };
-
-#endif // SYMBOLMASTER_H

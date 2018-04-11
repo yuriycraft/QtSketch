@@ -1,5 +1,4 @@
-#ifndef EXPORTFORMAT_H
-#define EXPORTFORMAT_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -37,5 +36,3 @@ private:
     double m_scale;
     double m_visibleScaleType;
 };
-
-#endif // EXPORTFORMAT_H

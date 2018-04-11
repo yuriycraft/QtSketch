@@ -1,5 +1,4 @@
-#ifndef SHAREDSTYLECONTAINER_H
-#define SHAREDSTYLECONTAINER_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -24,5 +23,3 @@ protected:
 private:
     QList<SharedStyle*> m_objects;
 };
-
-#endif // SHAREDSTYLECONTAINER_H

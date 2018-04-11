@@ -1,5 +1,4 @@
-#ifndef FILL_H
-#define FILL_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -54,5 +53,3 @@ private:
     double m_patternFillType;
     double m_patternTileScale;
 };
-
-#endif // FILL_H

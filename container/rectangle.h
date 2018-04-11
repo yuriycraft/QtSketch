@@ -1,5 +1,4 @@
-#ifndef RECTANGLE_H
-#define RECTANGLE_H
+#pragma once
 
 #include "layer.h"
 
@@ -14,5 +13,3 @@ protected:
     // BaseContainer interface
     virtual bool parseProperty(const QString &key, const QJsonValue &value) Q_DECL_OVERRIDE;
 };
-
-#endif // RECTANGLE_H

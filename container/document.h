@@ -1,5 +1,4 @@
-#ifndef DOCUMENT_H
-#define DOCUMENT_H
+#pragma once
 
 #include "basecontainer.h"
 
@@ -56,5 +55,3 @@ private:
     SharedTextStyleContainer *m_layerTextStyles;
     QList<MSJSONFileReference*> m_pages;
 };
-
-#endif // DOCUMENT_H

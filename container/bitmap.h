@@ -1,5 +1,4 @@
-#ifndef BITMAP_H
-#define BITMAP_H
+#pragma once
 
 #include "layer.h"
 
@@ -21,5 +20,3 @@ protected:
 private:
     MSJSONFileReference *m_image;
 };
-
-#endif // BITMAP_H

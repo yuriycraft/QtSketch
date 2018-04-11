@@ -1,5 +1,4 @@
-#ifndef GROUP_H
-#define GROUP_H
+#pragma once
 
 #include "layer.h"
 
@@ -27,5 +26,3 @@ private:
     QList<Layer*> m_layers;
     bool m_hasClickThrough;
 };
-
-#endif // GROUP_H

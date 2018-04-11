@@ -1,5 +1,4 @@
-#ifndef UTILS_H
-#define UTILS_H
+#pragma once
 
 #include <QObject>
 #include <QHash>
@@ -38,5 +37,3 @@ public:
         return castedContainer;
     }
 };
-
-#endif // UTILS_H

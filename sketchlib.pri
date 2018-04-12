@@ -90,3 +90,5 @@ SOURCES += \
     $$PWD/container/textstyle.cpp \
     $$PWD/container/triangle.cpp \
     $$PWD/sketchfile.cpp
+
+include(Quazip/Quazip.pri)
